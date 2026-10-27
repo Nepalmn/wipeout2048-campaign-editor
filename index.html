@@ -62,9 +62,13 @@ text{pointer-events:none;font-size:9px}
  <div class=fila><button onclick="dGuardar()">Usar este dibujo</button><button class=sec onclick="mDib.style.display='none'">Cancelar</button></div>
 </div></div>
 <script>
-const LABMAX=240, UX=117, UY=93.5, MAXT=28, PROBADO=210, KX=47, KY=81.85;
-const cx=(x,y)=>4.0522*x-0.16512*y+54.2656, cy=(x,y)=>0.038527*x+2.07342*y+23.4619;
-function inv(X,Y){const a=4.0522,b=-0.16512,c=0.038527,d=2.07342;X-=54.2656;Y-=23.4619;const det=a*d-b*c;return[(d*X-b*Y)/det,(-c*X+a*Y)/det]}
+const LABMAX=400, UX=117, UY=93.5, MAXT=24, PROBADO=210, KX=47, KY=81.85;
+// lienzo de carteles <-> mapa de eventos: una casilla = 4 triángulos de ancho y 2 filas; el hexágono del evento (x,y)
+// ocupa las celdas 4x+55..4x+57, 2y+25..2y+26 (medido en el juego con carteles de un triángulo alrededor de un evento)
+const cx=(x,y)=>4*x+56, cy=(x,y)=>2*y+26;
+function inv(X,Y){return[(X-57)/4,(Y-26)/2]}
+function celdasEv(x,y,sh){const pol=SH[sh]||SH['0'];let a=1e9,b=1e9,c=-1e9,d=-1e9;for(const[u,v]of pol){a=Math.min(a,u);b=Math.min(b,v);c=Math.max(c,u);d=Math.max(d,v)}
+ return[Math.round(4*(x+a)+57),Math.round(2*(y+b)+26),Math.round(4*(x+c)+57)-2,Math.round(2*(y+d)+26)-1]}
 const COL=['#f9e2af','#fab387','#a6e3a1','#94e2d5','#89dceb','#74c7ec','#89b4fa','#b4befe','#cba6f7','#f5c2e7','#f2cdcd','#eba0ac','#e6c384','#98bb6c','#7fb4ca','#957fb8','#d27e99','#ffa066','#c0a36e','#9ece6a','#7dcfff','#bb9af7','#ff9e64','#73daca','#e0af68','#2ac3de','#c099ff','#4fd6be'];
 const NOMBRES={'0':'normal','1':'grande (trofeo)','2':'grande (trofeo)','3':'triángulo grande','4':'triángulo pequeño','5':'trapecio','6':'rombo','7':'normal','8':'flecha','9':'emblema grande','10':'emblema grande','11':'ENORME (final)','12':'normal'};
 const TIPOS=['carrera','contrarreloj','zona','eliminator'], CLASES=['C','B','A','A+'];
@@ -93,12 +97,18 @@ function conflicts(){
  const rects=B.origLabels.map(l=>[l.x,l.y,l.w,l.h]);
  C.temporadas.forEach((tp,t)=>{const{x,y}=tp.cartel,[w,h]=labWH(tp.cartel),id='L'+t;
   if(x<0||x+w>LABMAX||y<0||y+h>250)bad.add(id);
-  for(const[,, e]of eventos()){const X=cx(e.x,e.y),Y=cy(e.x,e.y);if(X+2>x&&X-2<x+w&&Y+1.1>y&&Y-1.1<y+h)bad.add(id)}
-  for(const o of B.orig){if(o.x>=300)continue;const X=cx(o.x,o.y),Y=cy(o.x,o.y);if(X+2>x&&X-2<x+w&&Y+1.1>y&&Y-1.1<y+h)bad.add(id)}
+  const pisa=c=>c[0]<=x+w-1&&x<=c[2]&&c[1]<=y+h-1&&y<=c[3];
+  for(const[,, e]of eventos())if(pisa(celdasEv(e.x,e.y,e.forma)))bad.add(id);
+  for(const o of B.orig)if(o.x<300&&pisa(celdasEv(o.x,o.y,o.s||'0')))bad.add(id);
   for(const r of rects)if(r[0]<x+w&&x<r[0]+r[2]&&r[1]<y+h&&y<r[1]+r[3])bad.add(id);
   rects.push([x,y,w,h])});
  return bad}
 const pts=(x,y,pol,Z)=>pol.map(([u,v])=>[(x+u)*UX*Z,(y+v)*UY*Z].join(',')).join(' ');
+// triángulos de la rejilla que ocupa un cartel de w x h celdas en (x,y) del lienzo (cada celda del lienzo = un triángulo)
+function triPath(x,y,w,h,Z){const cw=UX*Z/2,rh=UY*Z/2;let d='';
+ for(let j=0;j<h;j++)for(let i=0;i<w;i++){const X=x+i,Y=y+j,k=X-57,r=Y-26,arriba=((X+Y)%2+2)%2===0,yb=arriba?(r+1)*rh:r*rh,yt=arriba?r*rh:(r+1)*rh;
+  d+=`M${k*cw/2} ${yb}L${(k+1)*cw/2} ${yt}L${(k+2)*cw/2} ${yb}Z`}
+ return d}
 function draw(){
  const Z=+zoom.value/10,bad=conflicts();
  let maxX=0,maxY=0;for(const[,,e]of eventos()){maxX=Math.max(maxX,e.x+5);maxY=Math.max(maxY,e.y+5)}
@@ -113,16 +123,16 @@ function draw(){
   h+=`<path d="M${p.map(q=>q.join(' ')).join(' L')} L${p[p.length-1][0]} ${H} L0 ${H} Z" fill="#20202a" fill-opacity=".55" pointer-events="none"/>`;
   h+=`<path d="M${rx*UX*Z} 0 L${rx2*UX*Z} ${ry2*UY*Z} L${W} ${ry2*UY*Z} L${W} 0 Z" fill="#20202a" fill-opacity=".55" pointer-events="none"/>`}
  h+=`<rect x=${LX*UX*Z} y=0 width=${W} height=${H} fill="url(#st)" pointer-events="none"/>`;
- for(const l of B.origLabels){const[a,b]=inv(l.x,l.y),[c,d]=inv(l.x+l.w,l.y+l.h);h+=`<rect x=${a*UX*Z} y=${b*UY*Z} width=${(c-a)*UX*Z} height=${(d-b)*UY*Z} fill="#6c708640" stroke="#6c7086" data-tip="${l.n} (original)"/>`}
+ for(const l of B.origLabels)h+=`<path d="${triPath(l.x,l.y,l.w,l.h,Z)}" fill="#6c708640" stroke="#6c7086" stroke-width=.5 data-tip="${l.n} (original)"/>`;
  if(marcos.checked){for(const o of B.orig){if(o.x>=300||!BO[o.s||'0'])continue;h+=`<polygon points="${pts(o.x,o.y,BO[o.s||'0'],Z)}" fill="url(#rb)" stroke="#6b74b0" pointer-events="none"/>`}
   for(const[,,e]of eventos()){if(BO[e.forma])h+=`<polygon points="${pts(e.x,e.y,BO[e.forma],Z)}" fill="url(#rb)" stroke="#6b74b0" pointer-events="none"/>`}}
  for(const o of B.orig){if(o.x>=300)continue;h+=`<polygon class="hex lock" points="${pts(o.x,o.y,SH[o.s||'0']||SH['0'],Z)}" fill="${bad.has(o.n)?'#f38ba8':'#d6d62a'}" data-tip="${o.n} (original, fijo)"/>`}
  C.temporadas.forEach((tp,t)=>{const c=tp.cartel,[w,hh]=labWH(c),[a,b]=inv(c.x,c.y),[cc,d]=inv(c.x+w,c.y+hh),es=sel&&sel.t===t&&sel.cartel;
-  const R=`x=${a*UX*Z} y=${b*UY*Z} width=${(cc-a)*UX*Z} height=${(d-b)*UY*Z}`;
-  h+=`<g class=lab data-lab="${t}" data-tip="Cartel de ${anio(t)} (${c.x},${c.y})">`;
-  if(c.tipo==='dibujo'&&c.png)h+=`<rect ${R} fill="#fff"/><image href="${c.png}" ${R} preserveAspectRatio="none"/>`;
-  else h+=`<rect ${R} fill="${C.colorCarteles||'#2a3f8f'}" fill-opacity=.9 rx="3"/><text x=${(a+cc)/2*UX*Z} y=${(b+d)/2*UY*Z+4} fill="#fff" text-anchor=middle style="font-size:${Math.max(9,(d-b)*UY*Z*0.32)}px;font-weight:bold">A·G·R·C ${anio(t)}</text>`;
-  h+=`<rect ${R} fill="none" stroke="${bad.has('L'+t)?'#f38ba8':COL[t%COL.length]}" stroke-width="${es?6:3}" rx="3"/></g>`});
+  const R=`x=${a*UX*Z} y=${b*UY*Z} width=${(cc-a)*UX*Z} height=${(d-b)*UY*Z}`,T=triPath(c.x,c.y,w,hh,Z),col=bad.has('L'+t)?'#f38ba8':COL[t%COL.length];
+  h+=`<g class=lab data-lab="${t}" data-tip="Cartel de ${anio(t)} (${c.x},${c.y}) · ${w}×${hh} triángulos"><clipPath id="cl${t}"><path d="${T}"/></clipPath>`;
+  if(c.tipo==='dibujo'&&c.png)h+=`<g clip-path="url(#cl${t})"><rect ${R} fill="#fff"/><image href="${c.png}" ${R} preserveAspectRatio="none"/></g>`;
+  else h+=`<path d="${T}" fill="${C.colorCarteles||'#2a3f8f'}" fill-opacity=".9"/><text x=${(a+cc)/2*UX*Z} y=${(b+d)/2*UY*Z+4} fill="#fff" text-anchor=middle style="font-size:${Math.max(9,(d-b)*UY*Z*0.32)}px;font-weight:bold">A·G·R·C ${anio(t)}</text>`;
+  h+=`<path d="${T}" fill="none" stroke="${col}" stroke-width="${es?2.5:1}"/></g>`});
  for(const[t,k,e]of eventos()){const n=nomEv(t,k),es=sel&&sel.t===t&&sel.k===k;
   h+=`<g data-ev="${t},${k}" data-tip="${n} · ${e.tipo}${e.pista?' · '+e.pista:''} · forma ${e.forma}: ${NOMBRES[e.forma]}"><polygon class="hex${es?' sel':''}" points="${pts(e.x,e.y,SH[e.forma]||SH['0'],Z)}" fill="${bad.has(n)?'#f38ba8':COL[t%COL.length]}"/><text x=${e.x*UX*Z} y=${e.y*UY*Z+4} text-anchor=middle style="font-size:${Math.max(8,18*Z)}px">${k+1}${{carrera:'',contrarreloj:'⏱',zona:'Z',eliminator:'✖'}[e.tipo]}</text></g>`}
  svg.innerHTML=h;
@@ -154,11 +164,21 @@ function panel(){
   if(e.tipo!=='zona'&&pl.m_trackDef)h+=`<label>Pista</label><select onchange="cambia(()=>${set}.pista=this.value)">${opts([['','(la de la plantilla: '+pl.pista+')'],...Object.keys(P.pistas)],e.pista||'')}</select>`;
   if(pl.m_speedClass)h+=`<label>Clase</label><select onchange="cambia(()=>${set}.clase=this.value)">${opts([['','(plantilla)'],...CLASES],e.clase||'')}</select>`;
   if(pl.m_skillScale)h+=`<label>IA (0.2–5)</label><input type=number step=0.1 min=0.1 max=10 value="${esc(e.ia||pl.m_skillScale)}" onchange="cambia(()=>${set}.ia=this.value)">`;
+  if(e.tipo!=='carrera'&&pl.objPase!=null){
+   const tt=e.tipo==='contrarreloj',et=tt?['Tiempo para pasar','Tiempo élite']:e.tipo==='zona'?['Zona para pasar','Zona élite']:['Puntos para pasar','Puntos élite'];
+   const fmt=v=>tt?`${Math.floor(v/6000)}:${String(Math.floor(v/100)%60).padStart(2,'0')}.${String(v%100).padStart(2,'0')}`:v;
+   for(const[k,lab]of[['objPase',et[0]],['objElite',et[1]]])
+    h+=`<label>${lab}</label><input type=text value="${fmt(e[k]??pl[k])}" placeholder="${tt?'m:ss.cc':''}" onchange="ponObjetivo(${t},${k==='objPase'?0:1},${k==='objPase'?'0':'1'},this.value,${tt})">`;
+  }
   if(e.tipo==='carrera'){
    h+=`<label>Vueltas</label><input type=number min=1 max=9 value="${e.vueltas||pl.m_numOfLaps}" onchange="cambia(()=>${set}.vueltas=+this.value)">
    <label>Armas</label><label><input type=checkbox ${(e.armas??pl.m_bDisableWeapons!=='true')?'checked':''} onchange="cambia(()=>${set}.armas=this.checked)"> activadas</label>
    <label>Para pasar</label><select onchange="cambia(()=>${set}.pase=this.value)">${opts(OBJ,e.pase||'Top5')}</select>
    <label>Élite</label><select onchange="cambia(()=>${set}.elite=this.value)">${opts(OBJ,e.elite||'Win')}</select>`}
+  {const CN=[['velocidad','m_bPreventSpeedShips','Velocidad'],['agilidad','m_bPreventAgilityShips','Agilidad'],['combate','m_bPreventCombatShips','Combate (luchador)'],['prototipo','m_bPreventProtoShips','Prototipo']];
+   const perm=e.clasesNave??CN.filter(c=>pl[c[1]]!=='true').map(c=>c[0]),naveDe=Object.fromEntries(Object.entries(P.naves).map(([n,i])=>[i,n])),nv=e.nave??(naveDe[pl.m_pPlayerShipModelData]||'');
+   h+=`<label>Naves permitidas</label><div>${CN.map(c=>`<label style="display:block"><input type=checkbox ${perm.includes(c[0])?'checked':''} onchange="cambiaNaves(${t},${k},'${c[0]}',this.checked)"> ${c[2]}</label>`).join('')}</div>
+   <label>Nave obligatoria</label><select onchange="cambia(()=>{${set}.nave=this.value;if(!${set}.clasesNave)${set}.clasesNave=${JSON.stringify(perm).replace(/"/g,"'")}})">${opts([['','ninguna'],...Object.keys(P.naves).sort().map(n=>[n,n.replace(/_/g,' ').replace('AG System','AG-Systems').replace('Combat','combate').replace('Agility','agilidad').replace('Speed','velocidad').replace('Proto','prototipo')])],nv)}</select>`}
   h+=`<label>Forma</label><select onchange="cambia(()=>${set}.forma=this.value)">${opts(Object.entries(NOMBRES).map(([v,n])=>[v,v+' · '+n]),e.forma)}</select></div>
   <div class=fila><button class=sec onclick="mover(${t},${k},-1)" ${k?'':'disabled'}>◀ Antes</button><button class=sec onclick="mover(${t},${k},1)" ${k<C.temporadas[t].eventos.length-1?'':'disabled'}>Después ▶</button><button class=peligro onclick="borrarEvento(${t},${k})">Borrar evento</button></div>
   <p class=nota>El orden es el de desbloqueo: cada evento abre el siguiente, y el primero de cada temporada lo abre el último de la anterior.</p>`}
@@ -168,6 +188,17 @@ function cambiaTipo(t,k,tipo){cambia(()=>{const e=C.temporadas[t].eventos[k];e.t
  e.plantilla=P.plantillas.find(p=>p.tipo===tipo&&p.n.startsWith('2050')).n;delete e.pista;
  if(tipo==='carrera'){e.plantilla='2050 - Event 9';Object.assign(e,{pista:'Altima',clase:'A',vueltas:3,ia:'3.5',armas:true,pase:'Top5',elite:'Win'})}
  else{for(const f of['vueltas','armas','pase','elite'])delete e[f];const pl=P.por[e.plantilla];if(pl.m_speedClass)e.clase='A';else delete e.clase;if(!pl.m_skillScale)delete e.ia}})}
+function cambiaNaves(t,k,cl,on){const e=C.temporadas[t].eventos[k],pl=P.por[e.plantilla];
+ const CN={velocidad:'m_bPreventSpeedShips',agilidad:'m_bPreventAgilityShips',combate:'m_bPreventCombatShips',prototipo:'m_bPreventProtoShips'};
+ let perm=e.clasesNave??Object.keys(CN).filter(c=>pl[CN[c]]!=='true');perm=on?[...new Set([...perm,cl])]:perm.filter(x=>x!==cl);
+ if(!perm.length){alert('Tiene que quedar al menos un tipo de nave permitido');panel();return}
+ cambia(()=>{e.clasesNave=perm;if(e.nave===undefined)e.nave=''})}
+function ponObjetivo(t,cual,_,txt,tt){const ev=sel&&sel.t===t?C.temporadas[t].eventos[sel.k]:null;if(!ev)return;let v;
+ if(tt){const m=String(txt).trim().match(/^(?:(\d+):)?(\d{1,2})(?:[.,](\d{1,2}))?$/);if(!m){alert('Escribe el tiempo como m:ss.cc, por ejemplo 1:45.50');panel();return}
+  v=(+(m[1]||0))*6000+(+m[2])*100+(m[3]?+(m[3].padEnd(2,'0')):0)}
+ else{v=parseInt(txt,10);if(!(v>0)){alert('Escribe un número mayor que 0');panel();return}}
+ cambia(()=>{ev[cual?'objElite':'objPase']=v;const pl=P.por[ev.plantilla],p=ev.objPase??pl.objPase,el=ev.objElite??pl.objElite;
+  if(tt?el>p:el<p)setTimeout(()=>alert(tt?'Ojo: el tiempo élite debería ser menor que el de pasar':'Ojo: el objetivo élite debería ser mayor que el de pasar'),50)})}
 function libreCerca(x,y){const ocupado=new Set([...B.orig.map(o=>o.x+','+o.y),...[...eventos()].map(([,,e])=>e.x+','+e.y)]);
  for(let r=0;r<40;r++)for(let dy=-r;dy<=r;dy++)for(let dx=-r;dx<=r;dx++){if(Math.max(Math.abs(dx),Math.abs(dy))!==r)continue;const X=x+dx,Y=y+dy;if(X>0&&Y>0&&!ocupado.has(X+','+Y)&&!ocupado.has((X+1)+','+Y)&&!ocupado.has((X-1)+','+Y))return[X,Y]}return[x,y]}
 function nuevoEvento(t){cambia(()=>{const ev=C.temporadas[t].eventos,ult=ev[ev.length-1],e=JSON.parse(JSON.stringify(ult));e.id='';
@@ -194,7 +225,7 @@ svg.addEventListener('pointerdown',e=>{if(e.pointerType==='touch'&&touches.size>
 window.addEventListener('pointermove',e=>{if(touches.has(e.pointerId))touches.set(e.pointerId,[e.clientX,e.clientY]);if(gest)return;
  const t=e.target.closest&&e.target.closest('[data-tip]');if(t){tip.style.display='block';tip.style.left=e.clientX+12+'px';tip.style.top=e.clientY+12+'px';tip.textContent=t.dataset.tip}else tip.style.display='none';
  if(!drag)return;const Z=+zoom.value/10,DX=Math.round((e.clientX-drag.sx)/(UX*Z)),DY=Math.round((e.clientY-drag.sy)/(UY*Z));
- const dX=(e.clientX-drag.sx)/(UX*Z)*4.0522,dY=(e.clientY-drag.sy)/(UY*Z)*2.0734;drag.moved=true;
+ const dX=(e.clientX-drag.sx)/(UX*Z)*4,dY=(e.clientY-drag.sy)/(UY*Z)*2;drag.moved=true;
  drag.items.forEach((x,i)=>{x.x=drag.e0[i][0]+DX;x.y=drag.e0[i][1]+DY});
  const c=C.temporadas[drag.t].cartel;
  if(drag.lab){if(drag.items.length){c.x=drag.l0[0]+Math.round(cx(DX,DY)-cx(0,0));c.y=drag.l0[1]+2*Math.round((cy(DX,DY)-cy(0,0))/2)}else{c.x=drag.l0[0]+Math.round(dX);c.y=drag.l0[1]+2*Math.round(dY/2)}}

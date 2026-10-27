@@ -4,11 +4,15 @@ WipEout 2048 Campaign Editor (2048 campaign map)
 Create new seasons after 2050 and build the mod, ready for Vita3K (or as patches to share).
 
 What you can do
-- Add and remove seasons (up to 28) and events.
+- Add and remove seasons (up to 24) and events.
 - Choose each event's type (race, time trial, zone, eliminator), starting from any of the 60
   original events as a template.
 - Change track, class (C, B, A, A+), laps, AI, weapons, and pass/elite objectives.
-- Move events and banners around the map, change each tile's shape and its unlock order.
+- Custom time-trial targets (m:ss.cc), zone targets for Zone events and points for Eliminators.
+- Ship restrictions per event: allowed classes (speed, agility, combat, prototype) or a forced ship
+  (any of the 20).
+- Move events and banners anywhere on the map, change each tile's shape and its unlock order.
+  The editor draws banners with the exact triangles they cover in game.
 - Change the colour of the season banners, or draw your own banner (brush, text, shapes or an
   imported image).
 - The editor marks in red anything that overlaps or falls outside the area the game supports.
@@ -17,7 +21,8 @@ Game limits (why there are caps)
 - More than 210 new events has not been tested.
 - Hand-drawn banners take space in a game texture that is almost full: about 2 drawings of 7x3,
   3 of 6x2 or 4 of 4x2 fit. If they don't fit, "Construir mod" (Build) tells you.
-- Banners are opaque: if two overlap, the later season's banner covers the earlier one.
+- Banners are opaque: if two overlap, one covers the other. Events are drawn on top of banners.
+- In the editor a banner fills its whole area; in game only the drawing shows (the rest is white).
 
 Requirements
 - Python 3 with Pillow and NumPy:   pip install pillow numpy

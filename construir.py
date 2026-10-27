@@ -1,13 +1,13 @@
 # construir.py [campana.json] : genera el mod a partir de la campaña del editor.
 # Salida en salida/: eboot.bin y data2.psarc listos para copiar, eboot.ips y (si hay xdelta3) data2.xdelta.
-import os, sys, re, json, struct, shutil, subprocess, random
+import os, sys, re, json, struct, shutil, subprocess, random, zlib
 D = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(D, 'herramientas'))
 import carteles, gxt, psarc_parche
 from PIL import Image
 J, T, S = os.path.join(D, 'juego'), os.path.join(D, 'trabajo'), os.path.join(D, 'salida')
 CLASES = {'C': '1', 'B': '2', 'A': '3', 'A+': '4'}
-MAX_TEMPORADAS, MAX_PROBADO = 28, 210
+MAX_TEMPORADAS, MAX_PROBADO = 24, 210
 GRID = ['2075556815', '2075556815', '2075556815', '-1708507528', '-1708507528', '-1126722970', '-1126722970']
 
 def set_opt(b, f, v):
@@ -35,7 +35,8 @@ def generar_sp(sp, C, P):
         b = re.sub(r' name="[^"]*"', ' name="%s"' % nombre, b, count=1)
         sig = evs[i + 1][2]['id'] if i + 1 < len(evs) else ''
         cambios = [('m_pBranchEvent', ''), ('m_buttonShape', str(e.get('forma', '0'))), ('m_pEventRequired', previo if k == 0 else ''),
-                   ('m_pNextEvent', sig), ('m_x', str(e['x'])), ('m_y', str(e['y']))]
+                   ('m_pNextEvent', sig), ('m_x', str(e['x'])), ('m_y', str(e['y'])),
+                   ('m_canvasTweak_x', '0'), ('m_canvasTweak_y', '0')]          # las plantillas traen ajustes finos de posición: fuera
         tipo = e['tipo']
         if campo(b, 'm_speedClass') and e.get('clase'): cambios.append(('m_speedClass', CLASES[e['clase']]))
         if campo(b, 'm_skillScale') and e.get('ia'): cambios.append(('m_skillScale', str(e['ia'])))
@@ -47,6 +48,22 @@ def generar_sp(sp, C, P):
         if e.get('pista') and tipo != 'zona' and campo(b, 'm_trackDef'):
             cambios.append(('m_trackDef', pistas[e['pista']]))
             if tipo == 'carrera': cambios.insert(0, ('m_description', 'MP_%s_RACE_FLASH' % e['pista'].upper()))
+        # naves: 'clasesNave' = clases permitidas (velocidad/agilidad/combate/prototipo), 'nave' = nave obligatoria ('' = ninguna)
+        if e.get('nave') and 'clasesNave' in e:           # la clase de la nave obligatoria siempre permitida
+            cl = {'Speed': 'velocidad', 'Agility': 'agilidad', 'Combat': 'combate', 'Proto': 'prototipo'}[e['nave'].rsplit('_', 1)[1]]
+            if cl not in e['clasesNave']: e['clasesNave'] = e['clasesNave'] + [cl]
+        if 'clasesNave' in e:
+            for cl, f in (('velocidad', 'm_bPreventSpeedShips'), ('agilidad', 'm_bPreventAgilityShips'), ('combate', 'm_bPreventCombatShips'), ('prototipo', 'm_bPreventProtoShips')):
+                if campo(b, f) is not None: cambios.append((f, 'false' if cl in e['clasesNave'] else 'true'))
+        if 'nave' in e and campo(b, 'm_pPlayerShipModelData') is not None: cambios.append(('m_pPlayerShipModelData', P['naves'][e['nave']] if e['nave'] else ''))
+        # objetivos propios (contrarreloj: centésimas; zona: zona alcanzada; eliminator: puntos): copia del objetivo de la plantilla
+        for k, f, suf in (('objPase', 'm_PassObjective', 'Pass'), ('objElite', 'm_EliteObjective', 'Elite')):
+            if tipo != 'carrera' and e.get(k) is not None and campo(b, f):
+                ob = bloques[campo(b, f)]; oid = str(zlib.crc32(('%s-%s' % (e['id'], suf)).encode()) - 2**31)
+                ob = ob.replace('instanceid="%s"' % campo(b, f), 'instanceid="%s"' % oid, 1)
+                ob = re.sub(r' name="[^"]*"', ' name="%s %s"' % (nombre, suf), ob, count=1)
+                nuevos.append(set_opt(ob, 'm_ObjectiveTarget', str(int(e[k])))); cambios.append((f, oid))
+        if C.get('desbloquearTodo'): cambios.append(('m_bForceAlwaysUnlocked', 'true'))      # solo para pruebas
         for f, v in cambios: b = set_opt(b, f, v)
         if tipo == 'carrera' and e['plantilla'] == '2050 - Event 9':
             gm = re.search(r'<M_PGRIDSHIPMODELDATA.*?</M_PGRIDSHIPMODELDATA>', b, re.S).group(0); ng = gm

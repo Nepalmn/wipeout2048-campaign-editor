@@ -8,7 +8,8 @@ J, T = os.path.join(D, 'juego'), os.path.join(D, 'trabajo')
 MD5 = {'eboot.bin': '8a27cac8b94630a56b4aa9e36c201a2f', 'data2.psarc': 'ed8a9e47eabb85e349918aca38438081'}
 TIPOS = {'-1353052320': 'carrera', '-1915183557': 'contrarreloj', '1018671239': 'zona', '1311982788': 'eliminator'}
 CAMPOS = ['m_speedClass', 'm_numOfLaps', 'm_skillScale', 'm_bDisableWeapons', 'm_trackDef', 'm_PassObjective',
-          'm_EliteObjective', 'm_buttonShape', 'm_x', 'm_y', 'm_description']
+          'm_EliteObjective', 'm_buttonShape', 'm_x', 'm_y', 'm_description', 'm_bPreventSpeedShips', 'm_bPreventAgilityShips',
+          'm_bPreventCombatShips', 'm_bPreventProtoShips', 'm_pPlayerShipModelData']
 
 def md5(p): return hashlib.md5(open(p, 'rb').read()).hexdigest()
 
@@ -41,8 +42,15 @@ def main():
     pistas = {m.group(2): m.group(1) for m in re.finditer(r'<instance instanceid="([-0-9]+)" typedefid="205052969" name="([^"]*)"', sp)}
     objetivos = {m.group(2): m.group(1) for m in re.finditer(r'<instance instanceid="([-0-9]+)" typedefid="380278911" name="([^"]*)"', sp)
                  if not m.group(2).startswith('20')}
+    naves = {m.group(2): m.group(1) for m in re.finditer(r'<instance instanceid="([-0-9]+)" typedefid="520725191" name="([^"]*)"', sp) if m.group(2) != 'WINGMAN'}
     pista_de = {v: k for k, v in pistas.items()}
     for p in plant: p['pista'] = pista_de.get(p['m_trackDef'] or '', '?')
+    # objetivo numérico de pase/élite de cada plantilla (centésimas en contrarreloj, zona en zona, puntos en eliminator)
+    obj = {m.group(1): m.group(0) for m in re.finditer(r'<instance instanceid="([-0-9]+)" typedefid="380278911".*?</instance>', sp, re.S)}
+    for p in plant:
+        for k, f in (('objPase', 'm_PassObjective'), ('objElite', 'm_EliteObjective')):
+            b = obj.get(p[f] or '')
+            p[k] = int(field(b, 'm_ObjectiveTarget') or 0) if b and p['tipo'] != 'carrera' else None
     # carteles originales del mapa 2048 (para no taparlos)
     xml = open(os.path.join(O, 'plugins/frontend/NEWGUI/Definition.xml'), encoding='utf8').read()
     labs = []
@@ -52,7 +60,7 @@ def main():
         try: labs.append({'n': nm, 'x': int(a['x']), 'y': int(a['y']), 'w': int(a['width']), 'h': int(a['height'])})
         except (KeyError, ValueError): pass
     json.dump({'orig': orig, 'origLabels': labs}, open(os.path.join(T, 'base.json'), 'w'))
-    json.dump({'plantillas': plant, 'pistas': pistas, 'objetivos': objetivos}, open(os.path.join(T, 'plantillas.json'), 'w'), indent=0, ensure_ascii=False)
-    print('Listo: %d eventos originales, %d plantillas, %d pistas, %d carteles originales' % (len(orig), len(plant), len(pistas), len(labs)))
+    json.dump({'plantillas': plant, 'pistas': pistas, 'objetivos': objetivos, 'naves': naves}, open(os.path.join(T, 'plantillas.json'), 'w'), indent=0, ensure_ascii=False)
+    print('Listo: %d eventos originales, %d plantillas, %d pistas, %d naves, %d carteles originales' % (len(orig), len(plant), len(pistas), len(naves), len(labs)))
 
 if __name__ == '__main__': main()

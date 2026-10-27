@@ -10,6 +10,7 @@ WX0, WX1, WY0, WY1 = 0, 56, 40, 46
 R0 = (661, 1306)                         # rectángulo del cartel 2050 original en la textura
 FW, FH = 760, 340
 DOWN, RIGHT = 39, 31
+UNID = 0
 
 def tam_dibujo(w, h):                    # píxeles que ve el juego de un cartel w x h
     return round(w * KX) + WX1, round(h * KY) + WY1 - WY0
@@ -45,19 +46,20 @@ def construir(A, defxml, temporadas, color, fuente, margen=12, zona_extra=True):
         return Image.fromarray(a.clip(0, 255).astype('uint8'), 'RGBA')
     def clear(img, x0, x1, y0, y1): ImageDraw.Draw(img).rectangle((x0, y0, x1, y1), fill=(255, 255, 255, 0))
     DY0 = 1466 - R0[1]
-    def full(year):
+    def full(year, solo_unidad=False, sin_unidad=False):
         t, u = str(year)[2], str(year)[3]
         im = F0.copy(); clear(im, 1240 - R0[0], 1328 - R0[0], DY0, DY0 + 88)
-        if t != '5':
+        if solo_unidad: clear(im, 1158 - R0[0], 1240 - R0[0], DY0, DY0 + 88)
+        elif t != '5':
             clear(im, 1158 - R0[0], 1240 - R0[0], DY0, DY0 + 88); im = put(im, t, 1161 - R0[0], 1469 - R0[1])
-        return put(im, u, 1243 - R0[0], 1469 - R0[1])
+        return im if sin_unidad else put(im, u, 1243 + UNID - R0[0], 1469 - R0[1])
     def shifted(img):
         c = Image.new('RGBA', (img.width, img.height + 2 * DOWN), (255, 255, 255, 0)); c.paste(img, (0, DOWN)); return c
     def piece(img, col, row, w, h):
         x0 = round(col * KX) + WX0; y0 = round(row * KY) + WY0
         return img.crop((x0, y0, x0 + round(w * KX) + WX1, y0 + round(h * KY) + WY1 - WY0))
-    def art(year):
-        im = shifted(full(year)); c = Image.new('RGBA', (im.width + RIGHT + 100, im.height), (255, 255, 255, 0)); c.paste(im, (RIGHT, 0)); return c
+    def art(year, solo_unidad=False, sin_unidad=False):
+        im = shifted(full(year, solo_unidad, sin_unidad)); c = Image.new('RGBA', (im.width + RIGHT + 100, im.height), (255, 255, 255, 0)); c.paste(im, (RIGHT, 0)); return c
     def tint(img):                        # cambia el azul del cartel por el color elegido
         if color is None or color == '': return img
         a = np.array(img, float); lum = a[..., :3].mean(-1); lb = BLUE.mean()
@@ -96,8 +98,12 @@ def construir(A, defxml, temporadas, color, fuente, margen=12, zona_extra=True):
     if anios:
         base = art(2051)
         piezas['p1'], piezas['p2'], PB = tint(piece(base, 0, 0, 9, 4)), tint(piece(base, 9, 1, 6, 1)), piece(base, 9, 0, 6, 1)
-        for d in sorted({str(t['anio'])[2] for t in anios}): piezas['t' + d] = tint(piece(art(2000 + 10 * int(d) + 1), 9, 2, 4, 1))
-        for u in sorted({int(str(t['anio'])[3]) for t in anios}): piezas['u%d' % u] = tint(piece(art(2050 + u if u else 2060), 13, 2, 2, 1))
+        # fila de las cifras: decenas (3 de ancho, por década) + juntura (1 de ancho, por año) + unidades (2, por cifra).
+        # El juego pinta cada pieza encima de la de su derecha y la punta de su último triángulo invade la siguiente:
+        # la juntura lleva el final de las decenas y el principio de las unidades de ese año, para que todo case.
+        for d in sorted({str(t['anio'])[2] for t in anios}): piezas['t' + d] = tint(piece(art(2000 + 10 * int(d), sin_unidad=True), 9, 2, 3, 1))
+        for a in sorted({t['anio'] for t in anios}): piezas['j%d' % a] = tint(piece(art(a), 12, 2, 1, 1))
+        for u in sorted({int(str(t['anio'])[3]) for t in anios}): piezas['u%d' % u] = tint(piece(art(2050 + u, solo_unidad=True), 13, 2, 2, 1))
     for t in temporadas:
         if t.get('tipo') != 'dibujo': continue
         if not t.get('png'): raise SystemExit('La temporada %d tiene cartel de dibujo pero está sin dibujar' % t['anio'])
@@ -130,8 +136,8 @@ def construir(A, defxml, temporadas, color, fuente, margen=12, zona_extra=True):
             xml.append(lab(n + 'a', bx, by, dib[y_], t['w'], t['h'], ev)); nombres.append(n + 'a'); continue
         d, u = str(y_)[2], int(str(y_)[3])
         xml += [lab(n + 'a', bx, by, pos['p1'], 9, 4, ev), lab(n + 'b', bx + 9, by, pb, 6, 1, ev),
-                lab(n + 'c', bx + 9, by + 1, pos['p2'], 6, 1, ev), lab(n + 'd', bx + 9, by + 2, pos['t' + d], 4, 1, ev),
+                lab(n + 'c', bx + 9, by + 1, pos['p2'], 6, 1, ev), lab(n + 'd', bx + 9, by + 2, pos['t' + d], 3, 1, ev), lab(n + 'g', bx + 12, by + 2, pos['j%d' % y_], 1, 1, ev),
                 lab(n + 'e', bx + 13, by + 2, pos['u%d' % u], 2, 1, ev), lab(n + 'f', bx + 9, by + 3, pb, 6, 1, ev)]
-        nombres += [n + c for c in 'abcdef']
+        nombres += [n + c for c in 'abcdgef']
     libre = int((~used).sum())
     return Image.fromarray(o, 'RGBA'), ''.join(xml), nombres, libre

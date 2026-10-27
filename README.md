@@ -6,10 +6,12 @@ A web-based editor for adding new seasons to the 2048 campaign map of **WipEout 
 
 ## Features
 
-- Add and remove seasons (up to 28) and events.
+- Add and remove seasons (up to 24) and events.
 - Choose each event's type (race, time trial, zone, eliminator) using any of the 60 original events as a template.
 - Change track, speed class (C, B, A, A+), laps, AI skill, weapons, and pass/elite objectives.
-- Drag events and banners around the map, and change tile shapes and unlock order.
+- Custom target times for time trials (m:ss.cc), zone targets for Zone events and points for Eliminators.
+- Ship restrictions per event: allowed classes (speed, agility, combat, prototype) or a forced ship (any of the 20).
+- Drag events and banners anywhere on the map, and change tile shapes and unlock order. Banners are drawn with the exact triangles they cover in game.
 - Recolor the season banners or draw your own (brush, text, shapes or an imported image).
 - Overlaps and anything outside the area the game supports are highlighted in red.
 
@@ -50,6 +52,8 @@ The interface is in Spanish for now. Limits and save-file notes are in [`README.
 
 ## The 2051–2070 campaign
 
-The example campaign (`campana.ejemplo.json`) has 20 seasons and 210 events. Patches to play it without the editor are in [Releases](../../releases).
+The example campaign (`campana.ejemplo.json`) has 20 seasons and 210 events, A and A+ class, hard AI, a time trial, a zone and an eliminator per season, and 30 events with ship restrictions. Patches to play it without the editor are in [Releases](../../releases).
 
 Tested on Vita3K (PC and ROG Ally). Not yet tested on a real Vita.
+
+The time-trial targets are still the original game's: if you set good times, share them so the campaign can get proper targets!

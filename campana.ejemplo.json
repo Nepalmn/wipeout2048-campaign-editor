@@ -5,15 +5,15 @@
   {
    "cartel": {
     "tipo": "anio",
-    "x": 191,
-    "y": 101
+    "x": 63,
+    "y": 81
    },
    "eventos": [
     {
      "id": "-1262189346",
      "tipo": "carrera",
-     "x": 40,
-     "y": 37,
+     "x": 5,
+     "y": 27,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Altima",
@@ -27,8 +27,8 @@
     {
      "id": "175242280",
      "tipo": "carrera",
-     "x": 41,
-     "y": 38,
+     "x": 6,
+     "y": 28,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Sol",
@@ -42,25 +42,29 @@
     {
      "id": "-690603369",
      "tipo": "contrarreloj",
-     "x": 42,
-     "y": 37,
+     "x": 7,
+     "y": 27,
      "forma": "0",
      "plantilla": "2050 - Event 2-1",
-     "clase": "A"
+     "clase": "A",
+     "clasesNave": [
+      "velocidad"
+     ],
+     "nave": ""
     },
     {
      "id": "-1673598483",
      "tipo": "zona",
-     "x": 43,
-     "y": 38,
+     "x": 8,
+     "y": 28,
      "forma": "0",
      "plantilla": "2050 - Event 2-2"
     },
     {
      "id": "221597407",
      "tipo": "eliminator",
-     "x": 44,
-     "y": 37,
+     "x": 9,
+     "y": 27,
      "forma": "0",
      "plantilla": "2050 - Event 3",
      "clase": "A",
@@ -69,8 +73,8 @@
     {
      "id": "1337218422",
      "tipo": "carrera",
-     "x": 46,
-     "y": 38,
+     "x": 10,
+     "y": 28,
      "forma": "9",
      "plantilla": "2050 - Event 9",
      "pista": "Park",
@@ -86,15 +90,15 @@
   {
    "cartel": {
     "tipo": "anio",
-    "x": 191,
-    "y": 107
+    "x": 119,
+    "y": 83
    },
    "eventos": [
     {
      "id": "1868452924",
      "tipo": "carrera",
-     "x": 40,
-     "y": 40,
+     "x": 19,
+     "y": 28,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Bridge",
@@ -108,8 +112,8 @@
     {
      "id": "-1612648376",
      "tipo": "carrera",
-     "x": 41,
-     "y": 41,
+     "x": 20,
+     "y": 29,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Tower",
@@ -123,25 +127,29 @@
     {
      "id": "132004981",
      "tipo": "contrarreloj",
-     "x": 42,
-     "y": 40,
+     "x": 21,
+     "y": 28,
      "forma": "0",
      "plantilla": "2050 - Event 3-1",
-     "clase": "A"
+     "clase": "A",
+     "clasesNave": [
+      "velocidad"
+     ],
+     "nave": ""
     },
     {
      "id": "927689067",
      "tipo": "zona",
-     "x": 43,
-     "y": 41,
+     "x": 22,
+     "y": 29,
      "forma": "0",
      "plantilla": "2050 - Event 3-3"
     },
     {
      "id": "1993081915",
      "tipo": "eliminator",
-     "x": 44,
-     "y": 40,
+     "x": 23,
+     "y": 28,
      "forma": "0",
      "plantilla": "2050 - Event 6-3",
      "clase": "A",
@@ -150,8 +158,8 @@
     {
      "id": "1969867983",
      "tipo": "carrera",
-     "x": 46,
-     "y": 41,
+     "x": 24,
+     "y": 29,
      "forma": "9",
      "plantilla": "2050 - Event 9",
      "pista": "Square",
@@ -167,16 +175,16 @@
   {
    "cartel": {
     "tipo": "anio",
-    "x": 45,
-    "y": 105
+    "x": 63,
+    "y": 93
    },
    "eventos": [
     {
      "id": "1813351741",
      "tipo": "carrera",
-     "x": 4,
-     "y": 40,
-     "forma": "8",
+     "x": 5,
+     "y": 33,
+     "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Mall",
      "clase": "A",
@@ -189,9 +197,9 @@
     {
      "id": "-488245207",
      "tipo": "carrera",
-     "x": 5,
-     "y": 41,
-     "forma": "8",
+     "x": 6,
+     "y": 34,
+     "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Arena",
      "clase": "A",
@@ -199,23 +207,30 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "nave": "AG_System_Combat"
     },
     {
      "id": "-612353731",
      "tipo": "contrarreloj",
-     "x": 6,
-     "y": 40,
-     "forma": "8",
+     "x": 7,
+     "y": 33,
+     "forma": "0",
      "plantilla": "2050 - Event 5-3",
      "clase": "A"
     },
     {
      "id": "2024672479",
      "tipo": "carrera",
-     "x": 7,
-     "y": 41,
-     "forma": "8",
+     "x": 8,
+     "y": 34,
+     "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Subway",
      "clase": "A",
@@ -228,16 +243,16 @@
     {
      "id": "-2111744785",
      "tipo": "zona",
-     "x": 8,
-     "y": 40,
+     "x": 9,
+     "y": 33,
      "forma": "0",
      "plantilla": "2050 - Event 6-2"
     },
     {
      "id": "670531532",
      "tipo": "eliminator",
-     "x": 9,
-     "y": 41,
+     "x": 10,
+     "y": 34,
      "forma": "0",
      "plantilla": "2050 - Event 3",
      "clase": "A",
@@ -247,7 +262,7 @@
      "id": "1842849856",
      "tipo": "carrera",
      "x": 11,
-     "y": 40,
+     "y": 32,
      "forma": "9",
      "plantilla": "2050 - Event 9",
      "pista": "Cathedral",
@@ -263,15 +278,15 @@
   {
    "cartel": {
     "tipo": "anio",
-    "x": 44,
-    "y": 111
+    "x": 123,
+    "y": 93
    },
    "eventos": [
     {
      "id": "-311229933",
      "tipo": "carrera",
-     "x": 4,
-     "y": 43,
+     "x": 20,
+     "y": 33,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Altima",
@@ -285,8 +300,8 @@
     {
      "id": "-1622771693",
      "tipo": "carrera",
-     "x": 5,
-     "y": 44,
+     "x": 21,
+     "y": 34,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Sol",
@@ -300,8 +315,8 @@
     {
      "id": "389237096",
      "tipo": "contrarreloj",
-     "x": 6,
-     "y": 43,
+     "x": 22,
+     "y": 33,
      "forma": "0",
      "plantilla": "2050 - Event 2-1",
      "clase": "A"
@@ -309,8 +324,8 @@
     {
      "id": "-142025560",
      "tipo": "carrera",
-     "x": 7,
-     "y": 44,
+     "x": 23,
+     "y": 34,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Park",
@@ -319,21 +334,28 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "nave": "Auricom_Proto"
     },
     {
      "id": "-1882765151",
      "tipo": "zona",
-     "x": 8,
-     "y": 43,
+     "x": 24,
+     "y": 33,
      "forma": "0",
      "plantilla": "2050 - Event 2-4"
     },
     {
      "id": "-1019322530",
      "tipo": "eliminator",
-     "x": 9,
-     "y": 44,
+     "x": 25,
+     "y": 34,
      "forma": "0",
      "plantilla": "2050 - Event 6-3",
      "clase": "A",
@@ -342,8 +364,8 @@
     {
      "id": "-442296221",
      "tipo": "carrera",
-     "x": 11,
-     "y": 43,
+     "x": 26,
+     "y": 32,
      "forma": "9",
      "plantilla": "2050 - Event 9",
      "pista": "Bridge",
@@ -359,16 +381,16 @@
   {
    "cartel": {
     "tipo": "anio",
-    "x": 46,
-    "y": 93
+    "x": 63,
+    "y": 103
    },
    "eventos": [
     {
      "id": "1077734774",
      "tipo": "carrera",
-     "x": 4,
-     "y": 34,
-     "forma": "8",
+     "x": 5,
+     "y": 38,
+     "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Tower",
      "clase": "A",
@@ -381,9 +403,9 @@
     {
      "id": "789177891",
      "tipo": "carrera",
-     "x": 5,
-     "y": 35,
-     "forma": "5",
+     "x": 6,
+     "y": 39,
+     "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Square",
      "clase": "A",
@@ -391,23 +413,30 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "nave": "Auricom_Agility"
     },
     {
      "id": "1649906877",
      "tipo": "contrarreloj",
-     "x": 6,
-     "y": 34,
-     "forma": "5",
+     "x": 7,
+     "y": 38,
+     "forma": "0",
      "plantilla": "2050 - Event 3-1",
      "clase": "A"
     },
     {
      "id": "720023569",
      "tipo": "carrera",
-     "x": 7,
-     "y": 35,
-     "forma": "5",
+     "x": 8,
+     "y": 39,
+     "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Mall",
      "clase": "A",
@@ -420,17 +449,17 @@
     {
      "id": "-507791352",
      "tipo": "zona",
-     "x": 8,
-     "y": 34,
-     "forma": "5",
+     "x": 9,
+     "y": 38,
+     "forma": "0",
      "plantilla": "2050 - Event 5-2"
     },
     {
      "id": "-1729674122",
      "tipo": "carrera",
-     "x": 9,
-     "y": 35,
-     "forma": "5",
+     "x": 10,
+     "y": 39,
+     "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Arena",
      "clase": "A",
@@ -443,9 +472,9 @@
     {
      "id": "1176798405",
      "tipo": "eliminator",
-     "x": 10,
-     "y": 34,
-     "forma": "5",
+     "x": 11,
+     "y": 38,
+     "forma": "0",
      "plantilla": "2050 - Event 3",
      "clase": "A",
      "ia": "3.50"
@@ -454,7 +483,7 @@
      "id": "1035464260",
      "tipo": "carrera",
      "x": 12,
-     "y": 35,
+     "y": 39,
      "forma": "9",
      "plantilla": "2050 - Event 9",
      "pista": "Subway",
@@ -470,15 +499,15 @@
   {
    "cartel": {
     "tipo": "anio",
-    "x": 45,
-    "y": 99
+    "x": 127,
+    "y": 103
    },
    "eventos": [
     {
      "id": "1818414908",
      "tipo": "carrera",
-     "x": 4,
-     "y": 37,
+     "x": 21,
+     "y": 38,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Cathedral",
@@ -492,8 +521,8 @@
     {
      "id": "961396340",
      "tipo": "carrera",
-     "x": 5,
-     "y": 38,
+     "x": 22,
+     "y": 39,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Altima",
@@ -507,17 +536,21 @@
     {
      "id": "-596921624",
      "tipo": "contrarreloj",
-     "x": 6,
-     "y": 37,
+     "x": 23,
+     "y": 38,
      "forma": "0",
      "plantilla": "2050 - Event 5-3",
-     "clase": "A"
+     "clase": "A",
+     "clasesNave": [
+      "agilidad"
+     ],
+     "nave": ""
     },
     {
      "id": "1113833851",
      "tipo": "carrera",
-     "x": 7,
-     "y": 38,
+     "x": 24,
+     "y": 39,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Sol",
@@ -531,16 +564,16 @@
     {
      "id": "-1553843018",
      "tipo": "zona",
-     "x": 8,
-     "y": 37,
+     "x": 25,
+     "y": 38,
      "forma": "0",
      "plantilla": "2050 - Event 2-2"
     },
     {
      "id": "-123359435",
      "tipo": "carrera",
-     "x": 9,
-     "y": 38,
+     "x": 26,
+     "y": 39,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Park",
@@ -554,8 +587,8 @@
     {
      "id": "-2037031381",
      "tipo": "eliminator",
-     "x": 10,
-     "y": 37,
+     "x": 27,
+     "y": 38,
      "forma": "0",
      "plantilla": "2050 - Event 6-3",
      "clase": "A",
@@ -564,8 +597,8 @@
     {
      "id": "-447402927",
      "tipo": "carrera",
-     "x": 12,
-     "y": 38,
+     "x": 28,
+     "y": 39,
      "forma": "9",
      "plantilla": "2050 - Event 9",
      "pista": "Bridge",
@@ -581,15 +614,15 @@
   {
    "cartel": {
     "tipo": "anio",
-    "x": 47,
-    "y": 81
+    "x": 63,
+    "y": 113
    },
    "eventos": [
     {
      "id": "-1522293361",
      "tipo": "carrera",
-     "x": 4,
-     "y": 28,
+     "x": 5,
+     "y": 43,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Tower",
@@ -603,8 +636,8 @@
     {
      "id": "1857643569",
      "tipo": "carrera",
-     "x": 5,
-     "y": 29,
+     "x": 6,
+     "y": 44,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Square",
@@ -618,8 +651,8 @@
     {
      "id": "-1104872573",
      "tipo": "contrarreloj",
-     "x": 6,
-     "y": 28,
+     "x": 7,
+     "y": 43,
      "forma": "0",
      "plantilla": "2050 - Event 2-1",
      "clase": "A"
@@ -627,8 +660,8 @@
     {
      "id": "885074789",
      "tipo": "carrera",
-     "x": 7,
-     "y": 29,
+     "x": 8,
+     "y": 44,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Mall",
@@ -642,16 +675,16 @@
     {
      "id": "-591246264",
      "tipo": "zona",
-     "x": 8,
-     "y": 28,
+     "x": 9,
+     "y": 43,
      "forma": "0",
      "plantilla": "2050 - Event 3-3"
     },
     {
      "id": "1962639774",
      "tipo": "carrera",
-     "x": 9,
-     "y": 29,
+     "x": 10,
+     "y": 44,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Arena",
@@ -660,13 +693,20 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "nave": "Piranha_Speed"
     },
     {
      "id": "544862696",
      "tipo": "carrera",
-     "x": 10,
-     "y": 28,
+     "x": 11,
+     "y": 43,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Subway",
@@ -680,8 +720,8 @@
     {
      "id": "581013680",
      "tipo": "eliminator",
-     "x": 11,
-     "y": 29,
+     "x": 12,
+     "y": 44,
      "forma": "0",
      "plantilla": "2050 - Event 3",
      "clase": "A",
@@ -691,7 +731,7 @@
      "id": "-1103901848",
      "tipo": "carrera",
      "x": 13,
-     "y": 28,
+     "y": 42,
      "forma": "9",
      "plantilla": "2050 - Event 9",
      "pista": "Cathedral",
@@ -707,15 +747,15 @@
   {
    "cartel": {
     "tipo": "anio",
-    "x": 46,
-    "y": 87
+    "x": 135,
+    "y": 113
    },
    "eventos": [
     {
      "id": "-1658742097",
      "tipo": "carrera",
-     "x": 4,
-     "y": 31,
+     "x": 23,
+     "y": 43,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Altima",
@@ -729,8 +769,8 @@
     {
      "id": "990406353",
      "tipo": "carrera",
-     "x": 5,
-     "y": 32,
+     "x": 24,
+     "y": 44,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Sol",
@@ -744,8 +784,8 @@
     {
      "id": "925789255",
      "tipo": "contrarreloj",
-     "x": 6,
-     "y": 31,
+     "x": 25,
+     "y": 43,
      "forma": "0",
      "plantilla": "2050 - Event 3-1",
      "clase": "A"
@@ -753,8 +793,8 @@
     {
      "id": "-110804599",
      "tipo": "carrera",
-     "x": 7,
-     "y": 32,
+     "x": 26,
+     "y": 44,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Park",
@@ -763,21 +803,26 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "clasesNave": [
+      "velocidad",
+      "agilidad"
+     ],
+     "nave": ""
     },
     {
      "id": "206647999",
      "tipo": "zona",
-     "x": 8,
-     "y": 31,
+     "x": 27,
+     "y": 43,
      "forma": "0",
      "plantilla": "2050 - Event 6-2"
     },
     {
      "id": "-1193871370",
      "tipo": "carrera",
-     "x": 9,
-     "y": 32,
+     "x": 28,
+     "y": 44,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Bridge",
@@ -791,8 +836,8 @@
     {
      "id": "1892529759",
      "tipo": "carrera",
-     "x": 10,
-     "y": 31,
+     "x": 29,
+     "y": 43,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Tower",
@@ -806,8 +851,8 @@
     {
      "id": "-1414912342",
      "tipo": "eliminator",
-     "x": 11,
-     "y": 32,
+     "x": 30,
+     "y": 44,
      "forma": "0",
      "plantilla": "2050 - Event 6-3",
      "clase": "A",
@@ -816,8 +861,8 @@
     {
      "id": "1367101247",
      "tipo": "carrera",
-     "x": 13,
-     "y": 31,
+     "x": 31,
+     "y": 42,
      "forma": "9",
      "plantilla": "2050 - Event 9",
      "pista": "Square",
@@ -833,15 +878,15 @@
   {
    "cartel": {
     "tipo": "anio",
-    "x": 192,
-    "y": 89
+    "x": 163,
+    "y": 31
    },
    "eventos": [
     {
      "id": "-1105728637",
      "tipo": "carrera",
-     "x": 40,
-     "y": 31,
+     "x": 30,
+     "y": 2,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Mall",
@@ -855,8 +900,8 @@
     {
      "id": "1739783025",
      "tipo": "carrera",
-     "x": 41,
-     "y": 32,
+     "x": 31,
+     "y": 3,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Arena",
@@ -870,8 +915,8 @@
     {
      "id": "743680133",
      "tipo": "contrarreloj",
-     "x": 42,
-     "y": 31,
+     "x": 32,
+     "y": 2,
      "forma": "0",
      "plantilla": "2050 - Event 5-3",
      "clase": "A"
@@ -879,8 +924,8 @@
     {
      "id": "-563619417",
      "tipo": "carrera",
-     "x": 43,
-     "y": 32,
+     "x": 33,
+     "y": 3,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Subway",
@@ -894,8 +939,8 @@
     {
      "id": "-1000936357",
      "tipo": "carrera",
-     "x": 44,
-     "y": 31,
+     "x": 34,
+     "y": 2,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Cathedral",
@@ -909,16 +954,16 @@
     {
      "id": "-1451983752",
      "tipo": "zona",
-     "x": 45,
-     "y": 32,
+     "x": 35,
+     "y": 3,
      "forma": "0",
      "plantilla": "2050 - Event 2-4"
     },
     {
      "id": "-294014053",
      "tipo": "carrera",
-     "x": 46,
-     "y": 31,
+     "x": 36,
+     "y": 2,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Altima",
@@ -927,13 +972,20 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "nave": "AG_System_Proto"
     },
     {
      "id": "-1682730141",
      "tipo": "carrera",
-     "x": 47,
-     "y": 32,
+     "x": 37,
+     "y": 3,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Sol",
@@ -947,8 +999,8 @@
     {
      "id": "232767583",
      "tipo": "eliminator",
-     "x": 48,
-     "y": 31,
+     "x": 38,
+     "y": 2,
      "forma": "0",
      "plantilla": "2050 - Event 3",
      "clase": "A",
@@ -957,8 +1009,8 @@
     {
      "id": "521482660",
      "tipo": "carrera",
-     "x": 50,
-     "y": 32,
+     "x": 39,
+     "y": 3,
      "forma": "9",
      "plantilla": "2050 - Event 9",
      "pista": "Park",
@@ -974,15 +1026,15 @@
   {
    "cartel": {
     "tipo": "anio",
-    "x": 192,
-    "y": 95
+    "x": 175,
+    "y": 41
    },
    "eventos": [
     {
      "id": "2147260693",
      "tipo": "carrera",
-     "x": 40,
-     "y": 34,
+     "x": 33,
+     "y": 7,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Bridge",
@@ -996,8 +1048,8 @@
     {
      "id": "1886338737",
      "tipo": "carrera",
-     "x": 41,
-     "y": 35,
+     "x": 34,
+     "y": 8,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Tower",
@@ -1011,17 +1063,21 @@
     {
      "id": "-1169179263",
      "tipo": "contrarreloj",
-     "x": 42,
-     "y": 34,
+     "x": 35,
+     "y": 7,
      "forma": "0",
      "plantilla": "2050 - Event 2-1",
-     "clase": "A"
+     "clase": "A",
+     "clasesNave": [
+      "agilidad"
+     ],
+     "nave": ""
     },
     {
      "id": "1599385601",
      "tipo": "carrera",
-     "x": 43,
-     "y": 35,
+     "x": 36,
+     "y": 8,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Square",
@@ -1035,8 +1091,8 @@
     {
      "id": "1120721401",
      "tipo": "carrera",
-     "x": 44,
-     "y": 34,
+     "x": 37,
+     "y": 7,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Mall",
@@ -1050,16 +1106,16 @@
     {
      "id": "-1295731685",
      "tipo": "zona",
-     "x": 45,
-     "y": 35,
+     "x": 38,
+     "y": 8,
      "forma": "0",
      "plantilla": "2050 - Event 5-2"
     },
     {
      "id": "-974223183",
      "tipo": "carrera",
-     "x": 46,
-     "y": 34,
+     "x": 39,
+     "y": 7,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Arena",
@@ -1073,8 +1129,8 @@
     {
      "id": "-1399672827",
      "tipo": "carrera",
-     "x": 47,
-     "y": 35,
+     "x": 40,
+     "y": 8,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Subway",
@@ -1088,8 +1144,8 @@
     {
      "id": "87810762",
      "tipo": "eliminator",
-     "x": 48,
-     "y": 34,
+     "x": 41,
+     "y": 7,
      "forma": "0",
      "plantilla": "2050 - Event 6-3",
      "clase": "A",
@@ -1098,8 +1154,8 @@
     {
      "id": "-937564695",
      "tipo": "carrera",
-     "x": 50,
-     "y": 35,
+     "x": 42,
+     "y": 8,
      "forma": "9",
      "plantilla": "2050 - Event 9",
      "pista": "Cathedral",
@@ -1115,15 +1171,15 @@
   {
    "cartel": {
     "tipo": "anio",
-    "x": 193,
-    "y": 75
+    "x": 195,
+    "y": 51
    },
    "eventos": [
     {
      "id": "-614059227",
      "tipo": "carrera",
-     "x": 40,
-     "y": 25,
+     "x": 38,
+     "y": 12,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Altima",
@@ -1137,8 +1193,8 @@
     {
      "id": "-43916924",
      "tipo": "carrera",
-     "x": 41,
-     "y": 26,
+     "x": 39,
+     "y": 13,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Sol",
@@ -1152,8 +1208,8 @@
     {
      "id": "822107923",
      "tipo": "carrera",
-     "x": 42,
-     "y": 25,
+     "x": 40,
+     "y": 12,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Park",
@@ -1167,8 +1223,8 @@
     {
      "id": "854583929",
      "tipo": "contrarreloj",
-     "x": 43,
-     "y": 26,
+     "x": 41,
+     "y": 13,
      "forma": "0",
      "plantilla": "2050 - Event 3-1",
      "clase": "A+"
@@ -1176,8 +1232,8 @@
     {
      "id": "183325245",
      "tipo": "carrera",
-     "x": 44,
-     "y": 25,
+     "x": 42,
+     "y": 12,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Bridge",
@@ -1191,8 +1247,8 @@
     {
      "id": "-808343431",
      "tipo": "carrera",
-     "x": 45,
-     "y": 26,
+     "x": 43,
+     "y": 13,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Tower",
@@ -1201,21 +1257,28 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "nave": "Piranha_Agility"
     },
     {
      "id": "799304428",
      "tipo": "zona",
-     "x": 46,
-     "y": 25,
+     "x": 44,
+     "y": 12,
      "forma": "0",
      "plantilla": "2050 - Event 2-2"
     },
     {
      "id": "-934432135",
      "tipo": "carrera",
-     "x": 47,
-     "y": 26,
+     "x": 45,
+     "y": 13,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Square",
@@ -1229,8 +1292,8 @@
     {
      "id": "1189192998",
      "tipo": "eliminator",
-     "x": 48,
-     "y": 25,
+     "x": 46,
+     "y": 12,
      "forma": "0",
      "plantilla": "2050 - Event 3",
      "clase": "A+",
@@ -1239,8 +1302,8 @@
     {
      "id": "306429969",
      "tipo": "carrera",
-     "x": 49,
-     "y": 26,
+     "x": 47,
+     "y": 13,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Mall",
@@ -1249,13 +1312,17 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "clasesNave": [
+      "agilidad"
+     ],
+     "nave": ""
     },
     {
      "id": "37646885",
      "tipo": "carrera",
-     "x": 51,
-     "y": 25,
+     "x": 48,
+     "y": 11,
      "forma": "9",
      "plantilla": "2050 - Event 9",
      "pista": "Arena",
@@ -1271,15 +1338,15 @@
   {
    "cartel": {
     "tipo": "anio",
-    "x": 193,
-    "y": 83
+    "x": 203,
+    "y": 61
    },
    "eventos": [
     {
      "id": "-362732037",
      "tipo": "carrera",
      "x": 40,
-     "y": 28,
+     "y": 17,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Subway",
@@ -1294,7 +1361,7 @@
      "id": "-1287654456",
      "tipo": "carrera",
      "x": 41,
-     "y": 29,
+     "y": 18,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Cathedral",
@@ -1309,7 +1376,7 @@
      "id": "-1409957057",
      "tipo": "carrera",
      "x": 42,
-     "y": 28,
+     "y": 17,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Altima",
@@ -1318,13 +1385,20 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "nave": "Qirex_Speed"
     },
     {
      "id": "376867571",
      "tipo": "contrarreloj",
      "x": 43,
-     "y": 29,
+     "y": 18,
      "forma": "0",
      "plantilla": "2050 - Event 5-3",
      "clase": "A+"
@@ -1333,7 +1407,7 @@
      "id": "407401005",
      "tipo": "carrera",
      "x": 44,
-     "y": 28,
+     "y": 17,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Sol",
@@ -1348,7 +1422,7 @@
      "id": "-657982412",
      "tipo": "carrera",
      "x": 45,
-     "y": 29,
+     "y": 18,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Park",
@@ -1363,7 +1437,7 @@
      "id": "936872246",
      "tipo": "zona",
      "x": 46,
-     "y": 28,
+     "y": 17,
      "forma": "0",
      "plantilla": "2050 - Event 3-3"
     },
@@ -1371,7 +1445,7 @@
      "id": "-118278876",
      "tipo": "carrera",
      "x": 47,
-     "y": 29,
+     "y": 18,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Bridge",
@@ -1386,7 +1460,7 @@
      "id": "503462485",
      "tipo": "eliminator",
      "x": 48,
-     "y": 28,
+     "y": 17,
      "forma": "0",
      "plantilla": "2050 - Event 6-3",
      "clase": "A+",
@@ -1396,7 +1470,7 @@
      "id": "-656799262",
      "tipo": "carrera",
      "x": 49,
-     "y": 29,
+     "y": 18,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Tower",
@@ -1405,13 +1479,17 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "clasesNave": [
+      "combate"
+     ],
+     "nave": ""
     },
     {
      "id": "512463327",
      "tipo": "carrera",
-     "x": 51,
-     "y": 28,
+     "x": 50,
+     "y": 16,
      "forma": "9",
      "plantilla": "2050 - Event 9",
      "pista": "Square",
@@ -1427,15 +1505,15 @@
   {
    "cartel": {
     "tipo": "anio",
-    "x": 194,
-    "y": 63
+    "x": 203,
+    "y": 71
    },
    "eventos": [
     {
      "id": "-170464519",
      "tipo": "carrera",
      "x": 40,
-     "y": 19,
+     "y": 22,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Mall",
@@ -1450,7 +1528,7 @@
      "id": "1631567104",
      "tipo": "carrera",
      "x": 41,
-     "y": 20,
+     "y": 23,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Arena",
@@ -1459,13 +1537,20 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "nave": "Piranha_Combat"
     },
     {
      "id": "-1746871871",
      "tipo": "carrera",
      "x": 42,
-     "y": 19,
+     "y": 22,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Subway",
@@ -1474,13 +1559,17 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "clasesNave": [
+      "velocidad"
+     ],
+     "nave": ""
     },
     {
      "id": "457532091",
      "tipo": "contrarreloj",
      "x": 43,
-     "y": 20,
+     "y": 23,
      "forma": "0",
      "plantilla": "2050 - Event 2-1",
      "clase": "A+"
@@ -1489,7 +1578,7 @@
      "id": "-1064227827",
      "tipo": "carrera",
      "x": 44,
-     "y": 19,
+     "y": 22,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Cathedral",
@@ -1504,7 +1593,7 @@
      "id": "1026115191",
      "tipo": "carrera",
      "x": 45,
-     "y": 20,
+     "y": 23,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Altima",
@@ -1519,7 +1608,7 @@
      "id": "-1285825270",
      "tipo": "zona",
      "x": 46,
-     "y": 19,
+     "y": 22,
      "forma": "0",
      "plantilla": "2050 - Event 6-2"
     },
@@ -1527,7 +1616,7 @@
      "id": "-372527049",
      "tipo": "carrera",
      "x": 47,
-     "y": 20,
+     "y": 23,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Sol",
@@ -1542,7 +1631,7 @@
      "id": "1656859250",
      "tipo": "carrera",
      "x": 48,
-     "y": 19,
+     "y": 22,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Park",
@@ -1557,7 +1646,7 @@
      "id": "619977860",
      "tipo": "eliminator",
      "x": 49,
-     "y": 20,
+     "y": 23,
      "forma": "0",
      "plantilla": "2050 - Event 3",
      "clase": "A+",
@@ -1567,7 +1656,7 @@
      "id": "1802663584",
      "tipo": "carrera",
      "x": 50,
-     "y": 19,
+     "y": 22,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Bridge",
@@ -1581,8 +1670,8 @@
     {
      "id": "-1369193914",
      "tipo": "carrera",
-     "x": 52,
-     "y": 20,
+     "x": 51,
+     "y": 23,
      "forma": "9",
      "plantilla": "2050 - Event 9",
      "pista": "Tower",
@@ -1598,15 +1687,15 @@
   {
    "cartel": {
     "tipo": "anio",
-    "x": 194,
-    "y": 69
+    "x": 191,
+    "y": 81
    },
    "eventos": [
     {
      "id": "82958208",
      "tipo": "carrera",
-     "x": 40,
-     "y": 22,
+     "x": 37,
+     "y": 27,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Square",
@@ -1620,8 +1709,8 @@
     {
      "id": "1873582118",
      "tipo": "carrera",
-     "x": 41,
-     "y": 23,
+     "x": 38,
+     "y": 28,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Mall",
@@ -1630,13 +1719,18 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "clasesNave": [
+      "velocidad",
+      "agilidad"
+     ],
+     "nave": ""
     },
     {
      "id": "-1685342381",
      "tipo": "carrera",
-     "x": 42,
-     "y": 22,
+     "x": 39,
+     "y": 27,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Arena",
@@ -1650,8 +1744,8 @@
     {
      "id": "589725630",
      "tipo": "contrarreloj",
-     "x": 43,
-     "y": 23,
+     "x": 40,
+     "y": 28,
      "forma": "0",
      "plantilla": "2050 - Event 3-1",
      "clase": "A+"
@@ -1659,8 +1753,8 @@
     {
      "id": "-1099709156",
      "tipo": "carrera",
-     "x": 44,
-     "y": 22,
+     "x": 41,
+     "y": 27,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Subway",
@@ -1669,13 +1763,18 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "clasesNave": [
+      "velocidad",
+      "agilidad"
+     ],
+     "nave": ""
     },
     {
      "id": "1077136342",
      "tipo": "carrera",
-     "x": 45,
-     "y": 23,
+     "x": 42,
+     "y": 28,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Cathedral",
@@ -1689,16 +1788,16 @@
     {
      "id": "-1698168760",
      "tipo": "zona",
-     "x": 46,
-     "y": 22,
+     "x": 43,
+     "y": 27,
      "forma": "0",
      "plantilla": "2050 - Event 2-4"
     },
     {
      "id": "985210886",
      "tipo": "carrera",
-     "x": 47,
-     "y": 23,
+     "x": 44,
+     "y": 28,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Altima",
@@ -1712,8 +1811,8 @@
     {
      "id": "1746072175",
      "tipo": "carrera",
-     "x": 48,
-     "y": 22,
+     "x": 45,
+     "y": 27,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Sol",
@@ -1727,8 +1826,8 @@
     {
      "id": "-244395820",
      "tipo": "eliminator",
-     "x": 49,
-     "y": 23,
+     "x": 46,
+     "y": 28,
      "forma": "0",
      "plantilla": "2050 - Event 6-3",
      "clase": "A+",
@@ -1737,8 +1836,8 @@
     {
      "id": "1707069803",
      "tipo": "carrera",
-     "x": 50,
-     "y": 22,
+     "x": 47,
+     "y": 27,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Park",
@@ -1752,8 +1851,8 @@
     {
      "id": "157133562",
      "tipo": "carrera",
-     "x": 52,
-     "y": 23,
+     "x": 48,
+     "y": 28,
      "forma": "9",
      "plantilla": "2050 - Event 9",
      "pista": "Bridge",
@@ -1769,15 +1868,15 @@
   {
    "cartel": {
     "tipo": "anio",
-    "x": 195,
-    "y": 51
+    "x": 183,
+    "y": 91
    },
    "eventos": [
     {
      "id": "841498163",
      "tipo": "carrera",
-     "x": 40,
-     "y": 13,
+     "x": 35,
+     "y": 32,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Tower",
@@ -1791,8 +1890,8 @@
     {
      "id": "-984998671",
      "tipo": "carrera",
-     "x": 41,
-     "y": 14,
+     "x": 36,
+     "y": 33,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Square",
@@ -1801,13 +1900,20 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "nave": "Piranha_Proto"
     },
     {
      "id": "-1687337109",
      "tipo": "carrera",
-     "x": 42,
-     "y": 13,
+     "x": 37,
+     "y": 32,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Mall",
@@ -1821,8 +1927,8 @@
     {
      "id": "128047690",
      "tipo": "contrarreloj",
-     "x": 43,
-     "y": 14,
+     "x": 38,
+     "y": 33,
      "forma": "0",
      "plantilla": "2050 - Event 5-3",
      "clase": "A+"
@@ -1830,8 +1936,8 @@
     {
      "id": "-1334631159",
      "tipo": "carrera",
-     "x": 44,
-     "y": 13,
+     "x": 39,
+     "y": 32,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Arena",
@@ -1845,8 +1951,8 @@
     {
      "id": "2112741531",
      "tipo": "carrera",
-     "x": 45,
-     "y": 14,
+     "x": 40,
+     "y": 33,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Subway",
@@ -1860,16 +1966,16 @@
     {
      "id": "674199346",
      "tipo": "zona",
-     "x": 46,
-     "y": 13,
+     "x": 41,
+     "y": 32,
      "forma": "0",
      "plantilla": "2050 - Event 5-2"
     },
     {
      "id": "2105541040",
      "tipo": "carrera",
-     "x": 47,
-     "y": 14,
+     "x": 42,
+     "y": 33,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Cathedral",
@@ -1883,8 +1989,8 @@
     {
      "id": "182974829",
      "tipo": "carrera",
-     "x": 48,
-     "y": 13,
+     "x": 43,
+     "y": 32,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Altima",
@@ -1898,8 +2004,8 @@
     {
      "id": "-497042711",
      "tipo": "carrera",
-     "x": 49,
-     "y": 14,
+     "x": 44,
+     "y": 33,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Sol",
@@ -1913,8 +2019,8 @@
     {
      "id": "-1177192006",
      "tipo": "eliminator",
-     "x": 50,
-     "y": 13,
+     "x": 45,
+     "y": 32,
      "forma": "0",
      "plantilla": "2050 - Event 3",
      "clase": "A+",
@@ -1923,8 +2029,209 @@
     {
      "id": "-680676231",
      "tipo": "carrera",
-     "x": 51,
-     "y": 14,
+     "x": 46,
+     "y": 33,
+     "forma": "0",
+     "plantilla": "2050 - Event 9",
+     "pista": "Park",
+     "clase": "A+",
+     "vueltas": 3,
+     "ia": "3.50",
+     "armas": true,
+     "pase": "Top3",
+     "elite": "Win",
+     "clasesNave": [
+      "combate"
+     ],
+     "nave": ""
+    },
+    {
+     "id": "-56298126",
+     "tipo": "carrera",
+     "x": 47,
+     "y": 31,
+     "forma": "9",
+     "plantilla": "2050 - Event 9",
+     "pista": "Bridge",
+     "clase": "A+",
+     "vueltas": 5,
+     "ia": "3.50",
+     "armas": true,
+     "pase": "Top3",
+     "elite": "Win"
+    }
+   ]
+  },
+  {
+   "cartel": {
+    "tipo": "anio",
+    "x": 183,
+    "y": 101
+   },
+   "eventos": [
+    {
+     "id": "1472065898",
+     "tipo": "carrera",
+     "x": 35,
+     "y": 37,
+     "forma": "0",
+     "plantilla": "2050 - Event 9",
+     "pista": "Tower",
+     "clase": "A+",
+     "vueltas": 3,
+     "ia": "3.50",
+     "armas": true,
+     "pase": "Top3",
+     "elite": "Win"
+    },
+    {
+     "id": "-9325802",
+     "tipo": "carrera",
+     "x": 36,
+     "y": 38,
+     "forma": "0",
+     "plantilla": "2050 - Event 9",
+     "pista": "Square",
+     "clase": "A+",
+     "vueltas": 3,
+     "ia": "3.50",
+     "armas": true,
+     "pase": "Top3",
+     "elite": "Win"
+    },
+    {
+     "id": "-1732061280",
+     "tipo": "carrera",
+     "x": 37,
+     "y": 37,
+     "forma": "0",
+     "plantilla": "2050 - Event 9",
+     "pista": "Mall",
+     "clase": "A+",
+     "vueltas": 3,
+     "ia": "3.50",
+     "armas": true,
+     "pase": "Top3",
+     "elite": "Win"
+    },
+    {
+     "id": "-189441479",
+     "tipo": "contrarreloj",
+     "x": 38,
+     "y": 38,
+     "forma": "0",
+     "plantilla": "2050 - Event 2-1",
+     "clase": "A+",
+     "clasesNave": [
+      "agilidad"
+     ],
+     "nave": ""
+    },
+    {
+     "id": "1637434175",
+     "tipo": "carrera",
+     "x": 39,
+     "y": 37,
+     "forma": "0",
+     "plantilla": "2050 - Event 9",
+     "pista": "Arena",
+     "clase": "A+",
+     "vueltas": 3,
+     "ia": "3.50",
+     "armas": true,
+     "pase": "Top3",
+     "elite": "Win"
+    },
+    {
+     "id": "1039089537",
+     "tipo": "carrera",
+     "x": 40,
+     "y": 38,
+     "forma": "0",
+     "plantilla": "2050 - Event 9",
+     "pista": "Subway",
+     "clase": "A+",
+     "vueltas": 3,
+     "ia": "3.50",
+     "armas": true,
+     "pase": "Top3",
+     "elite": "Win"
+    },
+    {
+     "id": "-727170088",
+     "tipo": "zona",
+     "x": 41,
+     "y": 37,
+     "forma": "0",
+     "plantilla": "2050 - Event 2-2"
+    },
+    {
+     "id": "-1902274176",
+     "tipo": "carrera",
+     "x": 42,
+     "y": 38,
+     "forma": "0",
+     "plantilla": "2050 - Event 9",
+     "pista": "Cathedral",
+     "clase": "A+",
+     "vueltas": 3,
+     "ia": "3.50",
+     "armas": true,
+     "pase": "Top3",
+     "elite": "Win"
+    },
+    {
+     "id": "-1025782347",
+     "tipo": "carrera",
+     "x": 43,
+     "y": 37,
+     "forma": "0",
+     "plantilla": "2050 - Event 9",
+     "pista": "Altima",
+     "clase": "A+",
+     "vueltas": 3,
+     "ia": "3.50",
+     "armas": true,
+     "pase": "Top3",
+     "elite": "Win",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "nave": "Piranha_Combat"
+    },
+    {
+     "id": "-474652023",
+     "tipo": "carrera",
+     "x": 44,
+     "y": 38,
+     "forma": "0",
+     "plantilla": "2050 - Event 9",
+     "pista": "Sol",
+     "clase": "A+",
+     "vueltas": 3,
+     "ia": "3.50",
+     "armas": true,
+     "pase": "Top3",
+     "elite": "Win"
+    },
+    {
+     "id": "-1251015359",
+     "tipo": "eliminator",
+     "x": 45,
+     "y": 37,
+     "forma": "0",
+     "plantilla": "2050 - Event 6-3",
+     "clase": "A+",
+     "ia": "3.50"
+    },
+    {
+     "id": "-225929702",
+     "tipo": "carrera",
+     "x": 46,
+     "y": 38,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Park",
@@ -1936,10 +2243,10 @@
      "elite": "Win"
     },
     {
-     "id": "-56298126",
+     "id": "-174951196",
      "tipo": "carrera",
-     "x": 53,
-     "y": 13,
+     "x": 47,
+     "y": 36,
      "forma": "9",
      "plantilla": "2050 - Event 9",
      "pista": "Bridge",
@@ -1956,200 +2263,16 @@
    "cartel": {
     "tipo": "anio",
     "x": 195,
-    "y": 57
-   },
-   "eventos": [
-    {
-     "id": "1472065898",
-     "tipo": "carrera",
-     "x": 40,
-     "y": 16,
-     "forma": "0",
-     "plantilla": "2050 - Event 9",
-     "pista": "Tower",
-     "clase": "A+",
-     "vueltas": 3,
-     "ia": "3.50",
-     "armas": true,
-     "pase": "Top3",
-     "elite": "Win"
-    },
-    {
-     "id": "-9325802",
-     "tipo": "carrera",
-     "x": 41,
-     "y": 17,
-     "forma": "0",
-     "plantilla": "2050 - Event 9",
-     "pista": "Square",
-     "clase": "A+",
-     "vueltas": 3,
-     "ia": "3.50",
-     "armas": true,
-     "pase": "Top3",
-     "elite": "Win"
-    },
-    {
-     "id": "-1732061280",
-     "tipo": "carrera",
-     "x": 42,
-     "y": 16,
-     "forma": "0",
-     "plantilla": "2050 - Event 9",
-     "pista": "Mall",
-     "clase": "A+",
-     "vueltas": 3,
-     "ia": "3.50",
-     "armas": true,
-     "pase": "Top3",
-     "elite": "Win"
-    },
-    {
-     "id": "-189441479",
-     "tipo": "contrarreloj",
-     "x": 43,
-     "y": 17,
-     "forma": "0",
-     "plantilla": "2050 - Event 2-1",
-     "clase": "A+"
-    },
-    {
-     "id": "1637434175",
-     "tipo": "carrera",
-     "x": 44,
-     "y": 16,
-     "forma": "0",
-     "plantilla": "2050 - Event 9",
-     "pista": "Arena",
-     "clase": "A+",
-     "vueltas": 3,
-     "ia": "3.50",
-     "armas": true,
-     "pase": "Top3",
-     "elite": "Win"
-    },
-    {
-     "id": "1039089537",
-     "tipo": "carrera",
-     "x": 45,
-     "y": 17,
-     "forma": "0",
-     "plantilla": "2050 - Event 9",
-     "pista": "Subway",
-     "clase": "A+",
-     "vueltas": 3,
-     "ia": "3.50",
-     "armas": true,
-     "pase": "Top3",
-     "elite": "Win"
-    },
-    {
-     "id": "-727170088",
-     "tipo": "zona",
-     "x": 46,
-     "y": 16,
-     "forma": "0",
-     "plantilla": "2050 - Event 2-2"
-    },
-    {
-     "id": "-1902274176",
-     "tipo": "carrera",
-     "x": 47,
-     "y": 17,
-     "forma": "0",
-     "plantilla": "2050 - Event 9",
-     "pista": "Cathedral",
-     "clase": "A+",
-     "vueltas": 3,
-     "ia": "3.50",
-     "armas": true,
-     "pase": "Top3",
-     "elite": "Win"
-    },
-    {
-     "id": "-1025782347",
-     "tipo": "carrera",
-     "x": 48,
-     "y": 16,
-     "forma": "0",
-     "plantilla": "2050 - Event 9",
-     "pista": "Altima",
-     "clase": "A+",
-     "vueltas": 3,
-     "ia": "3.50",
-     "armas": true,
-     "pase": "Top3",
-     "elite": "Win"
-    },
-    {
-     "id": "-474652023",
-     "tipo": "carrera",
-     "x": 49,
-     "y": 17,
-     "forma": "0",
-     "plantilla": "2050 - Event 9",
-     "pista": "Sol",
-     "clase": "A+",
-     "vueltas": 3,
-     "ia": "3.50",
-     "armas": true,
-     "pase": "Top3",
-     "elite": "Win"
-    },
-    {
-     "id": "-1251015359",
-     "tipo": "eliminator",
-     "x": 50,
-     "y": 16,
-     "forma": "0",
-     "plantilla": "2050 - Event 6-3",
-     "clase": "A+",
-     "ia": "3.50"
-    },
-    {
-     "id": "-225929702",
-     "tipo": "carrera",
-     "x": 51,
-     "y": 17,
-     "forma": "0",
-     "plantilla": "2050 - Event 9",
-     "pista": "Park",
-     "clase": "A+",
-     "vueltas": 3,
-     "ia": "3.50",
-     "armas": true,
-     "pase": "Top3",
-     "elite": "Win"
-    },
-    {
-     "id": "-174951196",
-     "tipo": "carrera",
-     "x": 53,
-     "y": 16,
-     "forma": "9",
-     "plantilla": "2050 - Event 9",
-     "pista": "Bridge",
-     "clase": "A+",
-     "vueltas": 5,
-     "ia": "3.50",
-     "armas": true,
-     "pase": "Top3",
-     "elite": "Win"
-    }
-   ]
-  },
-  {
-   "cartel": {
-    "tipo": "anio",
-    "x": 196,
-    "y": 39
+    "y": 111,
+    "w": 9,
+    "h": 3
    },
    "eventos": [
     {
      "id": "408020869",
      "tipo": "carrera",
-     "x": 40,
-     "y": 7,
+     "x": 38,
+     "y": 42,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Tower",
@@ -2163,8 +2286,8 @@
     {
      "id": "-873871859",
      "tipo": "carrera",
-     "x": 41,
-     "y": 8,
+     "x": 39,
+     "y": 43,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Square",
@@ -2178,8 +2301,8 @@
     {
      "id": "-1420394026",
      "tipo": "carrera",
-     "x": 42,
-     "y": 7,
+     "x": 40,
+     "y": 42,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Mall",
@@ -2188,13 +2311,20 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "nave": "Qirex_Proto"
     },
     {
      "id": "1716611179",
      "tipo": "carrera",
-     "x": 43,
-     "y": 8,
+     "x": 41,
+     "y": 43,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Arena",
@@ -2208,8 +2338,8 @@
     {
      "id": "512437079",
      "tipo": "contrarreloj",
-     "x": 44,
-     "y": 7,
+     "x": 42,
+     "y": 42,
      "forma": "0",
      "plantilla": "2050 - Event 3-1",
      "clase": "A+"
@@ -2217,8 +2347,8 @@
     {
      "id": "-797799642",
      "tipo": "carrera",
-     "x": 45,
-     "y": 8,
+     "x": 43,
+     "y": 43,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Subway",
@@ -2232,8 +2362,8 @@
     {
      "id": "33074230",
      "tipo": "carrera",
-     "x": 46,
-     "y": 7,
+     "x": 44,
+     "y": 42,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Cathedral",
@@ -2247,16 +2377,16 @@
     {
      "id": "1293909190",
      "tipo": "zona",
-     "x": 47,
-     "y": 8,
+     "x": 45,
+     "y": 43,
      "forma": "0",
      "plantilla": "2050 - Event 3-3"
     },
     {
      "id": "-1680944699",
      "tipo": "carrera",
-     "x": 48,
-     "y": 7,
+     "x": 46,
+     "y": 42,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Altima",
@@ -2270,8 +2400,8 @@
     {
      "id": "377050924",
      "tipo": "carrera",
-     "x": 49,
-     "y": 8,
+     "x": 47,
+     "y": 43,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Sol",
@@ -2285,8 +2415,8 @@
     {
      "id": "-830617694",
      "tipo": "eliminator",
-     "x": 50,
-     "y": 7,
+     "x": 48,
+     "y": 42,
      "forma": "0",
      "plantilla": "2050 - Event 3",
      "clase": "A+",
@@ -2295,8 +2425,8 @@
     {
      "id": "1626751298",
      "tipo": "carrera",
-     "x": 51,
-     "y": 8,
+     "x": 49,
+     "y": 43,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Park",
@@ -2305,13 +2435,17 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "clasesNave": [
+      "agilidad"
+     ],
+     "nave": ""
     },
     {
      "id": "-180294980",
      "tipo": "carrera",
-     "x": 52,
-     "y": 7,
+     "x": 50,
+     "y": 42,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Bridge",
@@ -2325,8 +2459,8 @@
     {
      "id": "342667000",
      "tipo": "carrera",
-     "x": 54,
-     "y": 8,
+     "x": 51,
+     "y": 43,
      "forma": "9",
      "plantilla": "2050 - Event 9",
      "pista": "Tower",
@@ -2342,15 +2476,15 @@
   {
    "cartel": {
     "tipo": "anio",
-    "x": 196,
-    "y": 45
+    "x": 231,
+    "y": 31
    },
    "eventos": [
     {
      "id": "542816347",
      "tipo": "carrera",
-     "x": 40,
-     "y": 10,
+     "x": 47,
+     "y": 2,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Square",
@@ -2364,8 +2498,8 @@
     {
      "id": "148321961",
      "tipo": "carrera",
-     "x": 41,
-     "y": 11,
+     "x": 48,
+     "y": 3,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Mall",
@@ -2379,8 +2513,8 @@
     {
      "id": "1189267049",
      "tipo": "carrera",
-     "x": 42,
-     "y": 10,
+     "x": 49,
+     "y": 2,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Arena",
@@ -2394,8 +2528,8 @@
     {
      "id": "-1829297597",
      "tipo": "carrera",
-     "x": 43,
-     "y": 11,
+     "x": 50,
+     "y": 3,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Subway",
@@ -2409,8 +2543,8 @@
     {
      "id": "-1451525657",
      "tipo": "contrarreloj",
-     "x": 44,
-     "y": 10,
+     "x": 51,
+     "y": 2,
      "forma": "0",
      "plantilla": "2050 - Event 5-3",
      "clase": "A+"
@@ -2418,8 +2552,8 @@
     {
      "id": "-1471014556",
      "tipo": "carrera",
-     "x": 45,
-     "y": 11,
+     "x": 52,
+     "y": 3,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Cathedral",
@@ -2428,13 +2562,17 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "clasesNave": [
+      "velocidad"
+     ],
+     "nave": ""
     },
     {
      "id": "-701288708",
      "tipo": "carrera",
-     "x": 46,
-     "y": 10,
+     "x": 53,
+     "y": 2,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Altima",
@@ -2448,16 +2586,16 @@
     {
      "id": "-979108683",
      "tipo": "zona",
-     "x": 47,
-     "y": 11,
+     "x": 54,
+     "y": 3,
      "forma": "0",
      "plantilla": "2050 - Event 6-2"
     },
     {
      "id": "197300685",
      "tipo": "carrera",
-     "x": 48,
-     "y": 10,
+     "x": 55,
+     "y": 2,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Sol",
@@ -2471,8 +2609,8 @@
     {
      "id": "2042099551",
      "tipo": "carrera",
-     "x": 49,
-     "y": 11,
+     "x": 56,
+     "y": 3,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Park",
@@ -2486,8 +2624,8 @@
     {
      "id": "2048613446",
      "tipo": "eliminator",
-     "x": 50,
-     "y": 10,
+     "x": 57,
+     "y": 2,
      "forma": "0",
      "plantilla": "2050 - Event 6-3",
      "clase": "A+",
@@ -2496,8 +2634,8 @@
     {
      "id": "-285863152",
      "tipo": "carrera",
-     "x": 51,
-     "y": 11,
+     "x": 58,
+     "y": 3,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Bridge",
@@ -2511,8 +2649,8 @@
     {
      "id": "528909894",
      "tipo": "carrera",
-     "x": 52,
-     "y": 10,
+     "x": 59,
+     "y": 2,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Tower",
@@ -2521,13 +2659,17 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "clasesNave": [
+      "velocidad"
+     ],
+     "nave": ""
     },
     {
      "id": "-274977974",
      "tipo": "carrera",
-     "x": 54,
-     "y": 11,
+     "x": 60,
+     "y": 3,
      "forma": "9",
      "plantilla": "2050 - Event 9",
      "pista": "Square",
@@ -2543,15 +2685,15 @@
   {
    "cartel": {
     "tipo": "anio",
-    "x": 197,
-    "y": 27
+    "x": 259,
+    "y": 37
    },
    "eventos": [
     {
      "id": "-258242216",
      "tipo": "carrera",
-     "x": 40,
-     "y": 1,
+     "x": 54,
+     "y": 8,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Mall",
@@ -2565,8 +2707,8 @@
     {
      "id": "-429103492",
      "tipo": "carrera",
-     "x": 41,
-     "y": 2,
+     "x": 55,
+     "y": 7,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Arena",
@@ -2580,8 +2722,8 @@
     {
      "id": "-1425327095",
      "tipo": "carrera",
-     "x": 42,
-     "y": 1,
+     "x": 56,
+     "y": 8,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Subway",
@@ -2595,8 +2737,8 @@
     {
      "id": "-1820807101",
      "tipo": "carrera",
-     "x": 43,
-     "y": 2,
+     "x": 55,
+     "y": 9,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Cathedral",
@@ -2610,17 +2752,21 @@
     {
      "id": "-643841599",
      "tipo": "contrarreloj",
-     "x": 44,
-     "y": 1,
+     "x": 56,
+     "y": 10,
      "forma": "0",
      "plantilla": "2050 - Event 2-1",
-     "clase": "A+"
+     "clase": "A+",
+     "clasesNave": [
+      "prototipo"
+     ],
+     "nave": ""
     },
     {
      "id": "1933975561",
      "tipo": "carrera",
-     "x": 45,
-     "y": 2,
+     "x": 55,
+     "y": 11,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Altima",
@@ -2634,8 +2780,8 @@
     {
      "id": "1240829519",
      "tipo": "carrera",
-     "x": 46,
-     "y": 1,
+     "x": 54,
+     "y": 10,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Sol",
@@ -2649,8 +2795,8 @@
     {
      "id": "-1594482829",
      "tipo": "carrera",
-     "x": 47,
-     "y": 2,
+     "x": 56,
+     "y": 12,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Park",
@@ -2664,16 +2810,16 @@
     {
      "id": "-236022229",
      "tipo": "zona",
-     "x": 48,
-     "y": 1,
+     "x": 54,
+     "y": 12,
      "forma": "0",
      "plantilla": "2050 - Event 2-4"
     },
     {
      "id": "-1510548486",
      "tipo": "carrera",
-     "x": 49,
-     "y": 2,
+     "x": 55,
+     "y": 13,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Bridge",
@@ -2682,13 +2828,20 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "nave": "Piranha_Proto"
     },
     {
      "id": "990914965",
      "tipo": "carrera",
-     "x": 50,
-     "y": 1,
+     "x": 54,
+     "y": 14,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Tower",
@@ -2702,8 +2855,8 @@
     {
      "id": "1246129735",
      "tipo": "eliminator",
-     "x": 51,
-     "y": 2,
+     "x": 56,
+     "y": 14,
      "forma": "0",
      "plantilla": "2050 - Event 3",
      "clase": "A+",
@@ -2712,8 +2865,8 @@
     {
      "id": "-1022763680",
      "tipo": "carrera",
-     "x": 52,
-     "y": 1,
+     "x": 55,
+     "y": 15,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Square",
@@ -2727,8 +2880,8 @@
     {
      "id": "1984970747",
      "tipo": "carrera",
-     "x": 53,
-     "y": 2,
+     "x": 54,
+     "y": 16,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Mall",
@@ -2742,9 +2895,9 @@
     {
      "id": "-1549833386",
      "tipo": "carrera",
-     "x": 55,
-     "y": 1,
-     "forma": "9",
+     "x": 56,
+     "y": 16,
+     "forma": "1",
      "plantilla": "2050 - Event 9",
      "pista": "Arena",
      "clase": "A+",
@@ -2759,15 +2912,15 @@
   {
    "cartel": {
     "tipo": "anio",
-    "x": 197,
-    "y": 33
+    "x": 287,
+    "y": 71
    },
    "eventos": [
     {
      "id": "-553249955",
      "tipo": "carrera",
-     "x": 40,
-     "y": 4,
+     "x": 57,
+     "y": 24,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Subway",
@@ -2781,8 +2934,8 @@
     {
      "id": "2083712534",
      "tipo": "carrera",
-     "x": 41,
-     "y": 5,
+     "x": 56,
+     "y": 25,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Cathedral",
@@ -2796,8 +2949,8 @@
     {
      "id": "-1761490223",
      "tipo": "carrera",
-     "x": 42,
-     "y": 4,
+     "x": 58,
+     "y": 25,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Altima",
@@ -2806,13 +2959,17 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "clasesNave": [
+      "agilidad"
+     ],
+     "nave": ""
     },
     {
      "id": "1570753141",
      "tipo": "carrera",
-     "x": 43,
-     "y": 5,
+     "x": 57,
+     "y": 26,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Sol",
@@ -2826,8 +2983,8 @@
     {
      "id": "1369386226",
      "tipo": "contrarreloj",
-     "x": 44,
-     "y": 4,
+     "x": 56,
+     "y": 27,
      "forma": "0",
      "plantilla": "2050 - Event 3-1",
      "clase": "A+"
@@ -2835,8 +2992,8 @@
     {
      "id": "-1418294095",
      "tipo": "carrera",
-     "x": 45,
-     "y": 5,
+     "x": 58,
+     "y": 27,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Park",
@@ -2850,8 +3007,8 @@
     {
      "id": "-619885111",
      "tipo": "carrera",
-     "x": 46,
-     "y": 4,
+     "x": 57,
+     "y": 28,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Bridge",
@@ -2865,8 +3022,8 @@
     {
      "id": "-1682152409",
      "tipo": "carrera",
-     "x": 47,
-     "y": 5,
+     "x": 56,
+     "y": 29,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Tower",
@@ -2880,16 +3037,16 @@
     {
      "id": "1797470412",
      "tipo": "zona",
-     "x": 48,
-     "y": 4,
+     "x": 58,
+     "y": 29,
      "forma": "0",
      "plantilla": "2050 - Event 5-2"
     },
     {
      "id": "724329246",
      "tipo": "carrera",
-     "x": 49,
-     "y": 5,
+     "x": 57,
+     "y": 30,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Square",
@@ -2903,8 +3060,8 @@
     {
      "id": "1053585721",
      "tipo": "carrera",
-     "x": 50,
-     "y": 4,
+     "x": 56,
+     "y": 31,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Mall",
@@ -2918,8 +3075,8 @@
     {
      "id": "550844378",
      "tipo": "eliminator",
-     "x": 51,
-     "y": 5,
+     "x": 58,
+     "y": 31,
      "forma": "0",
      "plantilla": "2050 - Event 6-3",
      "clase": "A+",
@@ -2928,8 +3085,8 @@
     {
      "id": "765142145",
      "tipo": "carrera",
-     "x": 52,
-     "y": 4,
+     "x": 57,
+     "y": 32,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Arena",
@@ -2938,13 +3095,17 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "clasesNave": [
+      "combate"
+     ],
+     "nave": ""
     },
     {
      "id": "631509582",
      "tipo": "carrera",
-     "x": 53,
-     "y": 5,
+     "x": 56,
+     "y": 33,
      "forma": "0",
      "plantilla": "2050 - Event 9",
      "pista": "Subway",
@@ -2958,8 +3119,8 @@
     {
      "id": "143403586",
      "tipo": "carrera",
-     "x": 55,
-     "y": 4,
+     "x": 58,
+     "y": 33,
      "forma": "9",
      "plantilla": "2050 - Event 9",
      "pista": "Cathedral",

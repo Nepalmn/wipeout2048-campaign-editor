@@ -4,11 +4,15 @@ Editor de campañas para WipEout 2048 (mapa de la campaña 2048)
 Crea temporadas nuevas después de 2050 y genera el mod listo para Vita3K (o parches para compartir).
 
 Qué se puede hacer
-- Añadir y quitar temporadas (hasta 28) y eventos.
+- Añadir y quitar temporadas (hasta 24) y eventos.
 - Elegir el tipo de cada evento (carrera, contrarreloj, zona, eliminator), partiendo de cualquiera
   de los 60 eventos originales como plantilla.
 - Cambiar pista, clase (C, B, A, A+), vueltas, IA, armas y objetivos para pasar y para la élite.
-- Mover eventos y carteles por el mapa, cambiar la forma de cada casilla y su orden de desbloqueo.
+- Tiempos propios en las contrarrelojes (m:ss.cc), zona a alcanzar en las zonas y puntos en los eliminators.
+- Restringir las naves de cada evento: tipos permitidos (velocidad, agilidad, combate, prototipo) o una
+  nave obligatoria (cualquiera de las 20).
+- Mover eventos y carteles por todo el mapa, cambiar la forma de cada casilla y su orden de desbloqueo.
+  El editor dibuja los carteles con los triángulos que ocupan de verdad en el juego.
 - Cambiar el color de los carteles de temporada, o dibujar un cartel propio (con pincel, texto,
   formas o una imagen cargada).
 - El editor marca en rojo lo que se pisa o se sale de la zona que admite el juego.
@@ -17,7 +21,8 @@ Límites del juego (por qué hay topes)
 - Más de 210 eventos nuevos no está probado.
 - Los carteles dibujados ocupan sitio en una textura del juego que está casi llena: caben unos
   2 dibujos de 7x3, 3 de 6x2 o 4 de 4x2. Si no caben, "Construir" lo avisa.
-- Los carteles son opacos: si dos se pisan, el de la temporada posterior tapa al anterior.
+- Los carteles son opacos: si dos se pisan, uno tapa al otro. Los eventos se pintan por encima de los carteles.
+- En el editor el cartel ocupa toda su zona; en el juego solo se ve el dibujo (el resto es blanco).
 
 Requisitos
 - Python 3 con Pillow y NumPy:   pip install pillow numpy
