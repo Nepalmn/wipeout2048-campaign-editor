@@ -10,6 +10,7 @@ Editor web para crear temporadas nuevas en el mapa de la campaña 2048 de **WipE
 - Añadir y quitar temporadas (hasta 24) y eventos.
 - Elegir el tipo de cada evento (carrera, contrarreloj, zona, eliminator) a partir de cualquiera de los 60 eventos originales.
 - Cambiar pista, clase (C, B, A, A+), vueltas, IA, armas y objetivos de pase y élite.
+- Curva de dificultad: la IA sube poco a poco a lo largo de los eventos nuevos (y luego retocas cada evento).
 - Tiempos propios en las contrarrelojes (m:ss.cc), zona a alcanzar en las zonas y puntos en los eliminators.
 - Restricciones de naves por evento: tipos permitidos (velocidad, agilidad, combate, prototipo) o una nave obligatoria (cualquiera de las 20).
 - Mover eventos y carteles por todo el mapa, cambiar la forma de cada casilla y el orden de desbloqueo. Los carteles se dibujan con los triángulos exactos que ocupan en el juego.

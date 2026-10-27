@@ -9,6 +9,7 @@ A web-based editor for adding new seasons to the 2048 campaign map of **WipEout 
 - Add and remove seasons (up to 24) and events.
 - Choose each event's type (race, time trial, zone, eliminator) using any of the 60 original events as a template.
 - Change track, speed class (C, B, A, A+), laps, AI skill, weapons, and pass/elite objectives.
+- A difficulty curve tool: AI ramps up gradually across the new events (then tweak any event by hand).
 - Custom target times for time trials (m:ss.cc), zone targets for Zone events and points for Eliminators.
 - Ship restrictions per event: allowed classes (speed, agility, combat, prototype) or a forced ship (any of the 20).
 - Drag events and banners anywhere on the map, and change tile shapes and unlock order. Banners are drawn with the exact triangles they cover in game.

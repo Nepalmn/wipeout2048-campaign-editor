@@ -8,6 +8,7 @@ What you can do
 - Choose each event's type (race, time trial, zone, eliminator), starting from any of the 60
   original events as a template.
 - Change track, class (C, B, A, A+), laps, AI, weapons, and pass/elite objectives.
+- Difficulty curve: AI ramps up gradually across the new events (then tweak any event by hand).
 - Custom time-trial targets (m:ss.cc), zone targets for Zone events and points for Eliminators.
 - Ship restrictions per event: allowed classes (speed, agility, combat, prototype) or a forced ship
   (any of the 20).

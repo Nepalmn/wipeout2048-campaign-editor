@@ -8,6 +8,7 @@ Qué se puede hacer
 - Elegir el tipo de cada evento (carrera, contrarreloj, zona, eliminator), partiendo de cualquiera
   de los 60 eventos originales como plantilla.
 - Cambiar pista, clase (C, B, A, A+), vueltas, IA, armas y objetivos para pasar y para la élite.
+- Curva de dificultad: la IA sube poco a poco a lo largo de los eventos nuevos (y luego retocas cada evento).
 - Tiempos propios en las contrarrelojes (m:ss.cc), zona a alcanzar en las zonas y puntos en los eliminators.
 - Restringir las naves de cada evento: tipos permitidos (velocidad, agilidad, combate, prototipo) o una
   nave obligatoria (cualquiera de las 20).

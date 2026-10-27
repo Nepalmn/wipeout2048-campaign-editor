@@ -146,6 +146,8 @@ function panel(){
  <div class=nota cnt>${C.temporadas.length}/${MAXT} temporadas · ${nEv} eventos${nEv>PROBADO?` <span style="color:var(--bad)">(más de ${PROBADO} no está probado)</span>`:''}${libre!=null?` · textura: ~${libre.toLocaleString()} px libres`:''}</div>
  <div class=f><label>Color carteles</label><div style="display:flex;gap:6px;align-items:center"><input type=color value="${C.colorCarteles||'#2a3f8f'}" onchange="cambia(()=>C.colorCarteles=this.value)"> <label><input type=checkbox ${C.colorCarteles?'':'checked'} onchange="cambia(()=>C.colorCarteles=this.checked?'':'#2a3f8f')"> original</label></div>
  <label>IA de 2048-2050</label><select onchange="cambiaIAOriginal(this)">${opts([['','original del juego (recomendado)'],['2','media (2)'],['3.5','difícil (3.5)'],['5','muy difícil (5)']],C.iaOriginales||'')}</select></div>${C.iaOriginales?'<p class=nota style="color:var(--bad)">⚠ Estás cambiando los eventos originales 2048-2050 del juego. Avísalo si compartes la campaña.</p>':''}
+ <div class=f><label>Curva de IA</label><div style="display:flex;gap:6px;align-items:center"><input type=number id=curA step=0.1 min=0.1 max=10 value="2.5" style="width:70px"> → <input type=number id=curB step=0.1 min=0.1 max=10 value="4.5" style="width:70px"> <button class=sec onclick="curvaIA()">Aplicar</button></div></div>
+ <p class=nota>Reparte la IA de forma progresiva por los eventos nuevos (carreras y eliminators), del primero al último. Luego puedes retocar cada evento.</p>
  <div class=fila><button onclick="nuevaTemporada()" ${C.temporadas.length>=MAXT?'disabled':''}>＋ Temporada</button></div>
  <p class=nota>Clic en un evento o cartel para editarlo. Arrastra para moverlo. Clic derecho en un evento = siguiente forma.</p>`;
  if(sel){const t=sel.t,tp=C.temporadas[t],c=tp.cartel;
@@ -202,6 +204,12 @@ function ponObjetivo(t,cual,_,txt,tt){const ev=sel&&sel.t===t?C.temporadas[t].ev
 function cambiaIAOriginal(sel){
  if(sel.value&&!confirm('⚠ ATENCIÓN: esto cambia la dificultad de los eventos ORIGINALES del juego (temporadas 2048-2050), no solo los de tu campaña.\n\nQuien juegue tu campaña tendrá 2048-2050 distintos al juego normal, y no se sabe cómo lo tratarían las clasificaciones online. Úsalo solo si sabes lo que haces y avísalo al compartir la campaña.\n\n¿Cambiarla igualmente?')){sel.value=C.iaOriginales||'';return}
  cambia(()=>C.iaOriginales=sel.value)}
+function curvaIA(){const a=parseFloat(curA.value),b=parseFloat(curB.value);
+ if(!(a>0&&b>0)){alert('Pon dos valores mayores que 0');return}
+ const evs=[...eventos()].map(([,,e])=>e).filter(e=>P.por[e.plantilla].m_skillScale);
+ if(!evs.length)return;
+ if(!confirm(`Se cambiará la IA de ${evs.length} eventos nuevos, de ${a} a ${b} de forma progresiva. Los eventos originales 2048-2050 no se tocan.\n\n¿Aplicar?`))return;
+ cambia(()=>evs.forEach((e,i)=>e.ia=(a+(b-a)*(evs.length>1?i/(evs.length-1):0)).toFixed(2)))}
 function libreCerca(x,y){const ocupado=new Set([...B.orig.map(o=>o.x+','+o.y),...[...eventos()].map(([,,e])=>e.x+','+e.y)]);
  for(let r=0;r<40;r++)for(let dy=-r;dy<=r;dy++)for(let dx=-r;dx<=r;dx++){if(Math.max(Math.abs(dx),Math.abs(dy))!==r)continue;const X=x+dx,Y=y+dy;if(X>0&&Y>0&&!ocupado.has(X+','+Y)&&!ocupado.has((X+1)+','+Y)&&!ocupado.has((X-1)+','+Y))return[X,Y]}return[x,y]}
 function nuevoEvento(t){cambia(()=>{const ev=C.temporadas[t].eventos,ult=ev[ev.length-1],e=JSON.parse(JSON.stringify(ult));e.id='';
