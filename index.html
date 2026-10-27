@@ -145,7 +145,7 @@ function panel(){
  const nEv=[...eventos()].length;let h=`<h3>Campaña</h3>
  <div class=nota cnt>${C.temporadas.length}/${MAXT} temporadas · ${nEv} eventos${nEv>PROBADO?` <span style="color:var(--bad)">(más de ${PROBADO} no está probado)</span>`:''}${libre!=null?` · textura: ~${libre.toLocaleString()} px libres`:''}</div>
  <div class=f><label>Color carteles</label><div style="display:flex;gap:6px;align-items:center"><input type=color value="${C.colorCarteles||'#2a3f8f'}" onchange="cambia(()=>C.colorCarteles=this.value)"> <label><input type=checkbox ${C.colorCarteles?'':'checked'} onchange="cambia(()=>C.colorCarteles=this.checked?'':'#2a3f8f')"> original</label></div>
- <label>IA de 2048-2050</label><select onchange="cambia(()=>C.iaOriginales=this.value)">${opts([['','original del juego (recomendado)'],['2','media (2)'],['3.5','difícil (3.5)'],['5','muy difícil (5)']],C.iaOriginales||'')}</select></div>
+ <label>IA de 2048-2050</label><select onchange="cambiaIAOriginal(this)">${opts([['','original del juego (recomendado)'],['2','media (2)'],['3.5','difícil (3.5)'],['5','muy difícil (5)']],C.iaOriginales||'')}</select></div>${C.iaOriginales?'<p class=nota style="color:var(--bad)">⚠ Estás cambiando los eventos originales 2048-2050 del juego. Avísalo si compartes la campaña.</p>':''}
  <div class=fila><button onclick="nuevaTemporada()" ${C.temporadas.length>=MAXT?'disabled':''}>＋ Temporada</button></div>
  <p class=nota>Clic en un evento o cartel para editarlo. Arrastra para moverlo. Clic derecho en un evento = siguiente forma.</p>`;
  if(sel){const t=sel.t,tp=C.temporadas[t],c=tp.cartel;
@@ -199,6 +199,9 @@ function ponObjetivo(t,cual,_,txt,tt){const ev=sel&&sel.t===t?C.temporadas[t].ev
  else{v=parseInt(txt,10);if(!(v>0)){alert('Escribe un número mayor que 0');panel();return}}
  cambia(()=>{ev[cual?'objElite':'objPase']=v;const pl=P.por[ev.plantilla],p=ev.objPase??pl.objPase,el=ev.objElite??pl.objElite;
   if(tt?el>p:el<p)setTimeout(()=>alert(tt?'Ojo: el tiempo élite debería ser menor que el de pasar':'Ojo: el objetivo élite debería ser mayor que el de pasar'),50)})}
+function cambiaIAOriginal(sel){
+ if(sel.value&&!confirm('⚠ ATENCIÓN: esto cambia la dificultad de los eventos ORIGINALES del juego (temporadas 2048-2050), no solo los de tu campaña.\n\nQuien juegue tu campaña tendrá 2048-2050 distintos al juego normal, y no se sabe cómo lo tratarían las clasificaciones online. Úsalo solo si sabes lo que haces y avísalo al compartir la campaña.\n\n¿Cambiarla igualmente?')){sel.value=C.iaOriginales||'';return}
+ cambia(()=>C.iaOriginales=sel.value)}
 function libreCerca(x,y){const ocupado=new Set([...B.orig.map(o=>o.x+','+o.y),...[...eventos()].map(([,,e])=>e.x+','+e.y)]);
  for(let r=0;r<40;r++)for(let dy=-r;dy<=r;dy++)for(let dx=-r;dx<=r;dx++){if(Math.max(Math.abs(dx),Math.abs(dy))!==r)continue;const X=x+dx,Y=y+dy;if(X>0&&Y>0&&!ocupado.has(X+','+Y)&&!ocupado.has((X+1)+','+Y)&&!ocupado.has((X-1)+','+Y))return[X,Y]}return[x,y]}
 function nuevoEvento(t){cambia(()=>{const ev=C.temporadas[t].eventos,ult=ev[ev.length-1],e=JSON.parse(JSON.stringify(ult));e.id='';
