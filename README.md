@@ -1,39 +1,55 @@
-# Editor de campañas para WipEout 2048
+# WipEout 2048 Campaign Editor
 
-Editor web para crear temporadas nuevas en el mapa de la campaña 2048 de **WipEout 2048** (PS Vita, versión europea PCSF00007 1.04), más allá de 2050. Genera el mod listo para Vita3K, o parches para compartirlo sin repartir archivos del juego.
+*[Español](README.es.md)*
 
-> **English:** web-based campaign editor for WipEout 2048 (PS Vita, EU PCSF00007 v1.04). Add seasons after 2050, edit events (type, track, class, laps, AI, objectives), move them around the map, recolor or hand-draw season banners, and build a ready-to-use `eboot.bin` + `data2.psarc` or `.ips`/`.xdelta` patches. No game files are included: you supply your own.
+A web-based editor for adding new seasons to the 2048 campaign map of **WipEout 2048** (PS Vita, EU version PCSF00007 v1.04), beyond 2050. It builds a mod ready for Vita3K, or patches you can share without distributing any game files.
 
-## Qué se puede hacer
+## Features
 
-- Añadir y quitar temporadas (hasta 28) y eventos.
-- Elegir el tipo de cada evento (carrera, contrarreloj, zona, eliminator) a partir de cualquiera de los 60 eventos originales.
-- Cambiar pista, clase (C, B, A, A+), vueltas, IA, armas y objetivos de pase y élite.
-- Mover eventos y carteles por el mapa, cambiar la forma de cada casilla y el orden de desbloqueo.
-- Cambiar el color de los carteles de temporada o dibujar carteles propios.
-- Ver en rojo lo que se pisa o se sale de la zona que admite el juego.
+- Add and remove seasons (up to 28) and events.
+- Choose each event's type (race, time trial, zone, eliminator) using any of the 60 original events as a template.
+- Change track, speed class (C, B, A, A+), laps, AI skill, weapons, and pass/elite objectives.
+- Drag events and banners around the map, and change tile shapes and unlock order.
+- Recolor the season banners or draw your own (brush, text, shapes or an imported image).
+- Overlaps and anything outside the area the game supports are highlighted in red.
 
-El ejecutable se parchea para quitar los límites del juego: memoria para el progreso, memoria de textos, tabla de carteles y desbloqueo al repetir un evento. Los detalles están en [`construir.py`](construir.py).
+The executable is patched to lift the game's limits: progress buffer, string heap, banner table, and unlocking the next event when you replay one. The details are in [`construir.py`](construir.py).
 
-## Requisitos
+## Requirements
 
-- Python 3 con Pillow y NumPy: `pip install pillow numpy`
-- ImageMagick (la orden `magick`).
-- Opcional: `xdelta3` para generar parches `.xdelta`.
-- Tu copia de WipEout 2048 europeo 1.04 instalada en Vita3K. Copia a `juego/`:
+- Python 3 with Pillow and NumPy: `pip install pillow numpy`
+- ImageMagick (the `magick` command).
+- Optional: `xdelta3` to build `.xdelta` patches.
+- Your own copy of WipEout 2048 EU 1.04 installed in Vita3K. Copy these into `juego/`:
   - `ux0/app/PCSF00007/eboot.bin`
   - `ux0/app/PCSF00007/PSP2/data2.psarc`
 
-## Uso
+  The editor checks their MD5 and never modifies them.
+
+## Usage
 
 ```sh
-python3 servidor.py      # o ./iniciar.sh  /  iniciar.bat en Windows
+python3 servidor.py      # or ./iniciar.sh  /  iniciar.bat on Windows
 ```
 
-Se abre http://localhost:8765. "Construir mod" deja en `salida/` el `eboot.bin` y el `data2.psarc` para copiar sobre los del juego, y los parches `eboot.ips`, `eboot.xdelta` y `data2.xdelta`. El archivo `campana.json` se puede compartir: quien tenga el editor puede construir esa campaña.
+It opens http://localhost:8765. The first run reads your game files (a few seconds) and loads the example campaign (2051–2070).
 
-Más detalles, límites y avisos sobre las partidas guardadas: [`LEEME.txt`](LEEME.txt).
+- **Guardar** (Save) writes `campana.json`, with backups in `copias/`.
+- **Construir mod** (Build mod) writes to `salida/`:
+  - `eboot.bin` and `data2.psarc`: copy them over the game's files (back up the originals first).
+  - `eboot.ips`, `eboot.xdelta`, `data2.xdelta`: patches for sharing your campaign.
+- You can also share your `campana.json`: anyone with the editor can build it.
 
-## Campaña 2051-2070
+The interface is in Spanish for now. Limits and save-file notes are in [`README.txt`](README.txt).
 
-La campaña de ejemplo (`campana.ejemplo.json`) tiene 20 temporadas y 210 eventos. Los parches para jugarla sin el editor están en [Releases](../../releases).
+## Save files
+
+- Back up your save (`ux0/user/00/savedata/PCSF00007`) before trying a campaign.
+- Old saves keep their progress. If you had already finished 2050, replay *2050 – Event 9* to unlock the first new season.
+- If you change the **type** of an existing event, the editor gives it a new ID, so older saves don't hang on load (each type stores its data with a different size).
+
+## The 2051–2070 campaign
+
+The example campaign (`campana.ejemplo.json`) has 20 seasons and 210 events. Patches to play it without the editor are in [Releases](../../releases).
+
+Tested on Vita3K (PC and ROG Ally). Not yet tested on a real Vita.
