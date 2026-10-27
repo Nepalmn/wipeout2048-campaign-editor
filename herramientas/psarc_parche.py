@@ -26,7 +26,7 @@ def parchear(base, out, archivos):
     lower = {n.lower(): i + 1 for i, n in enumerate(names)}
     repl = {}; adds = []
     for rel, data in archivos.items():
-        idx = lower.get(rel.lower())
+        idx = lower.get(rel.lower()) or lower.get('/' + rel.lower())   # los DLC guardan las rutas con '/' delante
         if idx: repl[idx] = data
         else: adds.append((rel, data))
     def encode(data):

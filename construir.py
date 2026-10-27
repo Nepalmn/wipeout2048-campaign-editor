@@ -1,6 +1,6 @@
 # construir.py [campana.json] : genera el mod a partir de la campaña del editor.
 # Salida en salida/: eboot.bin y data2.psarc listos para copiar, eboot.ips y (si hay xdelta3) data2.xdelta.
-import os, sys, re, json, struct, shutil, subprocess, random, zlib
+import os, sys, re, json, struct, shutil, subprocess, random, zlib, html
 D = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(D, 'herramientas'))
 import carteles, gxt, psarc_parche
@@ -18,6 +18,8 @@ def campo(b, f):
     if not m: return None
     v = re.findall(r'<ARRAY value="([^"]*)"', m.group(0)); return v[0] if v else ''
 
+textos = {}   # clave -> (español, inglés) de los textos propios de los eventos
+
 def generar_sp(sp, C, P):
     bloques = {m.group(1): m.group(0) for m in re.finditer(r'<instance instanceid="([-0-9]+)".*?</instance>', sp, re.S)}
     por_nombre = {re.search(r' name="([^"]*)"', b).group(1): i for i, b in bloques.items()}
@@ -28,7 +30,7 @@ def generar_sp(sp, C, P):
         e['id'] = str(e.get('id') or '')
         while not e['id'] or e['id'] in usados or e['id'] in por_nombre: e['id'] = str(random.randint(-2**31, 2**31 - 1))
         usados.add(e['id'])
-    ultimo = previo = por_nombre['2050 - Event 9']; nuevos = []
+    ultimo = previo = por_nombre['2050 - Event 9']; nuevos = []; textos.clear()
     for i, (t, k, e) in enumerate(evs):
         src = por_nombre[e['plantilla']]; b = bloques[src]; nombre = '%d - Event %d' % (2051 + t, k + 1)
         b = b.replace('instanceid="%s"' % src, 'instanceid="%s"' % e['id'], 1)
@@ -63,12 +65,17 @@ def generar_sp(sp, C, P):
                 ob = ob.replace('instanceid="%s"' % campo(b, f), 'instanceid="%s"' % oid, 1)
                 ob = re.sub(r' name="[^"]*"', ' name="%s %s"' % (nombre, suf), ob, count=1)
                 nuevos.append(set_opt(ob, 'm_ObjectiveTarget', str(int(e[k])))); cambios.append((f, oid))
+        if e.get('texto') or e.get('textoEn'):                                  # texto propio del evento
+            clave = 'CAMP_%s_TXT' % e['id'].replace('-', 'M'); textos[clave] = (e.get('texto'), e.get('textoEn'), next((v for f, v in cambios if f == 'm_description'), campo(b, 'm_description')))
+            cambios.append(('m_description', clave))
         if C.get('desbloquearTodo'): cambios.append(('m_bForceAlwaysUnlocked', 'true'))      # solo para pruebas
         for f, v in cambios: b = set_opt(b, f, v)
-        if tipo == 'carrera' and e['plantilla'] == '2050 - Event 9':
-            gm = re.search(r'<M_PGRIDSHIPMODELDATA.*?</M_PGRIDSHIPMODELDATA>', b, re.S).group(0); ng = gm
-            for a, g in zip(re.findall(r'<ARRAY value="[^"]*"', gm), GRID): ng = ng.replace(a, '<ARRAY value="%s"' % g, 1)
-            b = b.replace(gm, ng)
+        rivales = [P['naves'][n] for n in e['rivales']] if e.get('rivales') else (GRID if tipo == 'carrera' and e['plantilla'] == '2050 - Event 9' else None)
+        gm = re.search(r'<M_PGRIDSHIPMODELDATA.*?</M_PGRIDSHIPMODELDATA>', b, re.S)
+        if rivales and gm and len(re.findall(r'<ARRAY value="[^"]*"', gm.group(0))) == len(rivales):   # naves de los 7 rivales
+            ng = gm.group(0)
+            for a, g in zip(re.findall(r'<ARRAY value="[^"]*"', gm.group(0)), rivales): ng = ng.replace(a, '<ARRAY value="%s"' % g, 1)
+            b = b.replace(gm.group(0), ng)
         nuevos.append(b)
         if k == len(C['temporadas'][t]['eventos']) - 1: previo = e['id']
     if evs:
@@ -115,6 +122,20 @@ def ips(a, b):
         out += i.to_bytes(3, 'big') + (j - i).to_bytes(2, 'big') + b[i:j]; i = j
     return bytes(out + b'EOF')
 
+def con_textos(t, idioma):
+    """Devuelve entries.xml (texto) con los textos propios insertados en orden (el juego los busca por búsqueda binaria)."""
+    nl = '\r\n' if '\r\n' in t else '\n'
+    orig = dict(re.findall(r'<entry id="([^"]*)" string="([^"]*)"', t))       # textos del idioma (ya escapados)
+    def texto(es, en, base):     # español -> 'es'; inglés -> 'en'; si no se cambió, el texto original de ese idioma
+        propio = es if idioma == 'spanish' else en
+        return html.escape(propio, quote=True) if propio else orig.get(base, html.escape(es or en or '', quote=True))
+    sep = nl if nl in t else ''          # Firestar deja todo el archivo en una sola línea
+    for k, v in sorted(textos.items()):
+        nueva = '<entry id="%s" string="%s"></entry>%s' % (k, texto(*v), sep)
+        pos = next((m.start() for m in re.finditer(r'<entry id="([^"]*)"', t) if m.group(1).encode() > k.encode()), t.rindex('</StringTable>'))
+        t = t[:pos] + nueva + t[pos:]
+    return t.encode('utf8')
+
 def xdelta3():
     for p in (os.path.join(D, 'herramientas', 'xdelta3'), os.path.join(D, 'herramientas', 'xdelta3.exe'), shutil.which('xdelta3')):
         if p and os.path.exists(p): return p
@@ -141,14 +162,31 @@ def main():
     if C.get('pruebaCarteles'): labxml = re.sub(r' linkedevent="[^"]*"', '', labxml)     # solo para pruebas: carteles siempre visibles
     i = defxml.index('<CanvasLabel name="Trophy-2048-2-3">'); defxml = defxml[:i] + labxml + defxml[i:]
     os.makedirs(S, exist_ok=True); tex = os.path.join(T, 'canvasTexture.gxt'); gxt.escribir(atlas, tex)
-    psarc_parche.parchear(os.path.join(J, 'data2.psarc'), os.path.join(S, 'data2.psarc'), {
-        'data/xml/SP.xml': sp.encode('utf8'), 'data/plugins/frontend/NEWGUI/Definition.xml': defxml.encode('utf8'),
-        'data/FE/NewImages/canvasTexture.gxt': open(tex, 'rb').read()})
+    archivos = {'data/xml/SP.xml': sp.encode('utf8'), 'data/plugins/frontend/NEWGUI/Definition.xml': defxml.encode('utf8'),
+                'data/FE/NewImages/canvasTexture.gxt': open(tex, 'rb').read()}
+    # textos propios: se añaden a los 15 idiomas (español en español, inglés en el resto)
+    for idioma in sorted(os.listdir(os.path.join(O, 'plugins/languages'))) if textos else []:
+        ruta = os.path.join(O, 'plugins/languages', idioma, 'entries.xml')
+        archivos['data/plugins/languages/%s/entries.xml' % idioma] = con_textos(open(ruta, encoding='utf8', newline='').read(), idioma)
+    if textos: print('Textos propios: %d (en 15 idiomas)' % len(textos))
+    psarc_parche.parchear(os.path.join(J, 'data2.psarc'), os.path.join(S, 'data2.psarc'), archivos)
+    # el DLC 2 trae su propia copia de los textos y se carga después de data2: si el jugador lo tiene, hay que parchearlo también
+    dlc2 = os.path.join(J, 'dlc2.psarc')
+    if os.path.exists(os.path.join(S, 'dlc2.psarc')): os.remove(os.path.join(S, 'dlc2.psarc'))
+    if textos and os.path.exists(dlc2):
+        sys.path.insert(0, os.path.join(D, 'herramientas')); import psarc_leer, tempfile
+        tmp = tempfile.mkdtemp(); psarc_leer.read(dlc2, out=tmp, pattern='plugins/languages/')
+        arch_dlc = {}
+        for idioma in sorted(os.listdir(os.path.join(tmp, 'data/plugins/languages'))):
+            ruta = os.path.join(tmp, 'data/plugins/languages', idioma, 'entries.xml')
+            if os.path.exists(ruta): arch_dlc['data/plugins/languages/%s/entries.xml' % idioma] = con_textos(open(ruta, encoding='utf8', newline='').read(), idioma)
+        psarc_parche.parchear(dlc2, os.path.join(S, 'dlc2.psarc'), arch_dlc)
+        print('DLC 2: textos añadidos también en salida/dlc2.psarc')
     a = open(os.path.join(J, 'eboot.bin'), 'rb').read(); b = bytes(parchear_eboot(bytearray(a), nombres))
     open(os.path.join(S, 'eboot.bin'), 'wb').write(b); open(os.path.join(S, 'eboot.ips'), 'wb').write(ips(a, b))
     x = xdelta3()
     if x:
-        for nm in ('eboot', 'data2'):
+        for nm in ('eboot', 'data2') + (('dlc2',) if os.path.exists(os.path.join(J, 'dlc2.psarc')) and textos else ()):
             ext = '.bin' if nm == 'eboot' else '.psarc'
             subprocess.run([x, '-e', '-9', '-S', 'none', '-f', '-B', '134217728', '-s', os.path.join(J, nm + ext), os.path.join(S, nm + ext), os.path.join(S, nm + '.xdelta')], check=True)
     print('Hecho. En salida/: eboot.bin, data2.psarc, eboot.ips' + (', eboot.xdelta, data2.xdelta' if x else ' (instala xdelta3 para sacar también los .xdelta)'))

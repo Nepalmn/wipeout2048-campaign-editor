@@ -11,6 +11,8 @@ A web-based editor for adding new seasons to the 2048 campaign map of **WipEout 
 - Change track, speed class (C, B, A, A+), laps, AI skill, weapons, and pass/elite objectives.
 - A difficulty curve tool: AI ramps up gradually across the new events (then tweak any event by hand).
 - Custom target times for time trials (m:ss.cc), zone targets for Zone events and points for Eliminators.
+- Opponent ships: pick the ship each of the 7 AI pilots uses (or fill them all by class in one click).
+- Custom event texts (Spanish and English; the other languages keep their original translation).
 - Ship restrictions per event: allowed classes (speed, agility, combat, prototype) or a forced ship (any of the 20).
 - Drag events and banners anywhere on the map, and change tile shapes and unlock order. Banners are drawn with the exact triangles they cover in game.
 - Recolor the season banners or draw your own (brush, text, shapes or an imported image).
@@ -45,6 +47,8 @@ If a patch fails, your files are not the EU 1.04 ones. The MD5 checksums to comp
 **5. Play**
 - Back up your save (`ux0/user/00/savedata/PCSF00007`) first.
 - Your progress is kept. The new seasons appear on the campaign map after 2050. If you had already finished 2050, replay **2050 – Event 9** once to unlock 2051.
+
+**Firestar users:** if you have a Firestar mod (for example a custom soundtrack) deployed into DLC 2, it ships its own copy of the game texts, which overrides the campaign's. The 10 events with corrected texts would then show a raw key like `CAMP_…_TXT`. To fix it, put your `dlc2.psarc` in the editor's `juego/` folder and build: the editor adds the texts to your DLC as well, keeping your soundtrack.
 
 **Command line alternative** (xdelta3):
 ```sh
@@ -89,7 +93,7 @@ The interface is in Spanish for now. Limits and save-file notes are in [`README.
 
 ## The 2051–2070 campaign
 
-The example campaign (`campana.ejemplo.json`) has 20 seasons and 210 events, A and A+ class, hard AI in the new events (2048–2050 are left untouched), a time trial, a zone and an eliminator per season, and 30 events with ship restrictions. Patches to play it without the editor are in [Releases](../../releases).
+The example campaign (`campana.ejemplo.json`) has 20 seasons and 210 events, A and A+ class, hard AI in the new events (2048–2050 are left untouched), a time trial, a zone and an eliminator per season, and 30 events with ship restrictions. It also fixes a translation bug of the original game: the Spanish text of the 2050 – Event 3 eliminator said "Agility" for a speed-ship event. Patches to play it without the editor are in [Releases](../../releases).
 
 Tested on Vita3K (PC and ROG Ally). Not yet tested on a real Vita.
 

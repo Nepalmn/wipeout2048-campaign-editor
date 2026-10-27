@@ -181,6 +181,11 @@ function panel(){
    const perm=e.clasesNave??CN.filter(c=>pl[c[1]]!=='true').map(c=>c[0]),naveDe=Object.fromEntries(Object.entries(P.naves).map(([n,i])=>[i,n])),nv=e.nave??(naveDe[pl.m_pPlayerShipModelData]||'');
    h+=`<label>Naves permitidas</label><div>${CN.map(c=>`<label style="display:block"><input type=checkbox ${perm.includes(c[0])?'checked':''} onchange="cambiaNaves(${t},${k},'${c[0]}',this.checked)"> ${c[2]}</label>`).join('')}</div>
    <label>Nave obligatoria</label><select onchange="cambia(()=>{${set}.nave=this.value;if(!${set}.clasesNave)${set}.clasesNave=${JSON.stringify(perm).replace(/"/g,"'")}})">${opts([['','ninguna'],...Object.keys(P.naves).sort().map(n=>[n,n.replace(/_/g,' ').replace('AG System','AG-Systems').replace('Combat','combate').replace('Agility','agilidad').replace('Speed','velocidad').replace('Proto','prototipo')])],nv)}</select>`}
+  if(pl.rivales){const riv=rivalesDe(e),lista=Object.keys(P.naves).sort();
+   h+=`<label>Rivales (7)</label><div>${riv.map((r,i)=>`<select style="margin-bottom:3px" onchange="ponRival(${t},${k},${i},this.value)">${opts(lista.map(n=>[n,nomNave(n)]),r)}</select>`).join('')}
+   <div class=fila><button class=sec onclick="rellenaRivales(${t},${k},'Speed')">velocidad</button><button class=sec onclick="rellenaRivales(${t},${k},'Agility')">agilidad</button><button class=sec onclick="rellenaRivales(${t},${k},'Combat')">luchadores</button><button class=sec onclick="rellenaRivales(${t},${k},'Proto')">prototipo</button><button class=sec onclick="rellenaRivales(${t},${k},'')">mezcla</button></div></div>`}
+  h+=`<label>Texto</label><input type=text value="${esc(e.texto||'')}" placeholder="${esc(pl.texto||'')}" onchange="cambia(()=>{const v=this.value.trim();if(v)${set}.texto=v;else delete ${set}.texto})">
+  <label>Texto (inglés)</label><input type=text value="${esc(e.textoEn||'')}" placeholder="${esc(pl.textoEn||'')}" onchange="cambia(()=>{const v=this.value.trim();if(v)${set}.textoEn=v;else delete ${set}.textoEn})">`;
   h+=`<label>Forma</label><select onchange="cambia(()=>${set}.forma=this.value)">${opts(Object.entries(NOMBRES).map(([v,n])=>[v,v+' · '+n]),e.forma)}</select></div>
   <div class=fila><button class=sec onclick="mover(${t},${k},-1)" ${k?'':'disabled'}>◀ Antes</button><button class=sec onclick="mover(${t},${k},1)" ${k<C.temporadas[t].eventos.length-1?'':'disabled'}>Después ▶</button><button class=peligro onclick="borrarEvento(${t},${k})">Borrar evento</button></div>
   <p class=nota>El orden es el de desbloqueo: cada evento abre el siguiente, y el primero de cada temporada lo abre el último de la anterior.</p>`}
@@ -210,6 +215,12 @@ function curvaIA(){const a=parseFloat(curA.value),b=parseFloat(curB.value);
  if(!evs.length)return;
  if(!confirm(`Se cambiará la IA de ${evs.length} eventos nuevos, de ${a} a ${b} de forma progresiva. Los eventos originales 2048-2050 no se tocan.\n\n¿Aplicar?`))return;
  cambia(()=>evs.forEach((e,i)=>e.ia=(a+(b-a)*(evs.length>1?i/(evs.length-1):0)).toFixed(2)))}
+const GRID_2050_9=['Feisar_Speed','Feisar_Speed','Feisar_Speed','Feisar_Combat','Feisar_Combat','Feisar_Agility','Feisar_Agility'];
+const nomNave=n=>n.replace(/_/g,' ').replace('AG System','AG-Systems').replace('Combat','luchador').replace('Agility','agilidad').replace('Speed','velocidad').replace('Proto','prototipo');
+function rivalesDe(e){const pl=P.por[e.plantilla];return (e.rivales||(e.tipo==='carrera'&&e.plantilla==='2050 - Event 9'?GRID_2050_9:pl.rivales)).slice()}
+function ponRival(t,k,i,v){const e=C.temporadas[t].eventos[k];cambia(()=>{const r=rivalesDe(e);r[i]=v;e.rivales=r})}
+function rellenaRivales(t,k,clase){const e=C.temporadas[t].eventos[k],eq=['Feisar','Piranha','Auricom','Qirex','AG_System'],cl=['Speed','Agility','Combat'];
+ cambia(()=>{e.rivales=Array.from({length:7},(_,i)=>eq[i%5]+'_'+(clase||cl[i%3]))})}
 function libreCerca(x,y){const ocupado=new Set([...B.orig.map(o=>o.x+','+o.y),...[...eventos()].map(([,,e])=>e.x+','+e.y)]);
  for(let r=0;r<40;r++)for(let dy=-r;dy<=r;dy++)for(let dx=-r;dx<=r;dx++){if(Math.max(Math.abs(dx),Math.abs(dy))!==r)continue;const X=x+dx,Y=y+dy;if(X>0&&Y>0&&!ocupado.has(X+','+Y)&&!ocupado.has((X+1)+','+Y)&&!ocupado.has((X-1)+','+Y))return[X,Y]}return[x,y]}
 function nuevoEvento(t){cambia(()=>{const ev=C.temporadas[t].eventos,ult=ev[ev.length-1],e=JSON.parse(JSON.stringify(ult));e.id='';

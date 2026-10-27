@@ -12,6 +12,8 @@ Editor web para crear temporadas nuevas en el mapa de la campaña 2048 de **WipE
 - Cambiar pista, clase (C, B, A, A+), vueltas, IA, armas y objetivos de pase y élite.
 - Curva de dificultad: la IA sube poco a poco a lo largo de los eventos nuevos (y luego retocas cada evento).
 - Tiempos propios en las contrarrelojes (m:ss.cc), zona a alcanzar en las zonas y puntos en los eliminators.
+- Naves rivales: elige la nave de cada uno de los 7 pilotos de la IA (o rellénalos todos por clase de un clic).
+- Textos propios para cada evento (en español e inglés; los demás idiomas conservan su traducción original).
 - Restricciones de naves por evento: tipos permitidos (velocidad, agilidad, combate, prototipo) o una nave obligatoria (cualquiera de las 20).
 - Mover eventos y carteles por todo el mapa, cambiar la forma de cada casilla y el orden de desbloqueo. Los carteles se dibujan con los triángulos exactos que ocupan en el juego.
 - Cambiar el color de los carteles de temporada o dibujar carteles propios.
@@ -47,6 +49,8 @@ Si un parche falla, tus archivos no son los de la 1.04 europea. Los MD5 para com
 - Antes, haz copia de tu partida (`ux0/user/00/savedata/PCSF00007`).
 - Conservas tu progreso. Las temporadas nuevas aparecen en el mapa de la campaña después de 2050. Si ya habías terminado 2050, vuelve a pasar **2050 - Evento 9** una vez para abrir 2051.
 
+**Si usas Firestar:** si tienes un mod de Firestar (por ejemplo, una banda sonora) instalado en el DLC 2, trae su propia copia de los textos del juego, que tapa los de la campaña. Los 10 eventos con el texto corregido mostrarían una clave como `CAMP_…_TXT`. Para arreglarlo, pon tu `dlc2.psarc` en la carpeta `juego/` del editor y construye: el editor añade los textos también a tu DLC, sin tocar tu banda sonora.
+
 **Con la línea de comandos** (xdelta3):
 ```sh
 xdelta3 -d -s eboot.bin eboot.xdelta eboot_nuevo.bin
@@ -76,6 +80,6 @@ Más detalles, límites y avisos sobre las partidas guardadas: [`LEEME.txt`](LEE
 
 ## Campaña 2051-2070
 
-La campaña de ejemplo (`campana.ejemplo.json`) tiene 20 temporadas y 210 eventos: clases A y A+, IA difícil en los eventos nuevos (2048-2050 quedan sin tocar), una contrarreloj, una zona y un eliminator por temporada, y 30 eventos con restricciones de naves.
+La campaña de ejemplo (`campana.ejemplo.json`) tiene 20 temporadas y 210 eventos: clases A y A+, IA difícil en los eventos nuevos (2048-2050 quedan sin tocar), una contrarreloj, una zona y un eliminator por temporada, y 30 eventos con restricciones de naves. También corrige un fallo de traducción del juego original: el texto en español del eliminator 2050 - Evento 3 decía «Agilidad» en un evento de naves de velocidad.
 
 Los tiempos de las contrarrelojes son todavía los del juego original: si haces buenos tiempos, compártelos para ajustar la campaña. Los parches para jugarla sin el editor están en [Releases](../../releases).

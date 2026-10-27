@@ -1,6 +1,6 @@
 # preparar.py : lee juego/eboot.bin y juego/data2.psarc (WipEout 2048 EU PCSF00007 1.04) y deja en trabajo/
 # lo que necesitan el editor y construir.py. Solo hace falta ejecutarlo una vez.
-import os, sys, re, json, hashlib, struct
+import os, sys, re, json, hashlib, struct, html
 D = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(D, 'herramientas'))
 import psarc_leer, gxt
@@ -25,7 +25,7 @@ def main():
         if not os.path.exists(p): sys.exit('Falta juego/%s (cópialo de tu WipEout 2048 europeo 1.04)' % n)
         if md5(p) != h: sys.exit('juego/%s no es el de la 1.04 europea sin modificar (MD5 %s, esperado %s)' % (n, md5(p), h))
     os.makedirs(os.path.join(T, 'orig'), exist_ok=True)
-    for pat in ('data/xml/sp.xml', 'data/plugins/frontend/newgui/definition.xml', 'data/fe/newimages/canvastexture.gxt'):
+    for pat in ('data/xml/sp.xml', 'data/plugins/frontend/newgui/definition.xml', 'data/fe/newimages/canvastexture.gxt', 'data/plugins/languages/'):
         psarc_leer.read(os.path.join(J, 'data2.psarc'), out=os.path.join(T, 'orig'), pattern=pat)
     O = os.path.join(T, 'orig', 'data')
     sp = open(os.path.join(O, 'xml/SP.xml'), encoding='utf8').read()
@@ -44,7 +44,21 @@ def main():
                  if not m.group(2).startswith('20')}
     naves = {m.group(2): m.group(1) for m in re.finditer(r'<instance instanceid="([-0-9]+)" typedefid="520725191" name="([^"]*)"', sp) if m.group(2) != 'WINGMAN'}
     pista_de = {v: k for k, v in pistas.items()}
-    for p in plant: p['pista'] = pista_de.get(p['m_trackDef'] or '', '?')
+    # textos de los eventos (español e inglés) para mostrarlos en el editor
+    def textos(idioma):
+        t = open(os.path.join(O, 'plugins/languages/%s/entries.xml' % idioma), encoding='utf8').read()
+        return {k: html.unescape(v) for k, v in re.findall(r'<entry id="([^"]*)" string="([^"]*)"', t)}
+    tes, ten = textos('spanish'), textos('english')
+    for p in plant:
+        p['pista'] = pista_de.get(p['m_trackDef'] or '', '?')
+        p['texto'], p['textoEn'] = tes.get(p['m_description'] or '', ''), ten.get(p['m_description'] or '', '')
+    naves_de = {v: k for k, v in naves.items()}
+    for m in re.finditer(r'<instance instanceid="[-0-9]+" typedefid="[-0-9]+" name="([^"]*)".*?</instance>', sp, re.S):
+        p = next((x for x in plant if x['n'] == m.group(1)), None)
+        g = re.search(r'<M_PGRIDSHIPMODELDATA.*?</M_PGRIDSHIPMODELDATA>', m.group(0), re.S) if p else None
+        if g:
+            v = re.findall(r'<ARRAY value="([^"]*)"', g.group(0))
+            p['rivales'] = [naves_de.get(x, '') for x in v] if len(v) == 7 else None
     # objetivo numérico de pase/élite de cada plantilla (centésimas en contrarreloj, zona en zona, puntos en eliminator)
     obj = {m.group(1): m.group(0) for m in re.finditer(r'<instance instanceid="([-0-9]+)" typedefid="380278911".*?</instance>', sp, re.S)}
     for p in plant:

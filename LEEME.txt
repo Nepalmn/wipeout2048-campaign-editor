@@ -10,6 +10,8 @@ Qué se puede hacer
 - Cambiar pista, clase (C, B, A, A+), vueltas, IA, armas y objetivos para pasar y para la élite.
 - Curva de dificultad: la IA sube poco a poco a lo largo de los eventos nuevos (y luego retocas cada evento).
 - Tiempos propios en las contrarrelojes (m:ss.cc), zona a alcanzar en las zonas y puntos en los eliminators.
+- Elegir las naves de los 7 rivales de la IA (o rellenarlas todas por clase).
+- Textos propios para cada evento (español e inglés; los demás idiomas conservan su traducción).
 - Restringir las naves de cada evento: tipos permitidos (velocidad, agilidad, combate, prototipo) o una
   nave obligatoria (cualquiera de las 20).
 - Mover eventos y carteles por todo el mapa, cambiar la forma de cada casilla y su orden de desbloqueo.

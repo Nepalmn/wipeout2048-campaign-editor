@@ -10,6 +10,8 @@ What you can do
 - Change track, class (C, B, A, A+), laps, AI, weapons, and pass/elite objectives.
 - Difficulty curve: AI ramps up gradually across the new events (then tweak any event by hand).
 - Custom time-trial targets (m:ss.cc), zone targets for Zone events and points for Eliminators.
+- Opponent ships: choose the ship of each of the 7 AI pilots (or fill them all by class).
+- Custom event texts (Spanish and English; other languages keep their original translation).
 - Ship restrictions per event: allowed classes (speed, agility, combat, prototype) or a forced ship
   (any of the 20).
 - Move events and banners anywhere on the map, change each tile's shape and its unlock order.
