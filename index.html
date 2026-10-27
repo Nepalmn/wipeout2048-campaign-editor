@@ -145,7 +145,7 @@ function panel(){
  const nEv=[...eventos()].length;let h=`<h3>Campaña</h3>
  <div class=nota cnt>${C.temporadas.length}/${MAXT} temporadas · ${nEv} eventos${nEv>PROBADO?` <span style="color:var(--bad)">(más de ${PROBADO} no está probado)</span>`:''}${libre!=null?` · textura: ~${libre.toLocaleString()} px libres`:''}</div>
  <div class=f><label>Color carteles</label><div style="display:flex;gap:6px;align-items:center"><input type=color value="${C.colorCarteles||'#2a3f8f'}" onchange="cambia(()=>C.colorCarteles=this.value)"> <label><input type=checkbox ${C.colorCarteles?'':'checked'} onchange="cambia(()=>C.colorCarteles=this.checked?'':'#2a3f8f')"> original</label></div>
- <label>IA de 2048-2050</label><select onchange="cambia(()=>C.iaOriginales=this.value)">${opts([['','original del juego'],['2','media (2)'],['3.5','difícil (3.5)'],['5','muy difícil (5)']],C.iaOriginales||'')}</select></div>
+ <label>IA de 2048-2050</label><select onchange="cambia(()=>C.iaOriginales=this.value)">${opts([['','original del juego (recomendado)'],['2','media (2)'],['3.5','difícil (3.5)'],['5','muy difícil (5)']],C.iaOriginales||'')}</select></div>
  <div class=fila><button onclick="nuevaTemporada()" ${C.temporadas.length>=MAXT?'disabled':''}>＋ Temporada</button></div>
  <p class=nota>Clic en un evento o cartel para editarlo. Arrastra para moverlo. Clic derecho en un evento = siguiente forma.</p>`;
  if(sel){const t=sel.t,tp=C.temporadas[t],c=tp.cartel;

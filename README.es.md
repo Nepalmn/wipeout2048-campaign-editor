@@ -75,6 +75,6 @@ Más detalles, límites y avisos sobre las partidas guardadas: [`LEEME.txt`](LEE
 
 ## Campaña 2051-2070
 
-La campaña de ejemplo (`campana.ejemplo.json`) tiene 20 temporadas y 210 eventos: clases A y A+, IA difícil, una contrarreloj, una zona y un eliminator por temporada, y 30 eventos con restricciones de naves.
+La campaña de ejemplo (`campana.ejemplo.json`) tiene 20 temporadas y 210 eventos: clases A y A+, IA difícil en los eventos nuevos (2048-2050 quedan sin tocar), una contrarreloj, una zona y un eliminator por temporada, y 30 eventos con restricciones de naves.
 
 Los tiempos de las contrarrelojes son todavía los del juego original: si haces buenos tiempos, compártelos para ajustar la campaña. Los parches para jugarla sin el editor están en [Releases](../../releases).

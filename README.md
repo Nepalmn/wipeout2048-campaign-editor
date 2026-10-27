@@ -88,7 +88,7 @@ The interface is in Spanish for now. Limits and save-file notes are in [`README.
 
 ## The 2051–2070 campaign
 
-The example campaign (`campana.ejemplo.json`) has 20 seasons and 210 events, A and A+ class, hard AI, a time trial, a zone and an eliminator per season, and 30 events with ship restrictions. Patches to play it without the editor are in [Releases](../../releases).
+The example campaign (`campana.ejemplo.json`) has 20 seasons and 210 events, A and A+ class, hard AI in the new events (2048–2050 are left untouched), a time trial, a zone and an eliminator per season, and 30 events with ship restrictions. Patches to play it without the editor are in [Releases](../../releases).
 
 Tested on Vita3K (PC and ROG Ally). Not yet tested on a real Vita.
 
