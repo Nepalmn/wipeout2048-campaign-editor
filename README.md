@@ -18,7 +18,7 @@ A web-based editor for adding new seasons to the 2048 campaign map of **WipEout 
 - Recolor the season banners or draw your own (brush, text, shapes or an imported image).
 - Overlaps and anything outside the area the game supports are highlighted in red.
 
-The executable is patched to lift the game's limits: progress buffer, string heap, banner table, and unlocking the next event when you replay one. The details are in [`construir.py`](construir.py).
+The executable is patched to lift the game's limits: progress buffer, string heap, banner table, unlocking the next event when you replay one, and keeping new season finals from showing the 2048–2050 cups. Races with a lap count other than 3 get their description updated automatically. The details are in [`construir.py`](construir.py).
 
 ## How to install the 2051–2070 campaign (patches)
 

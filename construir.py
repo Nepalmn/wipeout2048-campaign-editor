@@ -65,8 +65,10 @@ def generar_sp(sp, C, P):
                 ob = ob.replace('instanceid="%s"' % campo(b, f), 'instanceid="%s"' % oid, 1)
                 ob = re.sub(r' name="[^"]*"', ' name="%s %s"' % (nombre, suf), ob, count=1)
                 nuevos.append(set_opt(ob, 'm_ObjectiveTarget', str(int(e[k])))); cambios.append((f, oid))
-        if e.get('texto') or e.get('textoEn'):                                  # texto propio del evento
-            clave = 'CAMP_%s_TXT' % e['id'].replace('-', 'M'); textos[clave] = (e.get('texto'), e.get('textoEn'), next((v for f, v in cambios if f == 'm_description'), campo(b, 'm_description')))
+        base_desc = next((v for f, v in cambios if f == 'm_description'), campo(b, 'm_description'))
+        vueltas_txt = int(e['vueltas']) if tipo == 'carrera' and e.get('vueltas') and int(e['vueltas']) != 3 and str(base_desc).startswith('MP_') else None
+        if e.get('texto') or e.get('textoEn') or vueltas_txt:                 # texto propio (o el de la pista con las vueltas reales)
+            clave = 'CAMP_%s_TXT' % e['id'].replace('-', 'M'); textos[clave] = (e.get('texto'), e.get('textoEn'), base_desc, vueltas_txt)
             cambios.append(('m_description', clave))
         if C.get('desbloquearTodo'): cambios.append(('m_bForceAlwaysUnlocked', 'true'))      # solo para pruebas
         for f, v in cambios: b = set_opt(b, f, v)
@@ -98,7 +100,7 @@ def parchear_eboot(d, nombres):
     cad = T0 + 4 * (48 + len(nombres)); ptrs = []; blob = b''
     for n in nombres: ptrs.append(cad + len(blob)); blob += n.encode() + b'\0'
     fin = cad + len(blob)
-    if fin >= 0x814adc1c + 1712: raise SystemExit('Demasiados carteles (%d piezas): quita temporadas o usa carteles dibujados' % len(nombres))
+    if fin >= 0x814ae2a4: raise SystemExit('Demasiados carteles (%d piezas): quita temporadas o usa carteles dibujados' % len(nombres))
     d[off(T0):off(fin)] = struct.pack('<%dI' % (48 + len(nombres)), *(viejos + ptrs)) + blob
     def movwt(va, imm16, top):
         o = off(va); h1, h2 = struct.unpack_from('<HH', d, o)
@@ -110,6 +112,18 @@ def parchear_eboot(d, nombres):
         movwt(lo, T0 & 0xffff, False); movwt(hi, T0 >> 16, True)
     for va in (0x810ef0a8, 0x810f00d4, 0x810f10cc):
         o = off(va); assert d[o] == 0x30; d[o] = 48 + len(nombres)
+    # Las finales nuevas (forma 9/10/11) no deben enseñar la copa de 2048-2050: en la página de premios (0x81053532),
+    # en vez de leer la forma directamente se llama a este trozo, que la pone a 0 si el nombre es "2051".."2079 - ...".
+    CUEVA = 0x814ae2a4                     # final de la zona de cadenas de depuración sin uso (después de la tabla de carteles)
+    assert fin <= CUEVA, 'la tabla de carteles invade el código de las finales'
+    ldr = bytes(d[off(0x81053532):off(0x81053532) + 4]); assert ldr.hex() == 'd4f89c41'
+    cueva = ldr + bytes.fromhex('2878 3228 0ad1 6878 3028 07d1 a878 3528 04d3 02d8 e878 3028 00d0 0024 7047'.replace(' ', ''))
+    d[off(CUEVA):off(CUEVA) + len(cueva)] = cueva
+    def bl(desde, hasta):                  # BL Thumb-2 (T1)
+        imm = (hasta - (desde + 4)) >> 1; S = (imm >> 23) & 1; i1 = (imm >> 22) & 1; i2 = (imm >> 21) & 1
+        j1, j2 = (1 - i1) ^ S, (1 - i2) ^ S
+        return struct.pack('<HH', 0xf000 | (S << 10) | ((imm >> 11) & 0x3ff), 0xd000 | (j1 << 13) | (j2 << 11) | (imm & 0x7ff))
+    d[off(0x81053532):off(0x81053532) + 4] = bl(0x81053532, CUEVA)
     return d
 
 def ips(a, b):
@@ -126,9 +140,11 @@ def con_textos(t, idioma):
     """Devuelve entries.xml (texto) con los textos propios insertados en orden (el juego los busca por búsqueda binaria)."""
     nl = '\r\n' if '\r\n' in t else '\n'
     orig = dict(re.findall(r'<entry id="([^"]*)" string="([^"]*)"', t))       # textos del idioma (ya escapados)
-    def texto(es, en, base):     # español -> 'es'; inglés -> 'en'; si no se cambió, el texto original de ese idioma
+    def texto(es, en, base, vueltas=None):   # español -> 'es'; inglés -> 'en'; si no se cambió, el original de ese idioma
         propio = es if idioma == 'spanish' else en
-        return html.escape(propio, quote=True) if propio else orig.get(base, html.escape(es or en or '', quote=True))
+        if propio: return html.escape(propio, quote=True)
+        t0 = orig.get(base, html.escape(es or en or '', quote=True))
+        return re.sub(r'(?<!\d)3(?!\d)', str(vueltas), t0, count=1) if vueltas else t0   # "carrera de 3 vueltas" -> N
     sep = nl if nl in t else ''          # Firestar deja todo el archivo en una sola línea
     for k, v in sorted(textos.items()):
         nueva = '<entry id="%s" string="%s"></entry>%s' % (k, texto(*v), sep)

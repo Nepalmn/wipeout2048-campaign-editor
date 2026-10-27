@@ -19,7 +19,7 @@ Editor web para crear temporadas nuevas en el mapa de la campaña 2048 de **WipE
 - Cambiar el color de los carteles de temporada o dibujar carteles propios.
 - Ver en rojo lo que se pisa o se sale de la zona que admite el juego.
 
-El ejecutable se parchea para quitar los límites del juego: memoria para el progreso, memoria de textos, tabla de carteles y desbloqueo al repetir un evento. Los detalles están en [`construir.py`](construir.py).
+El ejecutable se parchea para quitar los límites del juego: memoria para el progreso, memoria de textos, tabla de carteles, desbloqueo al repetir un evento y que las finales de las temporadas nuevas no muestren las copas de 2048-2050. Las carreras con un número de vueltas distinto de 3 llevan su texto actualizado automáticamente. Los detalles están en [`construir.py`](construir.py).
 
 ## Cómo instalar la campaña 2051-2070 (parches)
 
