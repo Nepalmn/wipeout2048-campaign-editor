@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Editor de campañas 2048</title>
+<style>
+:root{--bg:#1e1e2e;--panel:#181825;--txt:#cdd6f4;--sub:#a6adc8;--acc:#89b4fa;--ok:#a6e3a1;--bad:#f38ba8;--line:#313244}
+*{box-sizing:border-box}
+body{margin:0;font:14px system-ui,sans-serif;background:var(--bg);color:var(--txt)}
+#bar{position:fixed;top:0;left:0;right:0;height:52px;z-index:5;background:var(--panel);padding:8px 12px;display:flex;gap:10px;align-items:center;border-bottom:1px solid var(--line)}
+button{background:var(--acc);color:#11111b;border:0;border-radius:6px;padding:6px 12px;font-weight:600;cursor:pointer}
+button.sec{background:#45475a;color:var(--txt)}button.peligro{background:var(--bad)}
+button:disabled{opacity:.4;cursor:default}
+#msg{color:var(--ok)}#err{color:var(--bad)}
+#wrap{position:absolute;top:52px;left:0;right:340px;bottom:0;overflow:auto;touch-action:none}
+#side{position:absolute;top:52px;right:0;width:340px;bottom:0;overflow:auto;background:var(--panel);border-left:1px solid var(--line);padding:12px}
+#side h3{margin:14px 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--sub)}
+#side h3:first-child{margin-top:0}
+.f{display:grid;grid-template-columns:110px 1fr;gap:6px 8px;align-items:center;margin-bottom:6px}
+.f label{color:var(--sub);font-size:13px}
+select,input[type=number],input[type=text]{width:100%;background:#313244;color:var(--txt);border:1px solid #45475a;border-radius:5px;padding:4px 6px;font:inherit}
+.fila{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}
+.nota{color:var(--sub);font-size:12px;line-height:1.4}
+.cnt{font-variant-numeric:tabular-nums}
+svg{background:#f4f4f6}
+.hex{stroke:#555;stroke-width:1;cursor:grab}.lock{cursor:default}.lab{cursor:grab}
+.sel{stroke:#11111b;stroke-width:3}
+text{pointer-events:none;font-size:9px}
+#tip{position:fixed;pointer-events:none;background:#000c;color:#fff;padding:3px 6px;border-radius:4px;display:none;z-index:9}
+.modal{position:fixed;inset:0;background:#000a;display:none;align-items:center;justify-content:center;z-index:20}
+.modal>div{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px;max-width:96vw;max-height:94vh;overflow:auto}
+#log{white-space:pre-wrap;font:13px ui-monospace,monospace;min-width:420px;max-width:80vw}
+#lienzo{background:#fff;cursor:crosshair;image-rendering:pixelated;border:1px solid #45475a;touch-action:none}
+</style></head><body>
+<div id="bar">
+ <button onclick="guardar()">💾 Guardar</button>
+ <button class=sec onclick="deshacer()">↶ Deshacer</button>
+ <button onclick="construir()" id=bConstruir>🔧 Construir mod</button>
+ <label>Zoom <input type=range min=2 max=10 step=0.05 value=4 id=zoom oninput="draw()"></label>
+ <label><input type=checkbox id=marcos checked onchange="draw()"> Marcos</label>
+ <label><input type=checkbox id=grp checked> Arrastrar temporada entera</label>
+ <span id=msg></span><span id=err></span>
+</div>
+<div id="wrap"><svg id="svg"></svg></div>
+<div id="side"></div>
+<div id=tip></div>
+<div class=modal id=mLog><div><h3 style="margin-top:0">Construir mod</h3><div id=log></div><div class=fila style="margin-top:12px"><button onclick="mLog.style.display='none'">Cerrar</button></div></div></div>
+<div class=modal id=mDib><div>
+ <h3 style="margin-top:0">Dibujar cartel <span id=dibTit></span></h3>
+ <div class=fila>
+  <select id=herr style="width:auto"><option value=pincel>✏️ Pincel</option><option value=goma>🧽 Goma</option><option value=texto>🔤 Texto</option><option value=linea>📏 Línea</option><option value=rect>▭ Rectángulo</option></select>
+  <input type=color id=dCol value="#2a3f8f" title="Color">
+  <label>Grosor <input type=number id=dGro value=8 min=1 max=80 style="width:64px"></label>
+  <label>Texto <input type=text id=dTxt value="TEMPORADA" style="width:140px"></label>
+  <label>Tamaño <input type=number id=dTam value=60 min=8 max=300 style="width:64px"></label>
+ </div>
+ <div class=fila>
+  <button class=sec onclick="dFondo()">Rellenar fondo</button>
+  <button class=sec onclick="dLimpiar()">Borrar todo</button>
+  <label class=sec style="background:#45475a;border-radius:6px;padding:6px 12px;cursor:pointer">📂 Cargar imagen<input type=file accept="image/*" id=dImg style="display:none"></label>
+  <button class=sec onclick="dDeshacer()">↶</button>
+ </div>
+ <canvas id=lienzo></canvas>
+ <p class=nota>Lo transparente se ve blanco en el juego. El tamaño es el que el juego muestra de verdad.</p>
+ <div class=fila><button onclick="dGuardar()">Usar este dibujo</button><button class=sec onclick="mDib.style.display='none'">Cancelar</button></div>
+</div></div>
+<script>
+const LABMAX=240, UX=117, UY=93.5, MAXT=28, PROBADO=210, KX=47, KY=81.85;
+const cx=(x,y)=>4.0522*x-0.16512*y+54.2656, cy=(x,y)=>0.038527*x+2.07342*y+23.4619;
+function inv(X,Y){const a=4.0522,b=-0.16512,c=0.038527,d=2.07342;X-=54.2656;Y-=23.4619;const det=a*d-b*c;return[(d*X-b*Y)/det,(-c*X+a*Y)/det]}
+const COL=['#f9e2af','#fab387','#a6e3a1','#94e2d5','#89dceb','#74c7ec','#89b4fa','#b4befe','#cba6f7','#f5c2e7','#f2cdcd','#eba0ac','#e6c384','#98bb6c','#7fb4ca','#957fb8','#d27e99','#ffa066','#c0a36e','#9ece6a','#7dcfff','#bb9af7','#ff9e64','#73daca','#e0af68','#2ac3de','#c099ff','#4fd6be'];
+const NOMBRES={'0':'normal','1':'grande (trofeo)','2':'grande (trofeo)','3':'triángulo grande','4':'triángulo pequeño','5':'trapecio','6':'rombo','7':'normal','8':'flecha','9':'emblema grande','10':'emblema grande','11':'ENORME (final)','12':'normal'};
+const TIPOS=['carrera','contrarreloj','zona','eliminator'], CLASES=['C','B','A','A+'];
+const OBJ=['FinishRaceAnyPosition','Top7','Top6','Top5','Top4','Top3','3rdOrBetter','Top2','Win'];
+let B,P,C,SH={},BO={},hist=[],sel=null,libre=null;
+const tamDib=(w,h)=>[Math.round(w*KX)+56,Math.round(h*KY)+6];
+async function load(){
+ const j=u=>fetch(u+'?'+Date.now()).then(r=>r.json());
+ [B,P,C,SH,BO]=await Promise.all([j('trabajo/base.json'),j('trabajo/plantillas.json'),j('campana.json'),j('shapes.json'),j('borders.json')]);
+ P.por=Object.fromEntries(P.plantillas.map(p=>[p.n,p]));
+ draw();panel()}
+const anio=t=>2051+t, nomEv=(t,k)=>`${anio(t)} - Event ${k+1}`;
+function* eventos(){for(let t=0;t<C.temporadas.length;t++)for(let k=0;k<C.temporadas[t].eventos.length;k++)yield [t,k,C.temporadas[t].eventos[k]]}
+const labWH=c=>c.tipo==='dibujo'?[c.w,c.h]:[15,4];
+function snap(){hist.push(JSON.stringify(C));if(hist.length>200)hist.shift()}
+function conflicts(){
+ const bad=new Set(),occ={};
+ for(const o of B.orig)occ[o.x+','+o.y]=o.n;
+ for(const[t,k,e]of eventos()){const n=nomEv(t,k),key=e.x+','+e.y;if(occ[key]){bad.add(n);bad.add(occ[key])}occ[key]=n}
+ for(const[t,k,e]of eventos()){const pol=BO[e.forma]||SH[e.forma]||SH['0'];for(const[u,v]of pol){const X=cx(e.x+u,e.y+v),Y=cy(e.x+u,e.y+v);if(X<0||Y<0||X>=400||Y>=119.5){bad.add(nomEv(t,k));break}}}
+ const boxes=[];const addb=(n,x,y,sh,nuevo)=>{const pol=SH[sh]||SH['0'];let a=1e9,b=1e9,c=-1e9,d=-1e9;for(const[u,v]of pol){a=Math.min(a,x+u);b=Math.min(b,y+v);c=Math.max(c,x+u);d=Math.max(d,y+v)}boxes.push([n,a+.08,b+.08,c-.08,d-.08,nuevo])};
+ for(const o of B.orig)if(o.x<300)addb(o.n,o.x,o.y,o.s||'0',false);
+ for(const[t,k,e]of eventos())addb(nomEv(t,k),e.x,e.y,e.forma,true);
+ for(let i=0;i<boxes.length;i++)for(let j=i+1;j<boxes.length;j++){const A=boxes[i],X=boxes[j];if(!A[5]&&!X[5])continue;
+  if(A[1]<X[3]&&X[1]<A[3]&&A[2]<X[4]&&X[2]<A[4]){if(A[5])bad.add(A[0]);if(X[5])bad.add(X[0])}}
+ const rects=B.origLabels.map(l=>[l.x,l.y,l.w,l.h]);
+ C.temporadas.forEach((tp,t)=>{const{x,y}=tp.cartel,[w,h]=labWH(tp.cartel),id='L'+t;
+  if(x<0||x+w>LABMAX||y<0||y+h>250)bad.add(id);
+  for(const[,, e]of eventos()){const X=cx(e.x,e.y),Y=cy(e.x,e.y);if(X+2>x&&X-2<x+w&&Y+1.1>y&&Y-1.1<y+h)bad.add(id)}
+  for(const o of B.orig){if(o.x>=300)continue;const X=cx(o.x,o.y),Y=cy(o.x,o.y);if(X+2>x&&X-2<x+w&&Y+1.1>y&&Y-1.1<y+h)bad.add(id)}
+  for(const r of rects)if(r[0]<x+w&&x<r[0]+r[2]&&r[1]<y+h&&y<r[1]+r[3])bad.add(id);
+  rects.push([x,y,w,h])});
+ return bad}
+const pts=(x,y,pol,Z)=>pol.map(([u,v])=>[(x+u)*UX*Z,(y+v)*UY*Z].join(',')).join(' ');
+function draw(){
+ const Z=+zoom.value/10,bad=conflicts();
+ let maxX=0,maxY=0;for(const[,,e]of eventos()){maxX=Math.max(maxX,e.x+5);maxY=Math.max(maxY,e.y+5)}
+ for(const o of B.orig)if(o.x<300){maxX=Math.max(maxX,o.x+5);maxY=Math.max(maxY,o.y+5)}
+ const LX=inv(LABMAX,0)[0];maxX=Math.max(maxX,LX+6,inv(400,0)[0]+2);maxY=Math.max(maxY,inv(0,120)[1]+2);
+ const W=maxX*UX*Z,H=maxY*UY*Z;svg.setAttribute('width',W);svg.setAttribute('height',H);
+ let h=`<defs><pattern id=rb width=7 height=7 patternUnits=userSpaceOnUse patternTransform="rotate(60)"><rect width=7 height=7 fill="#ffffffcc"/><rect width=2.2 height=7 fill="#6b74b0"/></pattern>
+  <pattern id=st width=8 height=8 patternUnits=userSpaceOnUse patternTransform="rotate(45)"><rect width=4 height=8 fill="#f38ba833"/></pattern></defs><rect width=${W} height=${H} fill="#fafafa"/>`;
+ {let d="";const rh=UY*Z/2,cw=UX*Z/2,sl=(cw/2)/rh;for(let y=0;y<=H;y+=rh)d+=`M0 ${y}H${W}`;for(let x=-Math.ceil(H*sl/cw)*cw;x<=W+H*sl;x+=cw){d+=`M${x} 0L${x+H*sl} ${H}M${x} 0L${x-H*sl} ${H}`}h+=`<path d="${d}" stroke="#d8d8de" stroke-width="1" fill="none" pointer-events="none"/>`}
+ {const p=[];for(let X=0;X<=400;X+=10){const[mx,my]=inv(X,119.5);p.push([mx*UX*Z,my*UY*Z])}
+  const[rx,ry]=inv(400,0),[rx2,ry2]=inv(400,119.5);
+  h+=`<path d="M${p.map(q=>q.join(' ')).join(' L')} L${p[p.length-1][0]} ${H} L0 ${H} Z" fill="#20202a" fill-opacity=".55" pointer-events="none"/>`;
+  h+=`<path d="M${rx*UX*Z} 0 L${rx2*UX*Z} ${ry2*UY*Z} L${W} ${ry2*UY*Z} L${W} 0 Z" fill="#20202a" fill-opacity=".55" pointer-events="none"/>`}
+ h+=`<rect x=${LX*UX*Z} y=0 width=${W} height=${H} fill="url(#st)" pointer-events="none"/>`;
+ for(const l of B.origLabels){const[a,b]=inv(l.x,l.y),[c,d]=inv(l.x+l.w,l.y+l.h);h+=`<rect x=${a*UX*Z} y=${b*UY*Z} width=${(c-a)*UX*Z} height=${(d-b)*UY*Z} fill="#6c708640" stroke="#6c7086" data-tip="${l.n} (original)"/>`}
+ if(marcos.checked){for(const o of B.orig){if(o.x>=300||!BO[o.s||'0'])continue;h+=`<polygon points="${pts(o.x,o.y,BO[o.s||'0'],Z)}" fill="url(#rb)" stroke="#6b74b0" pointer-events="none"/>`}
+  for(const[,,e]of eventos()){if(BO[e.forma])h+=`<polygon points="${pts(e.x,e.y,BO[e.forma],Z)}" fill="url(#rb)" stroke="#6b74b0" pointer-events="none"/>`}}
+ for(const o of B.orig){if(o.x>=300)continue;h+=`<polygon class="hex lock" points="${pts(o.x,o.y,SH[o.s||'0']||SH['0'],Z)}" fill="${bad.has(o.n)?'#f38ba8':'#d6d62a'}" data-tip="${o.n} (original, fijo)"/>`}
+ C.temporadas.forEach((tp,t)=>{const c=tp.cartel,[w,hh]=labWH(c),[a,b]=inv(c.x,c.y),[cc,d]=inv(c.x+w,c.y+hh),es=sel&&sel.t===t&&sel.cartel;
+  const R=`x=${a*UX*Z} y=${b*UY*Z} width=${(cc-a)*UX*Z} height=${(d-b)*UY*Z}`;
+  h+=`<g class=lab data-lab="${t}" data-tip="Cartel de ${anio(t)} (${c.x},${c.y})">`;
+  if(c.tipo==='dibujo'&&c.png)h+=`<rect ${R} fill="#fff"/><image href="${c.png}" ${R} preserveAspectRatio="none"/>`;
+  else h+=`<rect ${R} fill="${C.colorCarteles||'#2a3f8f'}" fill-opacity=.9 rx=3/><text x=${(a+cc)/2*UX*Z} y=${(b+d)/2*UY*Z+4} fill="#fff" text-anchor=middle style="font-size:${Math.max(9,22*Z)}px;font-weight:bold">A·G·R·C ${anio(t)}</text>`;
+  h+=`<rect ${R} fill="none" stroke="${bad.has('L'+t)?'#f38ba8':COL[t%COL.length]}" stroke-width="${es?6:3}" rx=3/></g>`});
+ for(const[t,k,e]of eventos()){const n=nomEv(t,k),es=sel&&sel.t===t&&sel.k===k;
+  h+=`<g data-ev="${t},${k}" data-tip="${n} · ${e.tipo}${e.pista?' · '+e.pista:''} · forma ${e.forma}: ${NOMBRES[e.forma]}"><polygon class="hex${es?' sel':''}" points="${pts(e.x,e.y,SH[e.forma]||SH['0'],Z)}" fill="${bad.has(n)?'#f38ba8':COL[t%COL.length]}"/><text x=${e.x*UX*Z} y=${e.y*UY*Z+4} text-anchor=middle style="font-size:${Math.max(8,18*Z)}px">${k+1}${{carrera:'',contrarreloj:'⏱',zona:'Z',eliminator:'✖'}[e.tipo]}</text></g>`}
+ svg.innerHTML=h;
+ err.textContent=bad.size?`⚠ ${bad.size} problemas (en rojo)`:'';
+}
+// ---------- panel lateral ----------
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+const opts=(arr,v)=>arr.map(o=>{const[val,txt]=Array.isArray(o)?o:[o,o];return`<option value="${esc(val)}"${String(val)===String(v)?' selected':''}>${esc(txt)}</option>`}).join('');
+function panel(){
+ const nEv=[...eventos()].length;let h=`<h3>Campaña</h3>
+ <div class=nota cnt>${C.temporadas.length}/${MAXT} temporadas · ${nEv} eventos${nEv>PROBADO?` <span style="color:var(--bad)">(más de ${PROBADO} no está probado)</span>`:''}${libre!=null?` · textura: ~${libre.toLocaleString()} px libres`:''}</div>
+ <div class=f><label>Color carteles</label><div style="display:flex;gap:6px;align-items:center"><input type=color value="${C.colorCarteles||'#2a3f8f'}" onchange="cambia(()=>C.colorCarteles=this.value)"> <label><input type=checkbox ${C.colorCarteles?'':'checked'} onchange="cambia(()=>C.colorCarteles=this.checked?'':'#2a3f8f')"> original</label></div>
+ <label>IA de 2048-2050</label><select onchange="cambia(()=>C.iaOriginales=this.value)">${opts([['','original del juego'],['2','media (2)'],['3.5','difícil (3.5)'],['5','muy difícil (5)']],C.iaOriginales||'')}</select></div>
+ <div class=fila><button onclick="nuevaTemporada()" ${C.temporadas.length>=MAXT?'disabled':''}>＋ Temporada</button></div>
+ <p class=nota>Clic en un evento o cartel para editarlo. Arrastra para moverlo. Clic derecho en un evento = siguiente forma.</p>`;
+ if(sel){const t=sel.t,tp=C.temporadas[t],c=tp.cartel;
+  h+=`<h3>Temporada ${anio(t)}</h3><div class=nota>${tp.eventos.length} eventos</div>
+  <div class=fila><button onclick="nuevoEvento(${t})">＋ Evento</button><button class=peligro onclick="borrarTemporada(${t})">Borrar temporada</button></div>
+  <div class=f><label>Cartel</label><select onchange="cambia(()=>{C.temporadas[${t}].cartel.tipo=this.value;if(this.value==='dibujo'){const c=C.temporadas[${t}].cartel;c.w=c.w||9;c.h=c.h||3}})">${opts([['anio','A·G·R·C + año'],['dibujo','dibujo propio']],c.tipo||'anio')}</select>`;
+  if(c.tipo==='dibujo'){const[pw,ph]=tamDib(c.w,c.h);
+   h+=`<label>Tamaño</label><div style="display:flex;gap:6px"><select onchange="cambia(()=>C.temporadas[${t}].cartel.w=+this.value)">${opts([3,4,5,6,7,8,9].map(v=>[v,v+' ancho']),c.w)}</select><select onchange="cambia(()=>C.temporadas[${t}].cartel.h=+this.value)">${opts([1,2,3].map(v=>[v,v+" alto"]),c.h)}</select></div></div>
+   <div class=nota>Ocupa ${pw}×${ph} = ${(pw*ph).toLocaleString()} px de la textura.</div>
+   <div class=fila><button onclick="abrirDibujo(${t})">🎨 ${c.png?'Editar dibujo':'Dibujar'}</button></div>`}else h+='</div>';}
+ if(sel&&sel.k!=null){const t=sel.t,k=sel.k,e=C.temporadas[t].eventos[k],pl=P.por[e.plantilla],set=`C.temporadas[${t}].eventos[${k}]`;
+  const plant=P.plantillas.filter(p=>p.tipo===e.tipo).map(p=>[p.n,`${p.n} · ${p.pista}`]);
+  h+=`<h3>${nomEv(t,k)}</h3><div class=f>
+  <label>Tipo</label><select onchange="cambiaTipo(${t},${k},this.value)">${opts(TIPOS,e.tipo)}</select>
+  <label>Plantilla</label><select onchange="cambia(()=>{${set}.plantilla=this.value;if(${set}.tipo!=='carrera')delete ${set}.pista})">${opts(plant,e.plantilla)}</select>`;
+  if(e.tipo!=='zona'&&pl.m_trackDef)h+=`<label>Pista</label><select onchange="cambia(()=>${set}.pista=this.value)">${opts([['','(la de la plantilla: '+pl.pista+')'],...Object.keys(P.pistas)],e.pista||'')}</select>`;
+  if(pl.m_speedClass)h+=`<label>Clase</label><select onchange="cambia(()=>${set}.clase=this.value)">${opts([['','(plantilla)'],...CLASES],e.clase||'')}</select>`;
+  if(pl.m_skillScale)h+=`<label>IA (0.2–5)</label><input type=number step=0.1 min=0.1 max=10 value="${esc(e.ia||pl.m_skillScale)}" onchange="cambia(()=>${set}.ia=this.value)">`;
+  if(e.tipo==='carrera'){
+   h+=`<label>Vueltas</label><input type=number min=1 max=9 value="${e.vueltas||pl.m_numOfLaps}" onchange="cambia(()=>${set}.vueltas=+this.value)">
+   <label>Armas</label><label><input type=checkbox ${(e.armas??pl.m_bDisableWeapons!=='true')?'checked':''} onchange="cambia(()=>${set}.armas=this.checked)"> activadas</label>
+   <label>Para pasar</label><select onchange="cambia(()=>${set}.pase=this.value)">${opts(OBJ,e.pase||'Top5')}</select>
+   <label>Élite</label><select onchange="cambia(()=>${set}.elite=this.value)">${opts(OBJ,e.elite||'Win')}</select>`}
+  h+=`<label>Forma</label><select onchange="cambia(()=>${set}.forma=this.value)">${opts(Object.entries(NOMBRES).map(([v,n])=>[v,v+' · '+n]),e.forma)}</select></div>
+  <div class=fila><button class=sec onclick="mover(${t},${k},-1)" ${k?'':'disabled'}>◀ Antes</button><button class=sec onclick="mover(${t},${k},1)" ${k<C.temporadas[t].eventos.length-1?'':'disabled'}>Después ▶</button><button class=peligro onclick="borrarEvento(${t},${k})">Borrar evento</button></div>
+  <p class=nota>El orden es el de desbloqueo: cada evento abre el siguiente, y el primero de cada temporada lo abre el último de la anterior.</p>`}
+ side.innerHTML=h}
+function cambia(f){snap();f();draw();panel()}
+function cambiaTipo(t,k,tipo){cambia(()=>{const e=C.temporadas[t].eventos[k];e.tipo=tipo;e.id='';   // id nuevo: las partidas guardan cada tipo con otro tamaño
+ e.plantilla=P.plantillas.find(p=>p.tipo===tipo&&p.n.startsWith('2050')).n;delete e.pista;
+ if(tipo==='carrera'){e.plantilla='2050 - Event 9';Object.assign(e,{pista:'Altima',clase:'A',vueltas:3,ia:'3.5',armas:true,pase:'Top5',elite:'Win'})}
+ else{for(const f of['vueltas','armas','pase','elite'])delete e[f];const pl=P.por[e.plantilla];if(pl.m_speedClass)e.clase='A';else delete e.clase;if(!pl.m_skillScale)delete e.ia}})}
+function libreCerca(x,y){const ocupado=new Set([...B.orig.map(o=>o.x+','+o.y),...[...eventos()].map(([,,e])=>e.x+','+e.y)]);
+ for(let r=0;r<40;r++)for(let dy=-r;dy<=r;dy++)for(let dx=-r;dx<=r;dx++){if(Math.max(Math.abs(dx),Math.abs(dy))!==r)continue;const X=x+dx,Y=y+dy;if(X>0&&Y>0&&!ocupado.has(X+','+Y)&&!ocupado.has((X+1)+','+Y)&&!ocupado.has((X-1)+','+Y))return[X,Y]}return[x,y]}
+function nuevoEvento(t){cambia(()=>{const ev=C.temporadas[t].eventos,ult=ev[ev.length-1],e=JSON.parse(JSON.stringify(ult));e.id='';
+ if(ev.length>1&&ult.forma!==ev[ev.length-2].forma){e.forma=ult.forma;ult.forma=ev[ev.length-2].forma}   // la forma de final pasa al nuevo último
+ const[x,y]=libreCerca(ult.x+1,ult.y);e.x=x;e.y=y;ev.push(e);sel={t,k:ev.length-1}})}
+function nuevaTemporada(){if(C.temporadas.length>=MAXT)return;cambia(()=>{const base=C.temporadas[C.temporadas.length-1];
+ let maxY=0;for(const[,,e]of eventos())maxY=Math.max(maxY,e.y);for(const o of B.orig)if(o.x<300)maxY=Math.max(maxY,o.y);
+ const evs=[];let[x,y]=libreCerca(4,maxY+3);
+ for(let k=0;k<6;k++){const e=JSON.parse(JSON.stringify(base?base.eventos.find(e=>e.tipo==='carrera')||base.eventos[0]:{tipo:'carrera',plantilla:'2050 - Event 9',pista:'Altima',clase:'A',vueltas:3,ia:'3.5',armas:true,pase:'Top5',elite:'Win'}));
+  e.id='';e.forma=k===5?'11':'0';e.x=x+k+(k===5?1:0);e.y=y+(k%2)+(k===5?1:0);evs.push(e)}
+ const X=cx(x,y),Y=cy(x,y);C.temporadas.push({cartel:{tipo:'anio',x:Math.max(0,Math.min(LABMAX-15,Math.round(X)-16)),y:Math.round(Y)-2},eventos:evs});sel={t:C.temporadas.length-1,k:0}})}
+function borrarTemporada(t){if(!confirm(`¿Borrar la temporada ${anio(t)} y sus ${C.temporadas[t].eventos.length} eventos? Las siguientes cambian de año.`))return;cambia(()=>{C.temporadas.splice(t,1);sel=null})}
+function borrarEvento(t,k){const ev=C.temporadas[t].eventos;if(ev.length===1)return borrarTemporada(t);cambia(()=>{ev.splice(k,1);sel=null})}
+function mover(t,k,d){cambia(()=>{const ev=C.temporadas[t].eventos,a=ev[k],b=ev[k+d];[a.x,b.x]=[b.x,a.x];[a.y,b.y]=[b.y,a.y];ev[k]=b;ev[k+d]=a;sel={t,k:k+d}})}
+// ---------- ratón ----------
+svg.addEventListener('contextmenu',e=>{const g=e.target.closest('[data-ev]');if(!g)return;e.preventDefault();const[t,k]=g.dataset.ev.split(',').map(Number);
+ const order=['0','1','3','4','5','6','8','9','11'],ev=C.temporadas[t].eventos[k];cambia(()=>{ev.forma=order[(order.indexOf(ev.forma)+1)%order.length];sel={t,k}})});
+let drag=null;
+svg.addEventListener('pointerdown',e=>{if(e.pointerType==='touch'&&touches.size>1)return;const g=e.target.closest('[data-ev],[data-lab]');if(!g)return;
+ snap();let t,k=null;if(g.dataset.lab!=null){t=+g.dataset.lab;sel={t,cartel:true}}else{[t,k]=g.dataset.ev.split(',').map(Number);sel={t,k}}
+ const tp=C.temporadas[t],todo=grp.checked;
+ drag={t,items:k==null?(todo?tp.eventos:[]):(todo?tp.eventos:[tp.eventos[k]]),lab:k==null||todo,sx:e.clientX,sy:e.clientY,l0:[tp.cartel.x,tp.cartel.y],ev:k!=null,moved:false};
+ drag.e0=drag.items.map(x=>[x.x,x.y]);draw();panel();e.preventDefault()});
+window.addEventListener('pointermove',e=>{if(touches.has(e.pointerId))touches.set(e.pointerId,[e.clientX,e.clientY]);if(gest)return;
+ const t=e.target.closest&&e.target.closest('[data-tip]');if(t){tip.style.display='block';tip.style.left=e.clientX+12+'px';tip.style.top=e.clientY+12+'px';tip.textContent=t.dataset.tip}else tip.style.display='none';
+ if(!drag)return;const Z=+zoom.value/10,DX=Math.round((e.clientX-drag.sx)/(UX*Z)),DY=Math.round((e.clientY-drag.sy)/(UY*Z));
+ const dX=(e.clientX-drag.sx)/(UX*Z)*4.0522,dY=(e.clientY-drag.sy)/(UY*Z)*2.0734;drag.moved=true;
+ drag.items.forEach((x,i)=>{x.x=drag.e0[i][0]+DX;x.y=drag.e0[i][1]+DY});
+ const c=C.temporadas[drag.t].cartel;
+ if(drag.lab){if(drag.items.length){c.x=drag.l0[0]+Math.round(cx(DX,DY)-cx(0,0));c.y=drag.l0[1]+2*Math.round((cy(DX,DY)-cy(0,0))/2)}else{c.x=drag.l0[0]+Math.round(dX);c.y=drag.l0[1]+2*Math.round(dY/2)}}
+ draw()});
+window.addEventListener('pointerup',e=>{if(drag&&!drag.moved)hist.pop();drag=null;touches.delete(e.pointerId);if(touches.size<2)gest=null});
+window.addEventListener('pointercancel',e=>{touches.delete(e.pointerId);if(touches.size<2)gest=null});
+const touches=new Map();let gest=null;
+wrap.addEventListener('pointerdown',e=>{if(e.pointerType!=='touch')return;touches.set(e.pointerId,[e.clientX,e.clientY]);
+ if(touches.size===2){if(drag){C=JSON.parse(hist.pop());drag=null;draw()}const[a,b]=[...touches.values()];gest={d:Math.hypot(a[0]-b[0],a[1]-b[1]),cx:(a[0]+b[0])/2,cy:(a[1]+b[1])/2,z:+zoom.value}}},true);
+wrap.addEventListener('pointermove',e=>{if(!gest||touches.size<2)return;const[a,b]=[...touches.values()];
+ const d=Math.hypot(a[0]-b[0],a[1]-b[1]),mx=(a[0]+b[0])/2,my=(a[1]+b[1])/2,nz=Math.max(2,Math.min(10,gest.z*d/gest.d)),f=nz/(+zoom.value);
+ if(Math.abs(nz-(+zoom.value))>0.05){zoom.value=nz;draw();wrap.scrollLeft=(wrap.scrollLeft+mx)*f-mx;wrap.scrollTop=(wrap.scrollTop+my-52)*f-(my-52)}
+ wrap.scrollLeft-=(mx-gest.cx);wrap.scrollTop-=(my-gest.cy);gest.cx=mx;gest.cy=my},true);
+wrap.addEventListener('wheel',e=>{if(!e.ctrlKey)return;e.preventDefault();const z=+zoom.value,nz=Math.max(2,Math.min(10,z*Math.exp(-e.deltaY*0.01))),f=nz/z,mx=e.clientX,my=e.clientY-52;
+ zoom.value=nz;draw();wrap.scrollLeft=(wrap.scrollLeft+mx)*f-mx;wrap.scrollTop=(wrap.scrollTop+my)*f-my},{passive:false});
+function deshacer(){if(hist.length){C=JSON.parse(hist.pop());if(sel&&!C.temporadas[sel.t])sel=null;else if(sel&&sel.k!=null&&!C.temporadas[sel.t].eventos[sel.k])sel=null;draw();panel()}}
+async function guardar(){const r=await fetch('/guardar',{method:'POST',body:JSON.stringify(C)});msg.textContent=r.ok?'✔ Guardado '+new Date().toLocaleTimeString():'';if(!r.ok)err.textContent='Error al guardar';return r.ok}
+async function construir(){if(conflicts().size&&!confirm('Hay problemas en rojo. ¿Construir igualmente?'))return;
+ if(!await guardar())return;bConstruir.disabled=true;log.textContent='Construyendo… (tarda unos segundos)';mLog.style.display='flex';
+ const r=await fetch('/construir',{method:'POST'});const t=await r.text();bConstruir.disabled=false;
+ log.textContent=(r.ok?'✔ ':'✖ ')+t+(r.ok?'\n\nCopia salida/eboot.bin a ux0/app/PCSF00007/ y salida/data2.psarc a ux0/app/PCSF00007/PSP2/ (o comparte los parches .ips/.xdelta).':'');
+ const m=t.match(/quedan ~(\d+)/);if(m)libre=+m[1];
+ const c=await fetch('campana.json?'+Date.now());C=await c.json();panel()}   // construir asigna los id nuevos
+// ---------- dibujo de carteles ----------
+const lz=document.getElementById('lienzo'),lc=lz.getContext('2d');let dT=null,dHist=[],dIni=null,dSnap=null;
+function abrirDibujo(t){dT=t;const c=C.temporadas[t].cartel,[w,h]=tamDib(c.w,c.h);lz.width=w;lz.height=h;
+ const esc=Math.min(2,(innerWidth*.9)/w,(innerHeight*.6)/h);lz.style.width=w*esc+'px';lz.style.height=h*esc+'px';
+ dibTit.textContent=`${anio(t)} · ${w}×${h} px`;lc.clearRect(0,0,w,h);dHist=[];
+ if(c.png){const im=new Image();im.onload=()=>lc.drawImage(im,0,0,w,h);im.src=c.png}
+ mDib.style.display='flex'}
+const dPos=e=>{const r=lz.getBoundingClientRect();return[(e.clientX-r.left)*lz.width/r.width,(e.clientY-r.top)*lz.height/r.height]};
+const dGuardaHist=()=>{dHist.push(lc.getImageData(0,0,lz.width,lz.height));if(dHist.length>40)dHist.shift()};
+function dDeshacer(){if(dHist.length)lc.putImageData(dHist.pop(),0,0)}
+function dEstilo(){lc.strokeStyle=lc.fillStyle=dCol.value;lc.lineWidth=+dGro.value;lc.lineCap=lc.lineJoin='round';lc.globalCompositeOperation=herr.value==='goma'?'destination-out':'source-over'}
+lz.addEventListener('pointerdown',e=>{dGuardaHist();dEstilo();const[x,y]=dPos(e);lz.setPointerCapture(e.pointerId);
+ if(herr.value==='texto'){lc.font=`bold ${+dTam.value}px system-ui,sans-serif`;lc.textBaseline='middle';lc.fillText(dTxt.value,x,y);return}
+ dIni=[x,y];dSnap=lc.getImageData(0,0,lz.width,lz.height);if(herr.value==='pincel'||herr.value==='goma'){lc.beginPath();lc.moveTo(x,y);lc.lineTo(x+.01,y);lc.stroke()}});
+lz.addEventListener('pointermove',e=>{if(!dIni)return;const[x,y]=dPos(e);dEstilo();
+ if(herr.value==='pincel'||herr.value==='goma'){lc.lineTo(x,y);lc.stroke();return}
+ lc.putImageData(dSnap,0,0);lc.beginPath();if(herr.value==='linea'){lc.moveTo(...dIni);lc.lineTo(x,y);lc.stroke()}else lc.fillRect(dIni[0],dIni[1],x-dIni[0],y-dIni[1])});
+lz.addEventListener('pointerup',()=>{dIni=null;lc.globalCompositeOperation='source-over'});
+function dFondo(){dGuardaHist();lc.save();lc.globalCompositeOperation='destination-over';lc.fillStyle=dCol.value;lc.fillRect(0,0,lz.width,lz.height);lc.restore()}
+function dLimpiar(){dGuardaHist();lc.clearRect(0,0,lz.width,lz.height)}
+dImg.onchange=()=>{const f=dImg.files[0];if(!f)return;const im=new Image();im.onload=()=>{dGuardaHist();const s=Math.min(lz.width/im.width,lz.height/im.height);
+ lc.drawImage(im,(lz.width-im.width*s)/2,(lz.height-im.height*s)/2,im.width*s,im.height*s);URL.revokeObjectURL(im.src)};im.src=URL.createObjectURL(f);dImg.value=''};
+function dGuardar(){const png=lz.toDataURL('image/png');cambia(()=>C.temporadas[dT].cartel.png=png);mDib.style.display='none'}
+load();
+</script></body></html>

@@ -1,0 +1,1 @@
+Copia aquí eboot.bin y data2.psarc de tu WipEout 2048 europeo 1.04 (ver LEEME.txt).

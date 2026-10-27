@@ -1,0 +1,56 @@
+Editor de campañas para WipEout 2048 (mapa de la campaña 2048)
+===============================================================
+
+Crea temporadas nuevas después de 2050 y genera el mod listo para Vita3K (o parches para compartir).
+
+Qué se puede hacer
+- Añadir y quitar temporadas (hasta 28) y eventos.
+- Elegir el tipo de cada evento (carrera, contrarreloj, zona, eliminator), partiendo de cualquiera
+  de los 60 eventos originales como plantilla.
+- Cambiar pista, clase (C, B, A, A+), vueltas, IA, armas y objetivos para pasar y para la élite.
+- Mover eventos y carteles por el mapa, cambiar la forma de cada casilla y su orden de desbloqueo.
+- Cambiar el color de los carteles de temporada, o dibujar un cartel propio (con pincel, texto,
+  formas o una imagen cargada).
+- El editor marca en rojo lo que se pisa o se sale de la zona que admite el juego.
+
+Límites del juego (por qué hay topes)
+- Más de 210 eventos nuevos no está probado.
+- Los carteles dibujados ocupan sitio en una textura del juego que está casi llena: caben unos
+  2 dibujos de 7x3, 3 de 6x2 o 4 de 4x2. Si no caben, "Construir" lo avisa.
+- Los carteles son opacos: si dos se pisan, el de la temporada posterior tapa al anterior.
+
+Requisitos
+- Python 3 con Pillow y NumPy:   pip install pillow numpy
+- ImageMagick (la orden "magick") para escribir la textura.
+- Opcional: xdelta3, para sacar también los parches .xdelta.
+- Una fuente .ttf en fuente/fuente.ttf para las cifras de los carteles (si no hay, se usa DejaVu
+  Sans Bold o Arial Bold del sistema).
+- WipEout 2048 europeo (PCSF00007) con la actualización 1.04, tal como lo deja Vita3K:
+  copia a la carpeta juego/ estos dos archivos de tu juego:
+     ux0/app/PCSF00007/eboot.bin
+     ux0/app/PCSF00007/PSP2/data2.psarc
+  (el programa comprueba que son los correctos; no se modifican).
+
+Uso
+1. Arranca el editor:  python3 servidor.py   (Windows: iniciar.bat, Linux: ./iniciar.sh)
+   Se abre en el navegador: http://localhost:8765
+   La primera vez lee tus archivos del juego (tarda unos segundos) y carga una campaña de ejemplo
+   (2051-2070).
+2. Edita. "Guardar" escribe campana.json (con copias en copias/).
+3. "Construir mod" deja en salida/:
+     eboot.bin y data2.psarc  -> cópialos sobre los del juego (haz copia de los originales)
+     eboot.ips, eboot.xdelta, data2.xdelta -> parches para compartir tu campaña sin repartir
+                                              archivos del juego
+   También puedes compartir tu campana.json: quien tenga el editor la puede construir.
+
+Partidas
+- Haz copia de tu partida (ux0/user/00/savedata/PCSF00007) antes de probar una campaña.
+- Si cambias el TIPO de un evento que ya existía, el editor le da un identificador nuevo: así las
+  partidas guardadas no se cuelgan (cada tipo guarda sus datos con otro tamaño).
+- Si ya habías terminado 2050, vuelve a pasar "2050 - Evento 9" para abrir la primera temporada nueva.
+
+Ratón
+- Clic en un evento o cartel: editarlo en el panel de la derecha.
+- Arrastrar: mover (con "Arrastrar temporada entera" se mueve con su cartel).
+- Clic derecho en un evento: siguiente forma.
+- Ctrl + rueda o pellizco: zoom.
