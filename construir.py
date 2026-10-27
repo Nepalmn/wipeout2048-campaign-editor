@@ -150,7 +150,7 @@ def main():
     if x:
         for nm in ('eboot', 'data2'):
             ext = '.bin' if nm == 'eboot' else '.psarc'
-            subprocess.run([x, '-e', '-9', '-f', '-B', '134217728', '-s', os.path.join(J, nm + ext), os.path.join(S, nm + ext), os.path.join(S, nm + '.xdelta')], check=True)
+            subprocess.run([x, '-e', '-9', '-S', 'none', '-f', '-B', '134217728', '-s', os.path.join(J, nm + ext), os.path.join(S, nm + ext), os.path.join(S, nm + '.xdelta')], check=True)
     print('Hecho. En salida/: eboot.bin, data2.psarc, eboot.ips' + (', eboot.xdelta, data2.xdelta' if x else ' (instala xdelta3 para sacar también los .xdelta)'))
 
 if __name__ == '__main__': main()

@@ -17,7 +17,43 @@ A web-based editor for adding new seasons to the 2048 campaign map of **WipEout 
 
 The executable is patched to lift the game's limits: progress buffer, string heap, banner table, and unlocking the next event when you replay one. The details are in [`construir.py`](construir.py).
 
-## Requirements
+## How to install the 2051–2070 campaign (patches)
+
+You only need your own copy of the game and a web browser. No game files are shared: the patches only contain the changes.
+
+**1. What you need**
+- WipEout 2048 **EU** (PCSF00007) with the **1.04** update, installed in Vita3K.
+- The patches from [Releases](../../releases): `eboot.xdelta` and `data2.xdelta` (you need both).
+
+**2. Find the game files**
+- In Vita3K: *File → Open Pref Path*. Then go to `ux0/app/PCSF00007/`.
+- You need two files: `eboot.bin` (in that folder) and `PSP2/data2.psarc`.
+- **Copy both somewhere safe as a backup** before doing anything else.
+
+**3. Patch them in the browser with [Rom Patcher JS](https://www.marcrobledo.com/RomPatcher.js/)**
+1. *ROM file*: choose your `eboot.bin`. *Patch file*: choose `eboot.xdelta`. Click **Apply patch**. It downloads `eboot (patched).bin`.
+2. Reload the page. *ROM file*: choose your `data2.psarc` (110 MB, it takes a few seconds; the "file is too big" checksum message is normal). *Patch file*: `data2.xdelta`. Click **Apply patch**. It downloads `data2 (patched).psarc`.
+3. Rename the downloads to `eboot.bin` and `data2.psarc`.
+
+If a patch fails, your files are not the EU 1.04 ones. The MD5 checksums to compare are in `README.txt` inside the release.
+
+**4. Put them back**
+- `eboot.bin` → `ux0/app/PCSF00007/eboot.bin`
+- `data2.psarc` → `ux0/app/PCSF00007/PSP2/data2.psarc`
+
+**5. Play**
+- Back up your save (`ux0/user/00/savedata/PCSF00007`) first.
+- Your progress is kept. The new seasons appear on the campaign map after 2050. If you had already finished 2050, replay **2050 – Event 9** once to unlock 2051.
+
+**Command line alternative** (xdelta3):
+```sh
+xdelta3 -d -s eboot.bin eboot.xdelta eboot_new.bin
+xdelta3 -d -B 134217728 -s data2.psarc data2.xdelta data2_new.psarc
+```
+
+**Real PS Vita / PSTV** (not tested yet): the patched files should work with rePatch in `ux0:rePatch/PCSF00007/` (`eboot.bin` and `PSP2/data2.psarc`). The patches are made against the decrypted `eboot.bin` that Vita3K installs, so a dump from a console may have a different MD5.
+
+## Editor: requirements
 
 - Python 3 with Pillow and NumPy: `pip install pillow numpy`
 - ImageMagick (the `magick` command).
@@ -28,7 +64,7 @@ The executable is patched to lift the game's limits: progress buffer, string hea
 
   The editor checks their MD5 and never modifies them.
 
-## Usage
+## Editor: usage
 
 ```sh
 python3 servidor.py      # or ./iniciar.sh  /  iniciar.bat on Windows

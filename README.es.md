@@ -18,7 +18,43 @@ Editor web para crear temporadas nuevas en el mapa de la campaña 2048 de **WipE
 
 El ejecutable se parchea para quitar los límites del juego: memoria para el progreso, memoria de textos, tabla de carteles y desbloqueo al repetir un evento. Los detalles están en [`construir.py`](construir.py).
 
-## Requisitos
+## Cómo instalar la campaña 2051-2070 (parches)
+
+Solo necesitas tu propia copia del juego y un navegador. No se reparte ningún archivo del juego: los parches solo llevan los cambios.
+
+**1. Qué necesitas**
+- WipEout 2048 **europeo** (PCSF00007) con la actualización **1.04**, instalado en Vita3K.
+- Los parches de [Releases](../../releases): `eboot.xdelta` y `data2.xdelta` (hacen falta los dos).
+
+**2. Busca los archivos del juego**
+- En Vita3K: *Archivo → Abrir carpeta de datos* (Open Pref Path). Entra en `ux0/app/PCSF00007/`.
+- Necesitas dos archivos: `eboot.bin` (en esa carpeta) y `PSP2/data2.psarc`.
+- **Haz una copia de los dos** antes de nada.
+
+**3. Parchéalos en el navegador con [Rom Patcher JS](https://www.marcrobledo.com/RomPatcher.js/)**
+1. *ROM file*: elige tu `eboot.bin`. *Patch file*: elige `eboot.xdelta`. Pulsa **Apply patch**. Se descarga `eboot (patched).bin`.
+2. Recarga la página. *ROM file*: elige tu `data2.psarc` (110 MB, tarda unos segundos; el aviso «file is too big» de la suma de comprobación es normal). *Patch file*: `data2.xdelta`. Pulsa **Apply patch**. Se descarga `data2 (patched).psarc`.
+3. Cambia el nombre de las descargas a `eboot.bin` y `data2.psarc`.
+
+Si un parche falla, tus archivos no son los de la 1.04 europea. Los MD5 para comprobarlo están en `LEEME.txt`, dentro de la release.
+
+**4. Vuelve a ponerlos en su sitio**
+- `eboot.bin` → `ux0/app/PCSF00007/eboot.bin`
+- `data2.psarc` → `ux0/app/PCSF00007/PSP2/data2.psarc`
+
+**5. A jugar**
+- Antes, haz copia de tu partida (`ux0/user/00/savedata/PCSF00007`).
+- Conservas tu progreso. Las temporadas nuevas aparecen en el mapa de la campaña después de 2050. Si ya habías terminado 2050, vuelve a pasar **2050 - Evento 9** una vez para abrir 2051.
+
+**Con la línea de comandos** (xdelta3):
+```sh
+xdelta3 -d -s eboot.bin eboot.xdelta eboot_nuevo.bin
+xdelta3 -d -B 134217728 -s data2.psarc data2.xdelta data2_nuevo.psarc
+```
+
+**PS Vita / PSTV real** (sin probar todavía): los archivos parcheados deberían funcionar con rePatch en `ux0:rePatch/PCSF00007/` (`eboot.bin` y `PSP2/data2.psarc`). Los parches están hechos sobre el `eboot.bin` descifrado que instala Vita3K, así que el de un volcado de consola puede tener otro MD5.
+
+## Editor: requisitos
 
 - Python 3 con Pillow y NumPy: `pip install pillow numpy`
 - ImageMagick (la orden `magick`).
@@ -27,7 +63,7 @@ El ejecutable se parchea para quitar los límites del juego: memoria para el pro
   - `ux0/app/PCSF00007/eboot.bin`
   - `ux0/app/PCSF00007/PSP2/data2.psarc`
 
-## Uso
+## Editor: uso
 
 ```sh
 python3 servidor.py      # o ./iniciar.sh  /  iniciar.bat en Windows
