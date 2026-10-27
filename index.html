@@ -121,8 +121,8 @@ function draw(){
   const R=`x=${a*UX*Z} y=${b*UY*Z} width=${(cc-a)*UX*Z} height=${(d-b)*UY*Z}`;
   h+=`<g class=lab data-lab="${t}" data-tip="Cartel de ${anio(t)} (${c.x},${c.y})">`;
   if(c.tipo==='dibujo'&&c.png)h+=`<rect ${R} fill="#fff"/><image href="${c.png}" ${R} preserveAspectRatio="none"/>`;
-  else h+=`<rect ${R} fill="${C.colorCarteles||'#2a3f8f'}" fill-opacity=.9 rx=3/><text x=${(a+cc)/2*UX*Z} y=${(b+d)/2*UY*Z+4} fill="#fff" text-anchor=middle style="font-size:${Math.max(9,22*Z)}px;font-weight:bold">A·G·R·C ${anio(t)}</text>`;
-  h+=`<rect ${R} fill="none" stroke="${bad.has('L'+t)?'#f38ba8':COL[t%COL.length]}" stroke-width="${es?6:3}" rx=3/></g>`});
+  else h+=`<rect ${R} fill="${C.colorCarteles||'#2a3f8f'}" fill-opacity=.9 rx="3"/><text x=${(a+cc)/2*UX*Z} y=${(b+d)/2*UY*Z+4} fill="#fff" text-anchor=middle style="font-size:${Math.max(9,(d-b)*UY*Z*0.32)}px;font-weight:bold">A·G·R·C ${anio(t)}</text>`;
+  h+=`<rect ${R} fill="none" stroke="${bad.has('L'+t)?'#f38ba8':COL[t%COL.length]}" stroke-width="${es?6:3}" rx="3"/></g>`});
  for(const[t,k,e]of eventos()){const n=nomEv(t,k),es=sel&&sel.t===t&&sel.k===k;
   h+=`<g data-ev="${t},${k}" data-tip="${n} · ${e.tipo}${e.pista?' · '+e.pista:''} · forma ${e.forma}: ${NOMBRES[e.forma]}"><polygon class="hex${es?' sel':''}" points="${pts(e.x,e.y,SH[e.forma]||SH['0'],Z)}" fill="${bad.has(n)?'#f38ba8':COL[t%COL.length]}"/><text x=${e.x*UX*Z} y=${e.y*UY*Z+4} text-anchor=middle style="font-size:${Math.max(8,18*Z)}px">${k+1}${{carrera:'',contrarreloj:'⏱',zona:'Z',eliminator:'✖'}[e.tipo]}</text></g>`}
  svg.innerHTML=h;
