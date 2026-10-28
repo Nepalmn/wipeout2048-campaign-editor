@@ -56,7 +56,7 @@ xdelta3 -d -s eboot.bin eboot.xdelta eboot_new.bin
 xdelta3 -d -B 134217728 -s data2.psarc data2.xdelta data2_new.psarc
 ```
 
-**Real PS Vita / PSTV** (not tested yet): the patched files should work with rePatch in `ux0:rePatch/PCSF00007/` (`eboot.bin` and `PSP2/data2.psarc`). The patches are made against the decrypted `eboot.bin` that Vita3K installs, so a dump from a console may have a different MD5.
+**Real PS Vita / PSTV** (tested on a PS Vita 1000 since v1.1): the patched files work with rePatch in `ux0:rePatch/PCSF00007/` (`eboot.bin` and `PSP2/data2.psarc`). The patches are made against the decrypted `eboot.bin` that Vita3K installs, so a dump from a console may have a different MD5.
 
 ## Editor: requirements
 
@@ -93,7 +93,7 @@ The interface is in Spanish for now. Limits and save-file notes are in [`README.
 
 ## The 2051–2070 campaign
 
-The example campaign (`campana.ejemplo.json`) has 20 seasons and 210 events, A and A+ class, hard AI in the new events (2048–2050 are left untouched), a time trial, a zone and an eliminator per season, and 30 events with ship restrictions. It also fixes a translation bug of the original game: the Spanish text of the 2050 – Event 3 eliminator said "Agility" for a speed-ship event. Patches to play it without the editor are in [Releases](../../releases).
+The example campaign (`campana.ejemplo.json`) has 20 seasons and 210 events, A and A+ class, hard AI in the new events (2048–2050 are left untouched), a time trial, a zone and an eliminator per season, rivals from every team, a team cup per season, rivalry tournaments, head-to-head duels, one-lap sprints, a marathon and other special events with their own objectives (no damage, no barrel rolls, most damage...). It also fixes a translation bug of the original game: the Spanish text of the 2050 – Event 3 eliminator said "Agility" for a speed-ship event. Patches to play it without the editor are in [Releases](../../releases).
 
 Tested on Vita3K (PC and ROG Ally). Not yet tested on a real Vita.
 

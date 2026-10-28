@@ -96,6 +96,10 @@ def parchear_eboot(d, nombres):
     for va, old, new in [(0x812d9510, '5ff42041', '5ff48021'), (0x812da05e, '37d1', '00bf'), (0x812b3fec, '5ddc', '00bf')]:
         o = off(va); assert d[o:o + len(old) // 2].hex() == old; d[o:o + len(new) // 2] = bytes.fromhex(new)
     o = off(0x8151c134); assert struct.unpack_from('<I', d, o)[0] == 0x78000; struct.pack_into('<I', d, o, 0x200000)
+    # pila del hilo principal 256 KB -> 1 MB (SceProcessParam: puntero al tamaño, apunta a una constante 0x100000 del código);
+    # al cargar la campaña el juego recorre la cadena de eventos recursivamente y en una Vita real desborda la pila
+    o = off(0x8152ae08); assert struct.unpack_from('<I', d, o)[0] == 0 and struct.unpack_from('<I', d, off(0x813f4bf4))[0] == 0x100000
+    struct.pack_into('<I', d, o, 0x813f4bf4)
     T0 = 0x814adc20; viejos = [struct.unpack_from('<I', d, off(0x8151e9b8 + 4 * i))[0] for i in range(48)]
     cad = T0 + 4 * (48 + len(nombres)); ptrs = []; blob = b''
     for n in nombres: ptrs.append(cad + len(blob)); blob += n.encode() + b'\0'
@@ -146,6 +150,7 @@ def con_textos(t, idioma):
         t0 = orig.get(base, html.escape(es or en or '', quote=True))
         return re.sub(r'(?<!\d)3(?!\d)', str(vueltas), t0, count=1) if vueltas else t0   # "carrera de 3 vueltas" -> N
     sep = nl if nl in t else ''          # Firestar deja todo el archivo en una sola línea
+    t = re.sub(r'<entry id="CAMP_[^"]*" string="[^"]*"></entry>(\r?\n)?', '', t)   # quitar textos propios de una construcción anterior
     for k, v in sorted(textos.items()):
         nueva = '<entry id="%s" string="%s"></entry>%s' % (k, texto(*v), sep)
         pos = next((m.start() for m in re.finditer(r'<entry id="([^"]*)"', t) if m.group(1).encode() > k.encode()), t.rindex('</StringTable>'))

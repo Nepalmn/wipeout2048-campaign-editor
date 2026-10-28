@@ -22,7 +22,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Feisar_Agility",
+      "AG_System_Speed",
+      "Auricom_Combat",
+      "Piranha_Speed",
+      "Auricom_Agility",
+      "AG_System_Combat",
+      "Auricom_Speed"
+     ]
     },
     {
      "id": "175242280",
@@ -37,7 +46,25 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "nave": "Feisar_Speed",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "rivales": [
+      "Feisar_Agility",
+      "Feisar_Agility",
+      "Feisar_Speed",
+      "Feisar_Combat",
+      "Feisar_Speed",
+      "Feisar_Speed",
+      "Feisar_Combat"
+     ],
+     "texto": "Copa FEISAR: tu FEISAR de Velocidad contra todo el equipo",
+     "textoEn": "FEISAR Cup: your FEISAR Speed vs the whole team"
     },
     {
      "id": "-690603369",
@@ -84,7 +111,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Piranha_Agility",
+      "AG_System_Combat",
+      "Auricom_Speed",
+      "Qirex_Combat",
+      "Auricom_Agility",
+      "Piranha_Combat",
+      "Piranha_Speed"
+     ]
     }
    ]
   },
@@ -107,8 +143,19 @@
      "vueltas": 3,
      "ia": "3.50",
      "armas": true,
-     "pase": "Top5",
-     "elite": "Win"
+     "pase": "Top3",
+     "elite": "FinishRaceNoDamage",
+     "rivales": [
+      "Auricom_Agility",
+      "Auricom_Speed",
+      "AG_System_Speed",
+      "Feisar_Speed",
+      "Piranha_Agility",
+      "Piranha_Speed",
+      "AG_System_Combat"
+     ],
+     "texto": "Sin un rasguño: entre los 3 primeros. Élite: termina sin recibir daño",
+     "textoEn": "Not a scratch: finish top 3. Elite: finish without taking damage"
     },
     {
      "id": "-1612648376",
@@ -123,7 +170,25 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "nave": "AG_System_Speed",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "rivales": [
+      "AG_System_Agility",
+      "AG_System_Speed",
+      "AG_System_Combat",
+      "AG_System_Speed",
+      "AG_System_Combat",
+      "AG_System_Agility",
+      "AG_System_Speed"
+     ],
+     "texto": "Copa AG Systems: tu AG Systems de Velocidad contra todo el equipo",
+     "textoEn": "AG Systems Cup: your AG Systems Speed vs the whole team"
     },
     {
      "id": "132004981",
@@ -169,7 +234,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "AG_System_Agility",
+      "Auricom_Agility",
+      "Piranha_Agility",
+      "Auricom_Combat",
+      "Qirex_Agility",
+      "Feisar_Speed",
+      "Auricom_Speed"
+     ]
     }
    ]
   },
@@ -189,11 +263,22 @@
      "plantilla": "2050 - Event 9",
      "pista": "Mall",
      "clase": "A",
-     "vueltas": 3,
-     "ia": "3.50",
+     "vueltas": 1,
+     "ia": "4.50",
      "armas": true,
-     "pase": "Top5",
-     "elite": "Win"
+     "pase": "Top3",
+     "elite": "Win",
+     "rivales": [
+      "AG_System_Speed",
+      "Qirex_Combat",
+      "Piranha_Agility",
+      "Piranha_Speed",
+      "Feisar_Combat",
+      "AG_System_Combat",
+      "Auricom_Speed"
+     ],
+     "texto": "Sprint mortal: una sola vuelta contra la IA al máximo",
+     "textoEn": "Deadly sprint: a single lap against maximum AI"
     },
     {
      "id": "-488245207",
@@ -215,7 +300,16 @@
       "combate",
       "prototipo"
      ],
-     "nave": "AG_System_Combat"
+     "nave": "AG_System_Combat",
+     "rivales": [
+      "AG_System_Agility",
+      "Qirex_Speed",
+      "Feisar_Combat",
+      "Piranha_Combat",
+      "Feisar_Speed",
+      "AG_System_Speed",
+      "Auricom_Speed"
+     ]
     },
     {
      "id": "-612353731",
@@ -239,7 +333,25 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "nave": "Auricom_Speed",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "rivales": [
+      "Auricom_Combat",
+      "Auricom_Combat",
+      "Auricom_Speed",
+      "Auricom_Agility",
+      "Auricom_Agility",
+      "Auricom_Speed",
+      "Auricom_Speed"
+     ],
+     "texto": "Copa Auricom: tu Auricom de Velocidad contra todo el equipo",
+     "textoEn": "Auricom Cup: your Auricom Speed vs the whole team"
     },
     {
      "id": "-2111744785",
@@ -273,7 +385,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "AG_System_Agility",
+      "Qirex_Speed",
+      "Qirex_Combat",
+      "Auricom_Agility",
+      "Piranha_Combat",
+      "Piranha_Agility",
+      "Feisar_Speed"
+     ]
     }
    ]
   },
@@ -295,9 +416,20 @@
      "clase": "A",
      "vueltas": 3,
      "ia": "3.50",
-     "armas": true,
-     "pase": "Top5",
-     "elite": "Win"
+     "armas": false,
+     "pase": "Top3",
+     "elite": "FinishNoBarrelRoll",
+     "rivales": [
+      "Piranha_Agility",
+      "AG_System_Agility",
+      "Auricom_Agility",
+      "Qirex_Agility",
+      "Auricom_Combat",
+      "Feisar_Speed",
+      "Qirex_Combat"
+     ],
+     "texto": "Vieja escuela: sin armas. Élite: termina sin hacer ni un barrel roll",
+     "textoEn": "Old school: no weapons. Elite: finish without a single barrel roll"
     },
     {
      "id": "-1622771693",
@@ -312,7 +444,25 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "nave": "Piranha_Speed",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "rivales": [
+      "Piranha_Agility",
+      "Piranha_Speed",
+      "Piranha_Speed",
+      "Piranha_Agility",
+      "Piranha_Speed",
+      "Piranha_Combat",
+      "Piranha_Combat"
+     ],
+     "texto": "Copa Piranha: tu Piranha de Velocidad contra todo el equipo",
+     "textoEn": "Piranha Cup: your Piranha Speed vs the whole team"
     },
     {
      "id": "389237096",
@@ -343,7 +493,16 @@
       "combate",
       "prototipo"
      ],
-     "nave": "Auricom_Proto"
+     "nave": "Auricom_Proto",
+     "rivales": [
+      "Feisar_Agility",
+      "Qirex_Combat",
+      "Piranha_Agility",
+      "Auricom_Combat",
+      "AG_System_Agility",
+      "Piranha_Combat",
+      "Piranha_Speed"
+     ]
     },
     {
      "id": "-1882765151",
@@ -376,7 +535,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Auricom_Combat",
+      "Piranha_Speed",
+      "AG_System_Combat",
+      "Qirex_Speed",
+      "Feisar_Combat",
+      "AG_System_Speed",
+      "Feisar_Agility"
+     ]
     }
    ]
   },
@@ -400,7 +568,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Piranha_Agility",
+      "Qirex_Speed",
+      "AG_System_Agility",
+      "Auricom_Speed",
+      "Qirex_Agility",
+      "Piranha_Speed",
+      "AG_System_Combat"
+     ]
     },
     {
      "id": "789177891",
@@ -422,7 +599,16 @@
       "combate",
       "prototipo"
      ],
-     "nave": "Auricom_Agility"
+     "nave": "Auricom_Agility",
+     "rivales": [
+      "AG_System_Agility",
+      "Qirex_Combat",
+      "Auricom_Agility",
+      "Piranha_Speed",
+      "Feisar_Agility",
+      "Qirex_Agility",
+      "Auricom_Combat"
+     ]
     },
     {
      "id": "1649906877",
@@ -446,7 +632,25 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "nave": "Qirex_Speed",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "rivales": [
+      "Qirex_Speed",
+      "Qirex_Agility",
+      "Qirex_Speed",
+      "Qirex_Combat",
+      "Qirex_Combat",
+      "Qirex_Speed",
+      "Qirex_Agility"
+     ],
+     "texto": "Copa Qirex: tu Qirex de Velocidad contra todo el equipo",
+     "textoEn": "Qirex Cup: your Qirex Speed vs the whole team"
     },
     {
      "id": "-507791352",
@@ -468,8 +672,19 @@
      "vueltas": 3,
      "ia": "3.50",
      "armas": true,
-     "pase": "Top5",
-     "elite": "Win"
+     "pase": "Kill1Opponent",
+     "elite": "MostDamage",
+     "rivales": [
+      "Feisar_Speed",
+      "Qirex_Combat",
+      "Auricom_Combat",
+      "Qirex_Speed",
+      "Feisar_Combat",
+      "Piranha_Combat",
+      "AG_System_Combat"
+     ],
+     "texto": "Cazarrecompensas: elimina a un rival. Élite: causa más daño que nadie",
+     "textoEn": "Bounty hunter: eliminate an opponent. Elite: deal the most damage"
     },
     {
      "id": "1176798405",
@@ -495,7 +710,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "AG_System_Combat",
+      "Auricom_Combat",
+      "Piranha_Combat",
+      "AG_System_Agility",
+      "Auricom_Agility",
+      "Feisar_Agility",
+      "Qirex_Speed"
+     ]
     }
    ]
   },
@@ -519,7 +743,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Auricom_Speed",
+      "AG_System_Combat",
+      "Auricom_Combat",
+      "Feisar_Speed",
+      "Qirex_Agility",
+      "AG_System_Speed",
+      "Piranha_Combat"
+     ]
     },
     {
      "id": "961396340",
@@ -534,7 +767,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Qirex_Combat",
+      "Piranha_Speed",
+      "Auricom_Speed",
+      "Piranha_Combat",
+      "Auricom_Combat",
+      "Feisar_Combat",
+      "AG_System_Combat"
+     ]
     },
     {
      "id": "-596921624",
@@ -562,7 +804,25 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "nave": "Feisar_Agility",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "rivales": [
+      "Feisar_Speed",
+      "Feisar_Combat",
+      "Feisar_Agility",
+      "Feisar_Combat",
+      "Feisar_Speed",
+      "Feisar_Speed",
+      "Feisar_Agility"
+     ],
+     "texto": "Copa FEISAR: tu FEISAR de Agilidad contra todo el equipo",
+     "textoEn": "FEISAR Cup: your FEISAR Agility vs the whole team"
     },
     {
      "id": "-1553843018",
@@ -584,8 +844,19 @@
      "vueltas": 3,
      "ia": "3.50",
      "armas": true,
-     "pase": "Top5",
-     "elite": "Win"
+     "pase": "Top3",
+     "elite": "MostDamage",
+     "rivales": [
+      "Feisar_Agility",
+      "AG_System_Agility",
+      "AG_System_Combat",
+      "AG_System_Speed",
+      "Feisar_Combat",
+      "AG_System_Combat",
+      "Feisar_Speed"
+     ],
+     "texto": "Guerra civil: AG Systems contra FEISAR y tú en medio. Élite: causa más daño",
+     "textoEn": "Civil war: AG Systems vs FEISAR with you in the middle. Elite: deal the most damage"
     },
     {
      "id": "-2037031381",
@@ -610,7 +881,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "AG_System_Speed",
+      "Qirex_Speed",
+      "Qirex_Agility",
+      "Piranha_Agility",
+      "Qirex_Combat",
+      "AG_System_Agility",
+      "Feisar_Agility"
+     ]
     }
    ]
   },
@@ -634,7 +914,25 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Auricom_Speed",
+      "Auricom_Agility",
+      "Auricom_Combat",
+      "Auricom_Agility",
+      "Auricom_Speed",
+      "Auricom_Speed",
+      "Auricom_Combat"
+     ],
+     "nave": "Qirex_Speed",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "texto": "Torneo Qirex contra Auricom (1/3): tu Qirex de Velocidad contra Auricom",
+     "textoEn": "Qirex vs Auricom Tournament (1/3): your Qirex Speed vs Auricom"
     },
     {
      "id": "1857643569",
@@ -649,7 +947,25 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Auricom_Speed",
+      "Auricom_Combat",
+      "Auricom_Combat",
+      "Auricom_Agility",
+      "Auricom_Speed",
+      "Auricom_Agility",
+      "Auricom_Speed"
+     ],
+     "nave": "Qirex_Agility",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "texto": "Torneo Qirex contra Auricom (2/3): tu Qirex de Agilidad contra Auricom",
+     "textoEn": "Qirex vs Auricom Tournament (2/3): your Qirex Agility vs Auricom"
     },
     {
      "id": "-1104872573",
@@ -673,7 +989,25 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "nave": "AG_System_Agility",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "rivales": [
+      "AG_System_Combat",
+      "AG_System_Agility",
+      "AG_System_Agility",
+      "AG_System_Combat",
+      "AG_System_Speed",
+      "AG_System_Speed",
+      "AG_System_Speed"
+     ],
+     "texto": "Copa AG Systems: tu AG Systems de Agilidad contra todo el equipo",
+     "textoEn": "AG Systems Cup: your AG Systems Agility vs the whole team"
     },
     {
      "id": "-591246264",
@@ -703,7 +1037,16 @@
       "combate",
       "prototipo"
      ],
-     "nave": "Piranha_Speed"
+     "nave": "Piranha_Speed",
+     "rivales": [
+      "Auricom_Combat",
+      "Qirex_Combat",
+      "Piranha_Combat",
+      "AG_System_Agility",
+      "Feisar_Combat",
+      "Qirex_Speed",
+      "Feisar_Agility"
+     ]
     },
     {
      "id": "544862696",
@@ -717,8 +1060,26 @@
      "vueltas": 3,
      "ia": "3.50",
      "armas": true,
-     "pase": "Top5",
-     "elite": "Win"
+     "pase": "Top3",
+     "elite": "Win",
+     "rivales": [
+      "Auricom_Agility",
+      "Auricom_Agility",
+      "Auricom_Speed",
+      "Auricom_Speed",
+      "Auricom_Combat",
+      "Auricom_Combat",
+      "Auricom_Speed"
+     ],
+     "nave": "Qirex_Combat",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "texto": "Torneo Qirex contra Auricom (3/3): tu Qirex Luchadora contra Auricom",
+     "textoEn": "Qirex vs Auricom Tournament (3/3): your Qirex Fighter vs Auricom"
     },
     {
      "id": "581013680",
@@ -744,7 +1105,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Piranha_Agility",
+      "Auricom_Combat",
+      "Qirex_Combat",
+      "Feisar_Agility",
+      "Feisar_Combat",
+      "AG_System_Speed",
+      "Auricom_Speed"
+     ]
     }
    ]
   },
@@ -768,7 +1138,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Auricom_Combat",
+      "Qirex_Agility",
+      "Piranha_Agility",
+      "Qirex_Speed",
+      "Auricom_Agility",
+      "AG_System_Combat",
+      "Feisar_Combat"
+     ]
     },
     {
      "id": "990406353",
@@ -780,10 +1159,28 @@
      "pista": "Sol",
      "clase": "A",
      "vueltas": 3,
-     "ia": "3.50",
+     "ia": "3.80",
      "armas": true,
-     "pase": "Top5",
-     "elite": "Win"
+     "pase": "Top3",
+     "elite": "Win",
+     "rivales": [
+      "Feisar_Proto",
+      "AG_System_Proto",
+      "Piranha_Proto",
+      "Auricom_Proto",
+      "Qirex_Proto",
+      "Piranha_Proto",
+      "Feisar_Proto"
+     ],
+     "nave": "Auricom_Agility",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "texto": "David contra Goliat: tu Auricom de Agilidad contra 7 prototipos",
+     "textoEn": "David vs Goliath: your Auricom Agility vs 7 prototypes"
     },
     {
      "id": "925789255",
@@ -812,7 +1209,16 @@
       "velocidad",
       "agilidad"
      ],
-     "nave": ""
+     "nave": "",
+     "rivales": [
+      "AG_System_Agility",
+      "AG_System_Speed",
+      "Qirex_Agility",
+      "AG_System_Combat",
+      "Feisar_Speed",
+      "Piranha_Speed",
+      "Feisar_Agility"
+     ]
     },
     {
      "id": "206647999",
@@ -835,22 +1241,42 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "nave": "Auricom_Agility",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "rivales": [
+      "Auricom_Agility",
+      "Auricom_Speed",
+      "Auricom_Agility",
+      "Auricom_Combat",
+      "Auricom_Combat",
+      "Auricom_Speed",
+      "Auricom_Speed"
+     ],
+     "texto": "Copa Auricom: tu Auricom de Agilidad contra todo el equipo",
+     "textoEn": "Auricom Cup: your Auricom Agility vs the whole team"
     },
     {
      "id": "1892529759",
      "tipo": "carrera",
+     "forma": "0",
      "x": 29,
      "y": 43,
-     "forma": "0",
-     "plantilla": "2050 - Event 9",
+     "plantilla": "2050 - Event 6-4",
      "pista": "Tower",
      "clase": "A",
      "vueltas": 3,
-     "ia": "3.50",
+     "ia": "4.00",
      "armas": true,
-     "pase": "Top5",
-     "elite": "Win"
+     "pase": "Win",
+     "elite": "Win",
+     "texto": "Duelo: uno contra uno con armas contra el as de Piranha",
+     "textoEn": "Duel: head to head with weapons against the Piranha ace"
     },
     {
      "id": "-1414912342",
@@ -875,7 +1301,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "AG_System_Combat",
+      "Auricom_Speed",
+      "AG_System_Agility",
+      "Piranha_Speed",
+      "Qirex_Speed",
+      "Feisar_Agility",
+      "Auricom_Agility"
+     ]
     }
    ]
   },
@@ -899,7 +1334,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "AG_System_Agility",
+      "Piranha_Agility",
+      "Auricom_Agility",
+      "Feisar_Agility",
+      "Auricom_Combat",
+      "Piranha_Combat",
+      "Qirex_Speed"
+     ]
     },
     {
      "id": "1739783025",
@@ -914,7 +1358,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Piranha_Agility",
+      "Qirex_Speed",
+      "Feisar_Agility",
+      "AG_System_Speed",
+      "AG_System_Combat",
+      "Qirex_Combat",
+      "Auricom_Combat"
+     ]
     },
     {
      "id": "743680133",
@@ -938,7 +1391,25 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "nave": "Piranha_Agility",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "rivales": [
+      "Piranha_Speed",
+      "Piranha_Agility",
+      "Piranha_Speed",
+      "Piranha_Speed",
+      "Piranha_Agility",
+      "Piranha_Combat",
+      "Piranha_Combat"
+     ],
+     "texto": "Copa Piranha: tu Piranha de Agilidad contra todo el equipo",
+     "textoEn": "Piranha Cup: your Piranha Agility vs the whole team"
     },
     {
      "id": "-1000936357",
@@ -949,11 +1420,22 @@
      "plantilla": "2050 - Event 9",
      "pista": "Cathedral",
      "clase": "A",
-     "vueltas": 3,
-     "ia": "3.50",
+     "vueltas": 1,
+     "ia": "4.50",
      "armas": true,
-     "pase": "Top5",
-     "elite": "Win"
+     "pase": "Top3",
+     "elite": "Win",
+     "rivales": [
+      "Auricom_Combat",
+      "Auricom_Speed",
+      "Piranha_Speed",
+      "Feisar_Speed",
+      "Qirex_Combat",
+      "Feisar_Combat",
+      "Qirex_Speed"
+     ],
+     "texto": "Sprint mortal: una sola vuelta contra la IA al máximo",
+     "textoEn": "Deadly sprint: a single lap against maximum AI"
     },
     {
      "id": "-1451983752",
@@ -983,22 +1465,44 @@
       "combate",
       "prototipo"
      ],
-     "nave": "AG_System_Proto"
+     "nave": "AG_System_Proto",
+     "rivales": [
+      "AG_System_Agility",
+      "Feisar_Speed",
+      "Auricom_Speed",
+      "Qirex_Combat",
+      "Auricom_Agility",
+      "Piranha_Agility",
+      "Feisar_Combat"
+     ]
     },
     {
-     "id": "-1682730141",
-     "tipo": "carrera",
+     "id": "-1871335486",
+     "tipo": "eliminator",
+     "forma": "0",
      "x": 37,
      "y": 3,
-     "forma": "0",
-     "plantilla": "2050 - Event 9",
-     "pista": "Sol",
+     "plantilla": "2050 - Event 8",
      "clase": "A",
-     "vueltas": 3,
-     "ia": "3.50",
-     "armas": true,
-     "pase": "Top5",
-     "elite": "Win"
+     "ia": "3.80",
+     "nave": "Auricom_Speed",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "rivales": [
+      "Auricom_Combat",
+      "Piranha_Combat",
+      "Qirex_Combat",
+      "AG_System_Combat",
+      "Feisar_Combat",
+      "Piranha_Combat",
+      "Auricom_Combat"
+     ],
+     "texto": "Todos a por ti: Eliminator con tu Auricom de Velocidad contra 7 Luchadoras",
+     "textoEn": "Everyone wants you: Eliminator in your Auricom Speed vs 7 Fighters"
     },
     {
      "id": "232767583",
@@ -1024,7 +1528,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Feisar_Combat",
+      "Auricom_Agility",
+      "Feisar_Agility",
+      "Piranha_Agility",
+      "Qirex_Agility",
+      "Qirex_Speed",
+      "AG_System_Speed"
+     ]
     }
    ]
   },
@@ -1048,7 +1561,25 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Piranha_Speed",
+      "Piranha_Speed",
+      "Piranha_Speed",
+      "Piranha_Agility",
+      "Piranha_Combat",
+      "Piranha_Combat",
+      "Piranha_Agility"
+     ],
+     "nave": "Feisar_Speed",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "texto": "Torneo FEISAR contra Piranha (1/3): tu FEISAR de Velocidad contra Piranha",
+     "textoEn": "FEISAR vs Piranha Tournament (1/3): your FEISAR Speed vs Piranha"
     },
     {
      "id": "1886338737",
@@ -1063,7 +1594,25 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Piranha_Combat",
+      "Piranha_Agility",
+      "Piranha_Combat",
+      "Piranha_Speed",
+      "Piranha_Agility",
+      "Piranha_Speed",
+      "Piranha_Speed"
+     ],
+     "nave": "Feisar_Agility",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "texto": "Torneo FEISAR contra Piranha (2/3): tu FEISAR de Agilidad contra Piranha",
+     "textoEn": "FEISAR vs Piranha Tournament (2/3): your FEISAR Agility vs Piranha"
     },
     {
      "id": "-1169179263",
@@ -1090,8 +1639,26 @@
      "vueltas": 3,
      "ia": "3.50",
      "armas": true,
-     "pase": "Top5",
-     "elite": "Win"
+     "pase": "Top3",
+     "elite": "Win",
+     "rivales": [
+      "Piranha_Speed",
+      "Piranha_Agility",
+      "Piranha_Combat",
+      "Piranha_Speed",
+      "Piranha_Combat",
+      "Piranha_Agility",
+      "Piranha_Speed"
+     ],
+     "nave": "Feisar_Combat",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "texto": "Torneo FEISAR contra Piranha (3/3): tu FEISAR Luchadora contra Piranha",
+     "textoEn": "FEISAR vs Piranha Tournament (3/3): your FEISAR Fighter vs Piranha"
     },
     {
      "id": "1120721401",
@@ -1106,7 +1673,25 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "nave": "Qirex_Agility",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "rivales": [
+      "Qirex_Speed",
+      "Qirex_Agility",
+      "Qirex_Speed",
+      "Qirex_Agility",
+      "Qirex_Combat",
+      "Qirex_Combat",
+      "Qirex_Speed"
+     ],
+     "texto": "Copa Qirex: tu Qirex de Agilidad contra todo el equipo",
+     "textoEn": "Qirex Cup: your Qirex Agility vs the whole team"
     },
     {
      "id": "-1295731685",
@@ -1129,7 +1714,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Feisar_Combat",
+      "AG_System_Speed",
+      "Feisar_Speed",
+      "Piranha_Agility",
+      "Auricom_Combat",
+      "AG_System_Combat",
+      "Auricom_Agility"
+     ]
     },
     {
      "id": "-1399672827",
@@ -1143,8 +1737,19 @@
      "vueltas": 3,
      "ia": "3.50",
      "armas": true,
-     "pase": "Top5",
-     "elite": "Win"
+     "pase": "Top3",
+     "elite": "FinishRaceNoDamage",
+     "rivales": [
+      "AG_System_Agility",
+      "Piranha_Speed",
+      "Feisar_Combat",
+      "Feisar_Agility",
+      "Auricom_Speed",
+      "Piranha_Agility",
+      "Feisar_Speed"
+     ],
+     "texto": "Sin un rasguño: entre los 3 primeros. Élite: termina sin recibir daño",
+     "textoEn": "Not a scratch: finish top 3. Elite: finish without taking damage"
     },
     {
      "id": "87810762",
@@ -1169,7 +1774,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top5",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "AG_System_Agility",
+      "AG_System_Combat",
+      "Qirex_Combat",
+      "Auricom_Speed",
+      "Feisar_Speed",
+      "Qirex_Agility",
+      "Qirex_Speed"
+     ]
     }
    ]
   },
@@ -1193,7 +1807,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Auricom_Combat",
+      "Feisar_Combat",
+      "Piranha_Combat",
+      "AG_System_Combat",
+      "Qirex_Speed",
+      "AG_System_Agility",
+      "Piranha_Speed"
+     ]
     },
     {
      "id": "-43916924",
@@ -1208,7 +1831,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Qirex_Combat",
+      "AG_System_Speed",
+      "Auricom_Agility",
+      "AG_System_Combat",
+      "Piranha_Combat",
+      "Feisar_Speed",
+      "Auricom_Combat"
+     ]
     },
     {
      "id": "822107923",
@@ -1223,7 +1855,25 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "nave": "Feisar_Combat",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "rivales": [
+      "Feisar_Combat",
+      "Feisar_Proto",
+      "Feisar_Agility",
+      "Feisar_Speed",
+      "Feisar_Agility",
+      "Feisar_Speed",
+      "Feisar_Combat"
+     ],
+     "texto": "Copa FEISAR: tu FEISAR Luchadora contra todo el equipo",
+     "textoEn": "FEISAR Cup: your FEISAR Fighter vs the whole team"
     },
     {
      "id": "854583929",
@@ -1245,9 +1895,20 @@
      "clase": "A+",
      "vueltas": 3,
      "ia": "3.50",
-     "armas": true,
+     "armas": false,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "FinishNoBarrelRoll",
+     "rivales": [
+      "Qirex_Agility",
+      "Auricom_Agility",
+      "Piranha_Combat",
+      "Piranha_Proto",
+      "Piranha_Speed",
+      "AG_System_Agility",
+      "Auricom_Combat"
+     ],
+     "texto": "Vieja escuela: sin armas. Élite: termina sin hacer ni un barrel roll",
+     "textoEn": "Old school: no weapons. Elite: finish without a single barrel roll"
     },
     {
      "id": "-808343431",
@@ -1269,7 +1930,16 @@
       "combate",
       "prototipo"
      ],
-     "nave": "Piranha_Agility"
+     "nave": "Piranha_Agility",
+     "rivales": [
+      "Qirex_Speed",
+      "Feisar_Proto",
+      "Qirex_Combat",
+      "Feisar_Agility",
+      "Qirex_Agility",
+      "AG_System_Speed",
+      "Auricom_Combat"
+     ]
     },
     {
      "id": "799304428",
@@ -1291,8 +1961,19 @@
      "vueltas": 3,
      "ia": "3.50",
      "armas": true,
-     "pase": "Top3",
-     "elite": "Win"
+     "pase": "Kill1Opponent",
+     "elite": "MostDamage",
+     "rivales": [
+      "Piranha_Combat",
+      "Qirex_Speed",
+      "Auricom_Combat",
+      "Feisar_Combat",
+      "AG_System_Combat",
+      "Feisar_Speed",
+      "Qirex_Combat"
+     ],
+     "texto": "Cazarrecompensas: elimina a un rival. Élite: causa más daño que nadie",
+     "textoEn": "Bounty hunter: eliminate an opponent. Elite: deal the most damage"
     },
     {
      "id": "1189192998",
@@ -1322,7 +2003,16 @@
      "clasesNave": [
       "agilidad"
      ],
-     "nave": ""
+     "nave": "",
+     "rivales": [
+      "Piranha_Combat",
+      "AG_System_Speed",
+      "Piranha_Agility",
+      "Qirex_Combat",
+      "Piranha_Speed",
+      "Auricom_Agility",
+      "AG_System_Proto"
+     ]
     },
     {
      "id": "37646885",
@@ -1337,7 +2027,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Piranha_Proto",
+      "Piranha_Combat",
+      "Feisar_Speed",
+      "Auricom_Proto",
+      "Feisar_Agility",
+      "Piranha_Speed",
+      "Piranha_Agility"
+     ]
     }
    ]
   },
@@ -1361,7 +2060,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Qirex_Agility",
+      "Auricom_Speed",
+      "AG_System_Combat",
+      "AG_System_Agility",
+      "Auricom_Combat",
+      "AG_System_Speed",
+      "Feisar_Speed"
+     ]
     },
     {
      "id": "-1287654456",
@@ -1376,7 +2084,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Qirex_Proto",
+      "Feisar_Combat",
+      "Auricom_Combat",
+      "Qirex_Agility",
+      "Feisar_Speed",
+      "AG_System_Combat",
+      "Piranha_Combat"
+     ]
     },
     {
      "id": "-1409957057",
@@ -1398,7 +2115,16 @@
       "combate",
       "prototipo"
      ],
-     "nave": "Qirex_Speed"
+     "nave": "Qirex_Speed",
+     "rivales": [
+      "Auricom_Agility",
+      "AG_System_Combat",
+      "Auricom_Combat",
+      "Piranha_Combat",
+      "Qirex_Agility",
+      "Feisar_Combat",
+      "Qirex_Proto"
+     ]
     },
     {
      "id": "376867571",
@@ -1422,7 +2148,25 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "nave": "AG_System_Combat",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "rivales": [
+      "AG_System_Proto",
+      "AG_System_Combat",
+      "AG_System_Speed",
+      "AG_System_Agility",
+      "AG_System_Agility",
+      "AG_System_Combat",
+      "AG_System_Speed"
+     ],
+     "texto": "Copa AG Systems: tu AG Systems Luchadora contra todo el equipo",
+     "textoEn": "AG Systems Cup: your AG Systems Fighter vs the whole team"
     },
     {
      "id": "-657982412",
@@ -1437,7 +2181,18 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "MostDamage",
+     "rivales": [
+      "Qirex_Combat",
+      "Piranha_Combat",
+      "Piranha_Speed",
+      "Piranha_Agility",
+      "Qirex_Agility",
+      "Piranha_Combat",
+      "Qirex_Speed"
+     ],
+     "texto": "Guerra civil: Piranha contra Qirex y tú en medio. Élite: causa más daño",
+     "textoEn": "Civil war: Piranha vs Qirex with you in the middle. Elite: deal the most damage"
     },
     {
      "id": "936872246",
@@ -1450,17 +2205,19 @@
     {
      "id": "-118278876",
      "tipo": "carrera",
+     "forma": "0",
      "x": 47,
      "y": 18,
-     "forma": "0",
-     "plantilla": "2050 - Event 9",
+     "plantilla": "2050 - Event 6-4",
      "pista": "Bridge",
      "clase": "A+",
      "vueltas": 3,
-     "ia": "3.50",
+     "ia": "4.50",
      "armas": true,
-     "pase": "Top3",
-     "elite": "Win"
+     "pase": "Win",
+     "elite": "Win",
+     "texto": "Duelo: uno contra uno con armas contra el as de Piranha",
+     "textoEn": "Duel: head to head with weapons against the Piranha ace"
     },
     {
      "id": "503462485",
@@ -1489,7 +2246,16 @@
      "clasesNave": [
       "combate"
      ],
-     "nave": ""
+     "nave": "",
+     "rivales": [
+      "AG_System_Agility",
+      "Qirex_Speed",
+      "Qirex_Agility",
+      "Piranha_Proto",
+      "Piranha_Speed",
+      "Auricom_Combat",
+      "Feisar_Speed"
+     ]
     },
     {
      "id": "512463327",
@@ -1504,7 +2270,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Auricom_Speed",
+      "Piranha_Speed",
+      "Qirex_Agility",
+      "Piranha_Proto",
+      "Qirex_Speed",
+      "Feisar_Speed",
+      "Auricom_Proto"
+     ]
     }
    ]
   },
@@ -1528,7 +2303,25 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Qirex_Agility",
+      "Qirex_Speed",
+      "Qirex_Combat",
+      "Qirex_Combat",
+      "Qirex_Proto",
+      "Qirex_Speed",
+      "Qirex_Agility"
+     ],
+     "nave": "AG_System_Speed",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "texto": "Torneo AG Systems contra Qirex (1/3): tu AG Systems de Velocidad contra Qirex",
+     "textoEn": "AG Systems vs Qirex Tournament (1/3): your AG Systems Speed vs Qirex"
     },
     {
      "id": "1631567104",
@@ -1550,7 +2343,16 @@
       "combate",
       "prototipo"
      ],
-     "nave": "Piranha_Combat"
+     "nave": "Piranha_Combat",
+     "rivales": [
+      "Auricom_Combat",
+      "Auricom_Agility",
+      "Feisar_Combat",
+      "Feisar_Agility",
+      "Auricom_Speed",
+      "Piranha_Speed",
+      "AG_System_Agility"
+     ]
     },
     {
      "id": "-1746871871",
@@ -1569,7 +2371,16 @@
      "clasesNave": [
       "velocidad"
      ],
-     "nave": ""
+     "nave": "",
+     "rivales": [
+      "Piranha_Combat",
+      "AG_System_Combat",
+      "Auricom_Agility",
+      "Piranha_Agility",
+      "Feisar_Proto",
+      "Qirex_Agility",
+      "Qirex_Combat"
+     ]
     },
     {
      "id": "457532091",
@@ -1593,7 +2404,25 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Qirex_Combat",
+      "Qirex_Proto",
+      "Qirex_Agility",
+      "Qirex_Agility",
+      "Qirex_Speed",
+      "Qirex_Combat",
+      "Qirex_Speed"
+     ],
+     "nave": "AG_System_Agility",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "texto": "Torneo AG Systems contra Qirex (2/3): tu AG Systems de Agilidad contra Qirex",
+     "textoEn": "AG Systems vs Qirex Tournament (2/3): your AG Systems Agility vs Qirex"
     },
     {
      "id": "1026115191",
@@ -1608,7 +2437,25 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Qirex_Agility",
+      "Qirex_Speed",
+      "Qirex_Agility",
+      "Qirex_Combat",
+      "Qirex_Speed",
+      "Qirex_Proto",
+      "Qirex_Combat"
+     ],
+     "nave": "AG_System_Combat",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "texto": "Torneo AG Systems contra Qirex (3/3): tu AG Systems Luchadora contra Qirex",
+     "textoEn": "AG Systems vs Qirex Tournament (3/3): your AG Systems Fighter vs Qirex"
     },
     {
      "id": "-1285825270",
@@ -1631,7 +2478,25 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "nave": "Auricom_Combat",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "rivales": [
+      "Auricom_Speed",
+      "Auricom_Agility",
+      "Auricom_Combat",
+      "Auricom_Proto",
+      "Auricom_Agility",
+      "Auricom_Combat",
+      "Auricom_Speed"
+     ],
+     "texto": "Copa Auricom: tu Auricom Luchadora contra todo el equipo",
+     "textoEn": "Auricom Cup: your Auricom Fighter vs the whole team"
     },
     {
      "id": "1656859250",
@@ -1646,7 +2511,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "AG_System_Speed",
+      "Auricom_Agility",
+      "Qirex_Agility",
+      "Qirex_Proto",
+      "Piranha_Agility",
+      "AG_System_Combat",
+      "Piranha_Combat"
+     ]
     },
     {
      "id": "619977860",
@@ -1669,10 +2543,28 @@
      "pista": "Bridge",
      "clase": "A+",
      "vueltas": 3,
-     "ia": "3.50",
+     "ia": "4.00",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Qirex_Proto",
+      "AG_System_Proto",
+      "Feisar_Proto",
+      "Auricom_Proto",
+      "Qirex_Proto",
+      "Piranha_Proto",
+      "Piranha_Proto"
+     ],
+     "nave": "Qirex_Agility",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "texto": "David contra Goliat: tu Qirex de Agilidad contra 7 prototipos",
+     "textoEn": "David vs Goliath: your Qirex Agility vs 7 prototypes"
     },
     {
      "id": "-1369193914",
@@ -1687,7 +2579,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "AG_System_Proto",
+      "Piranha_Proto",
+      "Auricom_Speed",
+      "Feisar_Combat",
+      "AG_System_Speed",
+      "Auricom_Agility",
+      "Feisar_Speed"
+     ]
     }
    ]
   },
@@ -1711,7 +2612,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Piranha_Combat",
+      "Auricom_Combat",
+      "AG_System_Combat",
+      "Qirex_Agility",
+      "Feisar_Speed",
+      "Feisar_Agility",
+      "Qirex_Speed"
+     ]
     },
     {
      "id": "1873582118",
@@ -1731,7 +2641,16 @@
       "velocidad",
       "agilidad"
      ],
-     "nave": ""
+     "nave": "",
+     "rivales": [
+      "Auricom_Speed",
+      "Auricom_Combat",
+      "Auricom_Agility",
+      "Piranha_Combat",
+      "Auricom_Proto",
+      "AG_System_Speed",
+      "Piranha_Agility"
+     ]
     },
     {
      "id": "-1685342381",
@@ -1746,7 +2665,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Piranha_Combat",
+      "Auricom_Proto",
+      "Piranha_Agility",
+      "Piranha_Speed",
+      "Feisar_Agility",
+      "Auricom_Agility",
+      "AG_System_Speed"
+     ]
     },
     {
      "id": "589725630",
@@ -1775,7 +2703,16 @@
       "velocidad",
       "agilidad"
      ],
-     "nave": ""
+     "nave": "",
+     "rivales": [
+      "Auricom_Agility",
+      "Piranha_Agility",
+      "Feisar_Agility",
+      "Qirex_Combat",
+      "Piranha_Combat",
+      "Piranha_Speed",
+      "Auricom_Speed"
+     ]
     },
     {
      "id": "1077136342",
@@ -1790,7 +2727,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Qirex_Combat",
+      "Qirex_Agility",
+      "Qirex_Speed",
+      "AG_System_Combat",
+      "Auricom_Agility",
+      "AG_System_Agility",
+      "Piranha_Agility"
+     ]
     },
     {
      "id": "-1698168760",
@@ -1813,7 +2759,25 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "nave": "Piranha_Combat",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "rivales": [
+      "Piranha_Combat",
+      "Piranha_Agility",
+      "Piranha_Agility",
+      "Piranha_Speed",
+      "Piranha_Speed",
+      "Piranha_Proto",
+      "Piranha_Combat"
+     ],
+     "texto": "Copa Piranha: tu Piranha Luchadora contra todo el equipo",
+     "textoEn": "Piranha Cup: your Piranha Fighter vs the whole team"
     },
     {
      "id": "1746072175",
@@ -1824,11 +2788,22 @@
      "plantilla": "2050 - Event 9",
      "pista": "Sol",
      "clase": "A+",
-     "vueltas": 3,
-     "ia": "3.50",
+     "vueltas": 1,
+     "ia": "4.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Auricom_Agility",
+      "AG_System_Speed",
+      "Qirex_Combat",
+      "Auricom_Combat",
+      "Qirex_Speed",
+      "Auricom_Speed",
+      "AG_System_Combat"
+     ],
+     "texto": "Sprint mortal: una sola vuelta contra la IA al máximo",
+     "textoEn": "Deadly sprint: a single lap against maximum AI"
     },
     {
      "id": "-244395820",
@@ -1841,19 +2816,32 @@
      "ia": "3.50"
     },
     {
-     "id": "1707069803",
-     "tipo": "carrera",
+     "id": "-1090047115",
+     "tipo": "eliminator",
+     "forma": "0",
      "x": 47,
      "y": 27,
-     "forma": "0",
-     "plantilla": "2050 - Event 9",
-     "pista": "Park",
+     "plantilla": "2050 - Event 8",
      "clase": "A+",
-     "vueltas": 3,
-     "ia": "3.50",
-     "armas": true,
-     "pase": "Top3",
-     "elite": "Win"
+     "ia": "3.80",
+     "nave": "Piranha_Speed",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "rivales": [
+      "Piranha_Combat",
+      "Auricom_Combat",
+      "Feisar_Combat",
+      "AG_System_Combat",
+      "Qirex_Combat",
+      "Piranha_Combat",
+      "Auricom_Combat"
+     ],
+     "texto": "Todos a por ti: Eliminator con tu Piranha de Velocidad contra 7 Luchadoras",
+     "textoEn": "Everyone wants you: Eliminator in your Piranha Speed vs 7 Fighters"
     },
     {
      "id": "157133562",
@@ -1868,7 +2856,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Auricom_Combat",
+      "Piranha_Speed",
+      "AG_System_Proto",
+      "Piranha_Agility",
+      "Auricom_Proto",
+      "AG_System_Speed",
+      "Qirex_Combat"
+     ]
     }
    ]
   },
@@ -1892,7 +2889,25 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Feisar_Combat",
+      "Feisar_Agility",
+      "Feisar_Proto",
+      "Feisar_Combat",
+      "Feisar_Speed",
+      "Feisar_Agility",
+      "Feisar_Speed"
+     ],
+     "nave": "Auricom_Speed",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "texto": "Torneo Auricom contra FEISAR (1/3): tu Auricom de Velocidad contra FEISAR",
+     "textoEn": "Auricom vs FEISAR Tournament (1/3): your Auricom Speed vs FEISAR"
     },
     {
      "id": "-984998671",
@@ -1914,7 +2929,16 @@
       "combate",
       "prototipo"
      ],
-     "nave": "Piranha_Proto"
+     "nave": "Piranha_Proto",
+     "rivales": [
+      "Qirex_Combat",
+      "Auricom_Agility",
+      "Qirex_Agility",
+      "Feisar_Agility",
+      "Qirex_Speed",
+      "Auricom_Speed",
+      "AG_System_Combat"
+     ]
     },
     {
      "id": "-1687337109",
@@ -1929,7 +2953,25 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Feisar_Speed",
+      "Feisar_Combat",
+      "Feisar_Combat",
+      "Feisar_Agility",
+      "Feisar_Proto",
+      "Feisar_Agility",
+      "Feisar_Speed"
+     ],
+     "nave": "Auricom_Agility",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "texto": "Torneo Auricom contra FEISAR (2/3): tu Auricom de Agilidad contra FEISAR",
+     "textoEn": "Auricom vs FEISAR Tournament (2/3): your Auricom Agility vs FEISAR"
     },
     {
      "id": "128047690",
@@ -1953,7 +2995,25 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Feisar_Combat",
+      "Feisar_Proto",
+      "Feisar_Combat",
+      "Feisar_Speed",
+      "Feisar_Agility",
+      "Feisar_Agility",
+      "Feisar_Speed"
+     ],
+     "nave": "Auricom_Combat",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "texto": "Torneo Auricom contra FEISAR (3/3): tu Auricom Luchadora contra FEISAR",
+     "textoEn": "Auricom vs FEISAR Tournament (3/3): your Auricom Fighter vs FEISAR"
     },
     {
      "id": "2112741531",
@@ -1968,7 +3028,25 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "nave": "Qirex_Combat",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "rivales": [
+      "Qirex_Speed",
+      "Qirex_Proto",
+      "Qirex_Combat",
+      "Qirex_Combat",
+      "Qirex_Agility",
+      "Qirex_Speed",
+      "Qirex_Agility"
+     ],
+     "texto": "Copa Qirex: tu Qirex Luchadora contra todo el equipo",
+     "textoEn": "Qirex Cup: your Qirex Fighter vs the whole team"
     },
     {
      "id": "674199346",
@@ -1991,7 +3069,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Feisar_Proto",
+      "Auricom_Speed",
+      "Qirex_Agility",
+      "AG_System_Agility",
+      "Piranha_Agility",
+      "Piranha_Speed",
+      "Auricom_Agility"
+     ]
     },
     {
      "id": "182974829",
@@ -2006,7 +3093,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Auricom_Speed",
+      "Auricom_Combat",
+      "AG_System_Agility",
+      "Auricom_Agility",
+      "Qirex_Combat",
+      "Qirex_Agility",
+      "Qirex_Speed"
+     ]
     },
     {
      "id": "-497042711",
@@ -2020,8 +3116,19 @@
      "vueltas": 3,
      "ia": "3.50",
      "armas": true,
-     "pase": "Top3",
-     "elite": "Win"
+     "pase": "Kill1Opponent",
+     "elite": "MostDamage",
+     "rivales": [
+      "AG_System_Speed",
+      "Qirex_Combat",
+      "AG_System_Combat",
+      "Auricom_Combat",
+      "Feisar_Combat",
+      "Auricom_Speed",
+      "Piranha_Combat"
+     ],
+     "texto": "Cazarrecompensas: elimina a un rival. Élite: causa más daño que nadie",
+     "textoEn": "Bounty hunter: eliminate an opponent. Elite: deal the most damage"
     },
     {
      "id": "-1177192006",
@@ -2051,7 +3158,16 @@
      "clasesNave": [
       "combate"
      ],
-     "nave": ""
+     "nave": "",
+     "rivales": [
+      "AG_System_Agility",
+      "Piranha_Speed",
+      "Feisar_Speed",
+      "Piranha_Agility",
+      "Auricom_Speed",
+      "AG_System_Speed",
+      "Qirex_Agility"
+     ]
     },
     {
      "id": "-56298126",
@@ -2066,7 +3182,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "AG_System_Combat",
+      "Qirex_Agility",
+      "Auricom_Proto",
+      "Piranha_Combat",
+      "Qirex_Proto",
+      "Qirex_Speed",
+      "Qirex_Combat"
+     ]
     }
    ]
   },
@@ -2090,7 +3215,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Piranha_Speed",
+      "Feisar_Speed",
+      "Qirex_Agility",
+      "AG_System_Agility",
+      "AG_System_Speed",
+      "Auricom_Speed",
+      "Qirex_Speed"
+     ]
     },
     {
      "id": "-9325802",
@@ -2105,7 +3239,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "AG_System_Agility",
+      "Feisar_Speed",
+      "Qirex_Combat",
+      "Feisar_Agility",
+      "Piranha_Agility",
+      "Feisar_Combat",
+      "Qirex_Proto"
+     ]
     },
     {
      "id": "-1732061280",
@@ -2120,7 +3263,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Auricom_Agility",
+      "Qirex_Speed",
+      "Feisar_Speed",
+      "Qirex_Combat",
+      "Feisar_Agility",
+      "Feisar_Combat",
+      "Auricom_Speed"
+     ]
     },
     {
      "id": "-189441479",
@@ -2148,7 +3300,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Auricom_Combat",
+      "Qirex_Combat",
+      "Feisar_Speed",
+      "Qirex_Agility",
+      "AG_System_Combat",
+      "Auricom_Speed",
+      "Feisar_Combat"
+     ]
     },
     {
      "id": "1039089537",
@@ -2159,11 +3320,29 @@
      "plantilla": "2050 - Event 9",
      "pista": "Subway",
      "clase": "A+",
-     "vueltas": 3,
-     "ia": "3.50",
+     "vueltas": 5,
+     "ia": "4.00",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "nave": "Feisar_Proto",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "rivales": [
+      "Feisar_Combat",
+      "Feisar_Speed",
+      "Feisar_Proto",
+      "Feisar_Agility",
+      "Feisar_Speed",
+      "Feisar_Agility",
+      "Feisar_Combat"
+     ],
+     "texto": "Copa FEISAR: 5 vueltas con tu FEISAR Prototipo contra todo el equipo",
+     "textoEn": "FEISAR Cup: 5 laps in your FEISAR Prototype vs the whole team"
     },
     {
      "id": "-727170088",
@@ -2184,9 +3363,20 @@
      "clase": "A+",
      "vueltas": 3,
      "ia": "3.50",
-     "armas": true,
+     "armas": false,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "FinishNoBarrelRoll",
+     "rivales": [
+      "Qirex_Proto",
+      "Feisar_Agility",
+      "Feisar_Speed",
+      "Auricom_Speed",
+      "Qirex_Agility",
+      "Piranha_Speed",
+      "Feisar_Combat"
+     ],
+     "texto": "Vieja escuela: sin armas. Élite: termina sin hacer ni un barrel roll",
+     "textoEn": "Old school: no weapons. Elite: finish without a single barrel roll"
     },
     {
      "id": "-1025782347",
@@ -2208,7 +3398,16 @@
       "combate",
       "prototipo"
      ],
-     "nave": "Piranha_Combat"
+     "nave": "Piranha_Combat",
+     "rivales": [
+      "AG_System_Agility",
+      "Qirex_Agility",
+      "Feisar_Combat",
+      "Feisar_Speed",
+      "Piranha_Speed",
+      "Auricom_Agility",
+      "AG_System_Speed"
+     ]
     },
     {
      "id": "-474652023",
@@ -2223,7 +3422,18 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "FinishRaceNoDamage",
+     "rivales": [
+      "Auricom_Agility",
+      "Auricom_Speed",
+      "Qirex_Speed",
+      "Piranha_Speed",
+      "Feisar_Speed",
+      "Feisar_Agility",
+      "Feisar_Combat"
+     ],
+     "texto": "Sin un rasguño: entre los 3 primeros. Élite: termina sin recibir daño",
+     "textoEn": "Not a scratch: finish top 3. Elite: finish without taking damage"
     },
     {
      "id": "-1251015359",
@@ -2244,11 +3454,22 @@
      "plantilla": "2050 - Event 9",
      "pista": "Park",
      "clase": "A+",
-     "vueltas": 3,
+     "vueltas": 8,
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Piranha_Combat",
+      "Piranha_Speed",
+      "Qirex_Speed",
+      "Auricom_Proto",
+      "Qirex_Agility",
+      "AG_System_Agility",
+      "AG_System_Speed"
+     ],
+     "texto": "Maratón: 8 vueltas. Aguanta hasta el final",
+     "textoEn": "Marathon: 8 laps. Last until the end"
     },
     {
      "id": "-174951196",
@@ -2263,7 +3484,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Auricom_Agility",
+      "Feisar_Proto",
+      "Piranha_Speed",
+      "Feisar_Agility",
+      "Qirex_Speed",
+      "Piranha_Agility",
+      "Auricom_Proto"
+     ]
     }
    ]
   },
@@ -2289,7 +3519,25 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "AG_System_Proto",
+      "AG_System_Agility",
+      "AG_System_Agility",
+      "AG_System_Speed",
+      "AG_System_Combat",
+      "AG_System_Speed",
+      "AG_System_Combat"
+     ],
+     "nave": "Piranha_Speed",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "texto": "Torneo Piranha contra AG Systems (1/3): tu Piranha de Velocidad contra AG Systems",
+     "textoEn": "Piranha vs AG Systems Tournament (1/3): your Piranha Speed vs AG Systems"
     },
     {
      "id": "-873871859",
@@ -2304,7 +3552,25 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "AG_System_Agility",
+      "AG_System_Combat",
+      "AG_System_Speed",
+      "AG_System_Speed",
+      "AG_System_Combat",
+      "AG_System_Agility",
+      "AG_System_Proto"
+     ],
+     "nave": "Piranha_Agility",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "texto": "Torneo Piranha contra AG Systems (2/3): tu Piranha de Agilidad contra AG Systems",
+     "textoEn": "Piranha vs AG Systems Tournament (2/3): your Piranha Agility vs AG Systems"
     },
     {
      "id": "-1420394026",
@@ -2326,7 +3592,16 @@
       "combate",
       "prototipo"
      ],
-     "nave": "Qirex_Proto"
+     "nave": "Qirex_Proto",
+     "rivales": [
+      "Piranha_Speed",
+      "Feisar_Speed",
+      "AG_System_Speed",
+      "Piranha_Agility",
+      "AG_System_Proto",
+      "Auricom_Combat",
+      "Auricom_Speed"
+     ]
     },
     {
      "id": "1716611179",
@@ -2341,7 +3616,25 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "AG_System_Combat",
+      "AG_System_Proto",
+      "AG_System_Agility",
+      "AG_System_Speed",
+      "AG_System_Speed",
+      "AG_System_Combat",
+      "AG_System_Agility"
+     ],
+     "nave": "Piranha_Combat",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "texto": "Torneo Piranha contra AG Systems (3/3): tu Piranha Luchadora contra AG Systems",
+     "textoEn": "Piranha vs AG Systems Tournament (3/3): your Piranha Fighter vs AG Systems"
     },
     {
      "id": "512437079",
@@ -2365,22 +3658,33 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "AG_System_Combat",
+      "Piranha_Agility",
+      "AG_System_Speed",
+      "Auricom_Speed",
+      "AG_System_Agility",
+      "Qirex_Combat",
+      "Auricom_Agility"
+     ]
     },
     {
-     "id": "33074230",
-     "tipo": "carrera",
+     "id": "1633240263",
+     "forma": "0",
      "x": 44,
      "y": 42,
-     "forma": "0",
-     "plantilla": "2050 - Event 9",
-     "pista": "Cathedral",
-     "clase": "A+",
-     "vueltas": 3,
-     "ia": "3.50",
-     "armas": true,
-     "pase": "Top3",
-     "elite": "Win"
+     "tipo": "zona",
+     "plantilla": "2050 - Event 6-2",
+     "nave": "AG_System_Proto",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "texto": "Copa AG Systems: aguanta en la Zona con tu AG Systems Prototipo",
+     "textoEn": "AG Systems Cup: survive the Zone in your AG Systems Prototype"
     },
     {
      "id": "1293909190",
@@ -2403,22 +3707,33 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Feisar_Combat",
+      "Feisar_Proto",
+      "AG_System_Speed",
+      "AG_System_Agility",
+      "Feisar_Speed",
+      "Qirex_Speed",
+      "Auricom_Speed"
+     ]
     },
     {
      "id": "377050924",
      "tipo": "carrera",
+     "forma": "0",
      "x": 47,
      "y": 43,
-     "forma": "0",
-     "plantilla": "2050 - Event 9",
+     "plantilla": "2050 - Event 6-4",
      "pista": "Sol",
      "clase": "A+",
      "vueltas": 3,
-     "ia": "3.50",
+     "ia": "4.50",
      "armas": true,
-     "pase": "Top3",
-     "elite": "Win"
+     "pase": "Win",
+     "elite": "Win",
+     "texto": "Duelo: uno contra uno con armas contra el as de Piranha",
+     "textoEn": "Duel: head to head with weapons against the Piranha ace"
     },
     {
      "id": "-830617694",
@@ -2448,7 +3763,16 @@
      "clasesNave": [
       "agilidad"
      ],
-     "nave": ""
+     "nave": "",
+     "rivales": [
+      "AG_System_Proto",
+      "AG_System_Speed",
+      "Piranha_Agility",
+      "Feisar_Combat",
+      "Feisar_Agility",
+      "Auricom_Speed",
+      "Auricom_Combat"
+     ]
     },
     {
      "id": "-180294980",
@@ -2460,10 +3784,28 @@
      "pista": "Bridge",
      "clase": "A+",
      "vueltas": 3,
-     "ia": "3.50",
+     "ia": "4.00",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "AG_System_Proto",
+      "Qirex_Proto",
+      "Auricom_Proto",
+      "Piranha_Proto",
+      "AG_System_Proto",
+      "Auricom_Proto",
+      "Feisar_Proto"
+     ],
+     "nave": "Piranha_Agility",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "texto": "David contra Goliat: tu Piranha de Agilidad contra 7 prototipos",
+     "textoEn": "David vs Goliath: your Piranha Agility vs 7 prototypes"
     },
     {
      "id": "342667000",
@@ -2478,7 +3820,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Qirex_Agility",
+      "Piranha_Proto",
+      "Auricom_Proto",
+      "Feisar_Combat",
+      "Feisar_Agility",
+      "Piranha_Speed",
+      "Qirex_Combat"
+     ]
     }
    ]
   },
@@ -2502,7 +3853,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Auricom_Speed",
+      "Auricom_Agility",
+      "Piranha_Agility",
+      "Piranha_Combat",
+      "Feisar_Agility",
+      "Feisar_Speed",
+      "Feisar_Combat"
+     ]
     },
     {
      "id": "148321961",
@@ -2517,7 +3877,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "AG_System_Speed",
+      "Qirex_Speed",
+      "Auricom_Speed",
+      "Piranha_Combat",
+      "Feisar_Speed",
+      "AG_System_Agility",
+      "Qirex_Agility"
+     ]
     },
     {
      "id": "1189267049",
@@ -2532,7 +3901,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Auricom_Combat",
+      "Piranha_Speed",
+      "Feisar_Combat",
+      "Auricom_Speed",
+      "AG_System_Agility",
+      "Feisar_Speed",
+      "Auricom_Agility"
+     ]
     },
     {
      "id": "-1829297597",
@@ -2547,7 +3925,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "AG_System_Agility",
+      "Feisar_Speed",
+      "Auricom_Agility",
+      "Qirex_Proto",
+      "Qirex_Combat",
+      "Piranha_Speed",
+      "Piranha_Agility"
+     ]
     },
     {
      "id": "-1451525657",
@@ -2575,22 +3962,34 @@
      "clasesNave": [
       "velocidad"
      ],
-     "nave": ""
+     "nave": "",
+     "rivales": [
+      "Piranha_Combat",
+      "Qirex_Agility",
+      "Auricom_Combat",
+      "Auricom_Agility",
+      "Piranha_Speed",
+      "AG_System_Proto",
+      "AG_System_Agility"
+     ]
     },
     {
-     "id": "-701288708",
-     "tipo": "carrera",
+     "id": "-1722032347",
+     "forma": "0",
      "x": 53,
      "y": 2,
-     "forma": "0",
-     "plantilla": "2050 - Event 9",
-     "pista": "Altima",
+     "tipo": "contrarreloj",
+     "plantilla": "2050 - Event 6",
      "clase": "A+",
-     "vueltas": 3,
-     "ia": "3.50",
-     "armas": true,
-     "pase": "Top3",
-     "elite": "Win"
+     "nave": "Auricom_Proto",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "texto": "Copa Auricom: contrarreloj con tu Auricom Prototipo",
+     "textoEn": "Auricom Cup: time trial in your Auricom Prototype"
     },
     {
      "id": "-979108683",
@@ -2609,26 +4008,50 @@
      "plantilla": "2050 - Event 9",
      "pista": "Sol",
      "clase": "A+",
-     "vueltas": 3,
-     "ia": "3.50",
+     "vueltas": 1,
+     "ia": "4.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Auricom_Agility",
+      "Feisar_Agility",
+      "Qirex_Combat",
+      "AG_System_Speed",
+      "Qirex_Speed",
+      "Auricom_Speed",
+      "AG_System_Proto"
+     ],
+     "texto": "Sprint mortal: una sola vuelta contra la IA al máximo",
+     "textoEn": "Deadly sprint: a single lap against maximum AI"
     },
     {
-     "id": "2042099551",
-     "tipo": "carrera",
+     "id": "1129936361",
+     "tipo": "eliminator",
+     "forma": "0",
      "x": 56,
      "y": 3,
-     "forma": "0",
-     "plantilla": "2050 - Event 9",
-     "pista": "Park",
+     "plantilla": "2050 - Event 8",
      "clase": "A+",
-     "vueltas": 3,
-     "ia": "3.50",
-     "armas": true,
-     "pase": "Top3",
-     "elite": "Win"
+     "ia": "3.80",
+     "nave": "Auricom_Speed",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "rivales": [
+      "Piranha_Combat",
+      "Auricom_Combat",
+      "Qirex_Combat",
+      "Feisar_Combat",
+      "AG_System_Combat",
+      "Piranha_Combat",
+      "AG_System_Combat"
+     ],
+     "texto": "Todos a por ti: Eliminator con tu Auricom de Velocidad contra 7 Luchadoras",
+     "textoEn": "Everyone wants you: Eliminator in your Auricom Speed vs 7 Fighters"
     },
     {
      "id": "2048613446",
@@ -2653,7 +4076,18 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "MostDamage",
+     "rivales": [
+      "Piranha_Combat",
+      "AG_System_Combat",
+      "AG_System_Speed",
+      "Piranha_Agility",
+      "Piranha_Speed",
+      "AG_System_Agility",
+      "AG_System_Combat"
+     ],
+     "texto": "Guerra civil: AG Systems contra Piranha y tú en medio. Élite: causa más daño",
+     "textoEn": "Civil war: AG Systems vs Piranha with you in the middle. Elite: deal the most damage"
     },
     {
      "id": "528909894",
@@ -2672,7 +4106,16 @@
      "clasesNave": [
       "velocidad"
      ],
-     "nave": ""
+     "nave": "",
+     "rivales": [
+      "AG_System_Speed",
+      "Feisar_Speed",
+      "Auricom_Speed",
+      "Auricom_Agility",
+      "Qirex_Combat",
+      "Piranha_Agility",
+      "AG_System_Combat"
+     ]
     },
     {
      "id": "-274977974",
@@ -2687,7 +4130,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Qirex_Speed",
+      "Auricom_Agility",
+      "Piranha_Proto",
+      "Auricom_Combat",
+      "Qirex_Combat",
+      "Feisar_Proto",
+      "Qirex_Agility"
+     ]
     }
    ]
   },
@@ -2711,7 +4163,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Piranha_Proto",
+      "Feisar_Speed",
+      "Piranha_Combat",
+      "Feisar_Combat",
+      "AG_System_Combat",
+      "AG_System_Speed",
+      "Auricom_Combat"
+     ]
     },
     {
      "id": "-429103492",
@@ -2726,7 +4187,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Qirex_Proto",
+      "Qirex_Agility",
+      "Piranha_Agility",
+      "AG_System_Agility",
+      "AG_System_Combat",
+      "Feisar_Agility",
+      "Feisar_Speed"
+     ]
     },
     {
      "id": "-1425327095",
@@ -2741,7 +4211,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "AG_System_Combat",
+      "Feisar_Combat",
+      "Auricom_Agility",
+      "Qirex_Speed",
+      "Qirex_Agility",
+      "Qirex_Proto",
+      "Auricom_Combat"
+     ]
     },
     {
      "id": "-1820807101",
@@ -2756,7 +4235,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Piranha_Agility",
+      "AG_System_Agility",
+      "Auricom_Agility",
+      "Piranha_Proto",
+      "Qirex_Speed",
+      "Qirex_Agility",
+      "Auricom_Combat"
+     ]
     },
     {
      "id": "-643841599",
@@ -2784,22 +4272,40 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Auricom_Agility",
+      "Piranha_Speed",
+      "Piranha_Agility",
+      "Auricom_Speed",
+      "Qirex_Combat",
+      "AG_System_Combat",
+      "AG_System_Agility"
+     ]
     },
     {
-     "id": "1240829519",
-     "tipo": "carrera",
+     "id": "160952465",
+     "forma": "0",
      "x": 54,
      "y": 10,
-     "forma": "0",
-     "plantilla": "2050 - Event 9",
+     "tipo": "carrera",
+     "plantilla": "2050 - Event 6-4",
      "pista": "Sol",
      "clase": "A+",
      "vueltas": 3,
-     "ia": "3.50",
-     "armas": true,
-     "pase": "Top3",
-     "elite": "Win"
+     "ia": "4.50",
+     "armas": false,
+     "pase": "Win",
+     "elite": "Win",
+     "nave": "Piranha_Speed",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "texto": "Copa Piranha: uno contra uno sin armas. Tu Piranha de Velocidad contra su mejor piloto",
+     "textoEn": "Piranha Cup: head to head, no weapons. Your Piranha Speed vs their best pilot"
     },
     {
      "id": "-1594482829",
@@ -2814,7 +4320,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Piranha_Agility",
+      "Feisar_Speed",
+      "Auricom_Agility",
+      "Auricom_Speed",
+      "Qirex_Agility",
+      "AG_System_Agility",
+      "Qirex_Speed"
+     ]
     },
     {
      "id": "-236022229",
@@ -2844,7 +4359,16 @@
       "combate",
       "prototipo"
      ],
-     "nave": "Piranha_Proto"
+     "nave": "Piranha_Proto",
+     "rivales": [
+      "Qirex_Combat",
+      "AG_System_Agility",
+      "AG_System_Speed",
+      "Piranha_Speed",
+      "Auricom_Combat",
+      "Auricom_Agility",
+      "Auricom_Speed"
+     ]
     },
     {
      "id": "990914965",
@@ -2859,7 +4383,18 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "FinishRaceNoDamage",
+     "rivales": [
+      "Piranha_Speed",
+      "Auricom_Combat",
+      "Feisar_Speed",
+      "Piranha_Proto",
+      "Qirex_Speed",
+      "Feisar_Agility",
+      "Qirex_Combat"
+     ],
+     "texto": "Sin un rasguño: entre los 3 primeros. Élite: termina sin recibir daño",
+     "textoEn": "Not a scratch: finish top 3. Elite: finish without taking damage"
     },
     {
      "id": "1246129735",
@@ -2884,23 +4419,36 @@
      "vueltas": 3,
      "ia": "3.50",
      "armas": true,
-     "pase": "Top3",
-     "elite": "Win"
+     "pase": "Kill1Opponent",
+     "elite": "MostDamage",
+     "rivales": [
+      "Feisar_Combat",
+      "Piranha_Speed",
+      "Piranha_Combat",
+      "AG_System_Combat",
+      "Auricom_Combat",
+      "Auricom_Speed",
+      "Qirex_Combat"
+     ],
+     "texto": "Cazarrecompensas: elimina a un rival. Élite: causa más daño que nadie",
+     "textoEn": "Bounty hunter: eliminate an opponent. Elite: deal the most damage"
     },
     {
      "id": "1984970747",
      "tipo": "carrera",
+     "forma": "0",
      "x": 54,
      "y": 16,
-     "forma": "0",
-     "plantilla": "2050 - Event 9",
+     "plantilla": "2050 - Event 6-4",
      "pista": "Mall",
      "clase": "A+",
      "vueltas": 3,
-     "ia": "3.50",
+     "ia": "4.50",
      "armas": true,
-     "pase": "Top3",
-     "elite": "Win"
+     "pase": "Win",
+     "elite": "Win",
+     "texto": "Duelo: uno contra uno con armas contra el as de Piranha",
+     "textoEn": "Duel: head to head with weapons against the Piranha ace"
     },
     {
      "id": "-1549833386",
@@ -2915,7 +4463,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "AG_System_Proto",
+      "AG_System_Combat",
+      "Qirex_Combat",
+      "Qirex_Agility",
+      "Qirex_Proto",
+      "Feisar_Combat",
+      "Auricom_Agility"
+     ]
     }
    ]
   },
@@ -2939,7 +4496,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Feisar_Agility",
+      "AG_System_Agility",
+      "AG_System_Combat",
+      "Feisar_Speed",
+      "Piranha_Agility",
+      "Qirex_Combat",
+      "AG_System_Speed"
+     ]
     },
     {
      "id": "2083712534",
@@ -2954,7 +4520,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Qirex_Agility",
+      "Auricom_Agility",
+      "AG_System_Agility",
+      "Feisar_Speed",
+      "Qirex_Combat",
+      "Feisar_Agility",
+      "Feisar_Combat"
+     ]
     },
     {
      "id": "-1761490223",
@@ -2973,7 +4548,16 @@
      "clasesNave": [
       "agilidad"
      ],
-     "nave": ""
+     "nave": "",
+     "rivales": [
+      "Feisar_Speed",
+      "Piranha_Combat",
+      "Auricom_Speed",
+      "Feisar_Combat",
+      "Auricom_Agility",
+      "Piranha_Speed",
+      "AG_System_Combat"
+     ]
     },
     {
      "id": "1570753141",
@@ -2988,7 +4572,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "AG_System_Proto",
+      "AG_System_Combat",
+      "Piranha_Combat",
+      "Qirex_Combat",
+      "Auricom_Combat",
+      "Auricom_Agility",
+      "Piranha_Agility"
+     ]
     },
     {
      "id": "1369386226",
@@ -3012,22 +4605,44 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Auricom_Speed",
+      "Piranha_Combat",
+      "Piranha_Speed",
+      "AG_System_Agility",
+      "Qirex_Combat",
+      "Qirex_Speed",
+      "Feisar_Combat"
+     ]
     },
     {
-     "id": "-619885111",
-     "tipo": "carrera",
+     "id": "-480741399",
+     "forma": "0",
      "x": 57,
      "y": 28,
-     "forma": "0",
-     "plantilla": "2050 - Event 9",
-     "pista": "Bridge",
+     "tipo": "eliminator",
+     "plantilla": "2050 - Event 8",
      "clase": "A+",
-     "vueltas": 3,
      "ia": "3.50",
-     "armas": true,
-     "pase": "Top3",
-     "elite": "Win"
+     "nave": "Qirex_Proto",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "rivales": [
+      "Qirex_Combat",
+      "Qirex_Combat",
+      "Qirex_Combat",
+      "Qirex_Combat",
+      "Qirex_Speed",
+      "Qirex_Agility",
+      "Qirex_Proto"
+     ],
+     "texto": "Copa Qirex: Eliminator con tu Qirex Prototipo contra todo el equipo",
+     "textoEn": "Qirex Cup: Eliminator in your Qirex Prototype vs the whole team"
     },
     {
      "id": "-1682152409",
@@ -3042,7 +4657,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Qirex_Speed",
+      "Qirex_Combat",
+      "AG_System_Speed",
+      "Auricom_Combat",
+      "AG_System_Agility",
+      "Feisar_Agility",
+      "Feisar_Speed"
+     ]
     },
     {
      "id": "1797470412",
@@ -3055,32 +4679,47 @@
     {
      "id": "724329246",
      "tipo": "carrera",
+     "forma": "0",
      "x": 57,
      "y": 30,
-     "forma": "0",
-     "plantilla": "2050 - Event 9",
+     "plantilla": "2050 - Event 6-4",
      "pista": "Square",
      "clase": "A+",
      "vueltas": 3,
-     "ia": "3.50",
+     "ia": "4.50",
      "armas": true,
-     "pase": "Top3",
-     "elite": "Win"
+     "pase": "Win",
+     "elite": "Win",
+     "texto": "Duelo: uno contra uno con armas contra el as de Piranha",
+     "textoEn": "Duel: head to head with weapons against the Piranha ace"
     },
     {
-     "id": "1053585721",
-     "tipo": "carrera",
+     "id": "1232075727",
+     "tipo": "eliminator",
+     "forma": "0",
      "x": 56,
      "y": 31,
-     "forma": "0",
-     "plantilla": "2050 - Event 9",
-     "pista": "Mall",
+     "plantilla": "2050 - Event 8",
      "clase": "A+",
-     "vueltas": 3,
-     "ia": "3.50",
-     "armas": true,
-     "pase": "Top3",
-     "elite": "Win"
+     "ia": "3.80",
+     "nave": "Feisar_Speed",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "rivales": [
+      "Piranha_Combat",
+      "AG_System_Combat",
+      "Feisar_Combat",
+      "Qirex_Combat",
+      "Auricom_Combat",
+      "AG_System_Combat",
+      "Auricom_Combat"
+     ],
+     "texto": "Todos a por ti: Eliminator con tu FEISAR de Velocidad contra 7 Luchadoras",
+     "textoEn": "Everyone wants you: Eliminator in your FEISAR Speed vs 7 Fighters"
     },
     {
      "id": "550844378",
@@ -3109,7 +4748,16 @@
      "clasesNave": [
       "combate"
      ],
-     "nave": ""
+     "nave": "",
+     "rivales": [
+      "AG_System_Agility",
+      "Qirex_Combat",
+      "Piranha_Agility",
+      "AG_System_Speed",
+      "AG_System_Combat",
+      "Auricom_Combat",
+      "Piranha_Speed"
+     ]
     },
     {
      "id": "631509582",
@@ -3121,10 +4769,28 @@
      "pista": "Subway",
      "clase": "A+",
      "vueltas": 3,
-     "ia": "3.50",
+     "ia": "4.00",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "Auricom_Proto",
+      "AG_System_Proto",
+      "Feisar_Proto",
+      "Feisar_Proto",
+      "Piranha_Proto",
+      "Qirex_Proto",
+      "Auricom_Proto"
+     ],
+     "nave": "Auricom_Agility",
+     "clasesNave": [
+      "velocidad",
+      "agilidad",
+      "combate",
+      "prototipo"
+     ],
+     "texto": "David contra Goliat: tu Auricom de Agilidad contra 7 prototipos",
+     "textoEn": "David vs Goliath: your Auricom Agility vs 7 prototypes"
     },
     {
      "id": "143403586",
@@ -3139,7 +4805,16 @@
      "ia": "3.50",
      "armas": true,
      "pase": "Top3",
-     "elite": "Win"
+     "elite": "Win",
+     "rivales": [
+      "AG_System_Speed",
+      "Qirex_Combat",
+      "Feisar_Combat",
+      "Piranha_Speed",
+      "Piranha_Proto",
+      "AG_System_Combat",
+      "Auricom_Proto"
+     ]
     }
    ]
   }

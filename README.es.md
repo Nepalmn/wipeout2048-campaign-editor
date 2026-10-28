@@ -57,7 +57,7 @@ xdelta3 -d -s eboot.bin eboot.xdelta eboot_nuevo.bin
 xdelta3 -d -B 134217728 -s data2.psarc data2.xdelta data2_nuevo.psarc
 ```
 
-**PS Vita / PSTV real** (sin probar todavía): los archivos parcheados deberían funcionar con rePatch en `ux0:rePatch/PCSF00007/` (`eboot.bin` y `PSP2/data2.psarc`). Los parches están hechos sobre el `eboot.bin` descifrado que instala Vita3K, así que el de un volcado de consola puede tener otro MD5.
+**PS Vita / PSTV real** (probado en una PS Vita 1000 desde la v1.1): los archivos parcheados funcionan con rePatch en `ux0:rePatch/PCSF00007/` (`eboot.bin` y `PSP2/data2.psarc`). Los parches están hechos sobre el `eboot.bin` descifrado que instala Vita3K, así que el de un volcado de consola puede tener otro MD5.
 
 ## Editor: requisitos
 
@@ -80,6 +80,6 @@ Más detalles, límites y avisos sobre las partidas guardadas: [`LEEME.txt`](LEE
 
 ## Campaña 2051-2070
 
-La campaña de ejemplo (`campana.ejemplo.json`) tiene 20 temporadas y 210 eventos: clases A y A+, IA difícil en los eventos nuevos (2048-2050 quedan sin tocar), una contrarreloj, una zona y un eliminator por temporada, y 30 eventos con restricciones de naves. También corrige un fallo de traducción del juego original: el texto en español del eliminator 2050 - Evento 3 decía «Agilidad» en un evento de naves de velocidad.
+La campaña de ejemplo (`campana.ejemplo.json`) tiene 20 temporadas y 210 eventos: clases A y A+, IA difícil en los eventos nuevos (2048-2050 quedan sin tocar), una contrarreloj, una zona y un eliminator por temporada, rivales de todos los equipos, una copa de equipo por temporada, torneos de rivalidad, duelos uno contra uno, sprints de una vuelta, un maratón y otros eventos especiales con objetivos propios (sin recibir daño, sin barrel roll, causar más daño...). También corrige un fallo de traducción del juego original: el texto en español del eliminator 2050 - Evento 3 decía «Agilidad» en un evento de naves de velocidad.
 
 Los tiempos de las contrarrelojes son todavía los del juego original: si haces buenos tiempos, compártelos para ajustar la campaña. Los parches para jugarla sin el editor están en [Releases](../../releases).
